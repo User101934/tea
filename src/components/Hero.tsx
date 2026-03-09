@@ -24,7 +24,7 @@ const Hero = () => {
           <ArrowRight size={14} />
         </motion.div>
 
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -66,21 +66,24 @@ const Hero = () => {
         >
           <div className="absolute inset-0 bg-linear-to-r from-indigo-500/20 to-purple-500/20 blur-2xl rounded-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           <div className="p-2 rounded-[2rem] bg-slate-200/50 dark:bg-slate-800/50 backdrop-blur-sm shadow-2xl overflow-hidden border border-slate-200/50 dark:border-slate-700/50">
-            <div className="rounded-[1.5rem] overflow-hidden bg-slate-900 aspect-video relative">
-              <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-slate-900/90 to-indigo-900/20 flex items-center justify-center">
-                 <div className="flex flex-col items-center gap-6">
-                    <div className="w-24 h-24 rounded-2xl bg-white dark:bg-slate-900 flex items-center justify-center shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
-                        <img 
-                          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/f32bc3e4-3637-45b4-97a7-8620b4aefe83/image-resized-1772182697345.webp?width=8000&height=8000&resize=contain" 
-                          alt="TeachGrid Logo" 
-                          className="w-full h-auto object-contain p-2"
-                        />
-                    </div>
-                    <div className="space-y-2">
-                        <div className="w-48 h-2 bg-slate-700 rounded-full animate-pulse" />
-                        <div className="w-32 h-2 bg-slate-700 rounded-full animate-pulse mx-auto" />
-                    </div>
-                 </div>
+            <div className="rounded-[1.5rem] overflow-hidden bg-slate-900 aspect-video relative group/mockup">
+              <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-slate-900/90 to-indigo-900/40 flex items-center justify-center">
+                {/* Inner Grain for depth */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none"
+                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+                <div className="flex flex-col items-center gap-6">
+                  <div className="w-24 h-24 rounded-2xl bg-white dark:bg-slate-900 flex items-center justify-center shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+                    <img
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/f32bc3e4-3637-45b4-97a7-8620b4aefe83/image-resized-1772182697345.webp?width=8000&height=8000&resize=contain"
+                      alt="TeachGrid Logo"
+                      className="w-full h-auto object-contain p-2"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="w-48 h-2 bg-slate-700 rounded-full animate-pulse" />
+                    <div className="w-32 h-2 bg-slate-700 rounded-full animate-pulse mx-auto" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

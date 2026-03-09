@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Quick Start (Windows)
+
+If you are on Windows, you can use the provided batch scripts for a quick setup and execution:
+
+1. **Setup**: Run `setup.bat` to install all necessary dependencies.
+2. **Run**: Run `run.bat` to start the development server.
+
 ## Getting Started
 
 First, run the development server:

@@ -33,7 +33,7 @@ const PLATFORM_MENU_COLUMNS = [
       {
         title: 'Learning & Delivery',
         items: [
-          'Smart Learning Management', 'Cohort Management', 'Live Sessions', 'Calendar', 
+          'Smart Learning Management', 'Cohort Management', 'Live Sessions', 'Calendar',
           'Whiteboard AI ✨', 'Virtual Labs', 'Microlearning Studio', 'Community', 'Mobile-Friendly Experience'
         ]
       },
@@ -78,7 +78,7 @@ const PLATFORM_LINKS_FLAT = [
   {
     title: 'Features',
     items: [
-      'Smart Learning Management', 'Cohort Management', 'Live Sessions', 'Calendar', 
+      'Smart Learning Management', 'Cohort Management', 'Live Sessions', 'Calendar',
       'Whiteboard AI ✨', 'Virtual Labs', 'Microlearning Studio', 'Community', 'Mobile-Friendly Experience',
       'LXP (Learner Portal)', 'MXP (Mentor Portal)', 'CRM'
     ]
@@ -141,26 +141,28 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <img 
-            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/f32bc3e4-3637-45b4-97a7-8620b4aefe83/image-resized-1772182697345.webp?width=8000&height=8000&resize=contain" 
-            alt="TeachGrid" 
-            className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
-          />
-        </Link>
+        {/* Logo Container */}
+        <div className="flex-1 flex items-center justify-start">
+          <Link href="/" className="flex items-center gap-2 group">
+            <img
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/f32bc3e4-3637-45b4-97a7-8620b4aefe83/image-resized-1772182697345.webp?width=8000&height=8000&resize=contain"
+              alt="TeachGrid"
+              className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            />
+          </Link>
+        </div>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8 h-full">
+        {/* Desktop Nav - Centered */}
+        <div className="hidden lg:flex items-center gap-2 h-full">
           {/* Platform */}
-          <div 
+          <div
             className="h-full flex items-center"
             onMouseEnter={() => setActiveMenu('platform')}
             onMouseLeave={() => setActiveMenu(null)}
           >
-            <button className="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8">
+            <button className="flex items-center gap-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8 px-3 whitespace-nowrap">
               Platform
-              <ChevronDown size={14} className={cn("transition-transform duration-200", activeMenu === 'platform' && "rotate-180")} />
+              <ChevronDown size={14} className={cn("transition-transform duration-200 opacity-50", activeMenu === 'platform' && "rotate-180")} />
             </button>
             <AnimatePresence>
               {activeMenu === 'platform' && (
@@ -171,39 +173,39 @@ const Navbar = () => {
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className="absolute top-[80px] left-1/2 -translate-x-1/2 w-screen max-w-[1200px] px-6"
                 >
-                    <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden ring-1 ring-black/5 p-10 max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar">
-                      <div className="grid grid-cols-3 gap-16">
-                        {PLATFORM_MENU_COLUMNS.map((column, idx) => (
-                          <div key={idx} className="space-y-12">
-                              {column.sections.map((section: any) => (
-                                <div key={section.title} className="space-y-4">
-                                  <h4 className="text-[12px] font-bold uppercase tracking-[0.1em] text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-2 flex items-center gap-2">
-                                    {section.title.replace(' ✨', '')}
-                                    {section.title.includes('✨') && <Sparkles size={12} className="text-indigo-500" />}
-                                  </h4>
-                                    {section.description && (
-                                      <p className="text-[13px] text-slate-500 dark:text-slate-400 leading-relaxed text-justify">
-                                        {section.description}
-                                      </p>
-                                    )}
-                                  {section.items.length > 0 && (
-                                    <ul className="space-y-2.5">
-                                      {section.items.map((item: any) => (
-                                        <li key={item}>
-                                          <Link href="#" className="text-[14px] text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors flex items-center gap-2">
-                                            {item.replace(' ✨', '')}
-                                            {item.includes('✨') && <Sparkles size={12} className="text-indigo-500" />}
-                                          </Link>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  )}
-                                </div>
-                              ))}
-                          </div>
-                        ))}
-                      </div>
+                  <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden ring-1 ring-black/5 p-10 max-h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar">
+                    <div className="grid grid-cols-3 gap-16">
+                      {PLATFORM_MENU_COLUMNS.map((column, idx) => (
+                        <div key={idx} className="space-y-12">
+                          {column.sections.map((section: any) => (
+                            <div key={section.title} className="space-y-4">
+                              <h4 className="text-[12px] font-bold uppercase tracking-[0.1em] text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-2 flex items-center gap-2">
+                                {section.title.replace(' ✨', '')}
+                                {section.title.includes('✨') && <Sparkles size={12} className="text-indigo-500" />}
+                              </h4>
+                              {section.description && (
+                                <p className="text-[13px] text-slate-500 dark:text-slate-400 leading-relaxed text-justify">
+                                  {section.description}
+                                </p>
+                              )}
+                              {section.items.length > 0 && (
+                                <ul className="space-y-2.5">
+                                  {section.items.map((item: any) => (
+                                    <li key={item}>
+                                      <Link href="#" className="text-[14px] text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors flex items-center gap-2">
+                                        {item.replace(' ✨', '')}
+                                        {item.includes('✨') && <Sparkles size={12} className="text-indigo-500" />}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      ))}
                     </div>
+                  </div>
 
                 </motion.div>
               )}
@@ -211,14 +213,14 @@ const Navbar = () => {
           </div>
 
           {/* Solutions */}
-          <div 
+          <div
             className="h-full flex items-center"
             onMouseEnter={() => setActiveMenu('solutions')}
             onMouseLeave={() => setActiveMenu(null)}
           >
-            <button className="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8">
+            <button className="flex items-center gap-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8 px-3 whitespace-nowrap">
               Solutions
-              <ChevronDown size={14} className={cn("transition-transform duration-200", activeMenu === 'solutions' && "rotate-180")} />
+              <ChevronDown size={14} className={cn("transition-transform duration-200 opacity-50", activeMenu === 'solutions' && "rotate-180")} />
             </button>
             <AnimatePresence>
               {activeMenu === 'solutions' && (
@@ -255,14 +257,14 @@ const Navbar = () => {
           <NavItem label="Pricing" />
 
           {/* Resources */}
-          <div 
+          <div
             className="h-full flex items-center"
             onMouseEnter={() => setActiveMenu('resources')}
             onMouseLeave={() => setActiveMenu(null)}
           >
-            <button className="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8">
+            <button className="flex items-center gap-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8 px-3 whitespace-nowrap">
               Resources
-              <ChevronDown size={14} className={cn("transition-transform duration-200", activeMenu === 'resources' && "rotate-180")} />
+              <ChevronDown size={14} className={cn("transition-transform duration-200 opacity-50", activeMenu === 'resources' && "rotate-180")} />
             </button>
             <AnimatePresence>
               {activeMenu === 'resources' && (
@@ -297,14 +299,14 @@ const Navbar = () => {
           </div>
 
           {/* Company */}
-          <div 
+          <div
             className="h-full flex items-center"
             onMouseEnter={() => setActiveMenu('company')}
             onMouseLeave={() => setActiveMenu(null)}
           >
-            <button className="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8">
+            <button className="flex items-center gap-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8 px-3 whitespace-nowrap">
               Company
-              <ChevronDown size={14} className={cn("transition-transform duration-200", activeMenu === 'company' && "rotate-180")} />
+              <ChevronDown size={14} className={cn("transition-transform duration-200 opacity-50", activeMenu === 'company' && "rotate-180")} />
             </button>
             <AnimatePresence>
               {activeMenu === 'company' && (
@@ -339,10 +341,10 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Auth Buttons */}
-        <div className="hidden lg:flex items-center gap-4">
-          <Link href="/login" className="btn-ghost">Login</Link>
-          <Link href="/get-started" className="btn-primary">Get Started</Link>
+        {/* Auth Buttons - Right Aligned */}
+        <div className="flex-1 hidden lg:flex items-center justify-end gap-4">
+          <Link href="/login" className="btn-ghost whitespace-nowrap">Login</Link>
+          <Link href="/get-started" className="btn-primary whitespace-nowrap">Get Started</Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -354,7 +356,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -362,7 +364,7 @@ const Navbar = () => {
             className="lg:hidden fixed inset-0 top-20 bg-white dark:bg-slate-900 p-6 z-40 overflow-y-auto custom-scrollbar"
           >
             <div className="space-y-4">
-                <MobileNavItem label="Platform" items={PLATFORM_LINKS_FLAT} />
+              <MobileNavItem label="Platform" items={PLATFORM_LINKS_FLAT} />
 
               <MobileNavItem label="Solutions" items={SOLUTIONS_LINKS} />
               <MobileNavItem label="Pricing" />
@@ -383,9 +385,9 @@ const Navbar = () => {
 const NavItem = ({ label, children, isActive, onMouseEnter, onMouseLeave }: any) => {
   return (
     <div className="relative h-full flex items-center" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <button className="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8">
+      <button className="flex items-center gap-1 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium transition-colors py-8 px-3">
         {label}
-        {children && <ChevronDown size={14} className={cn("transition-transform duration-200", isActive && "rotate-180")} />}
+        {children && <ChevronDown size={14} className={cn("transition-transform duration-200 opacity-50", isActive && "rotate-180")} />}
       </button>
       <AnimatePresence>
         {isActive && children && (
@@ -419,7 +421,7 @@ const MobileNavItem = ({ label, items }: any) => {
 
   return (
     <div className="py-2">
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full text-lg font-medium text-slate-900 dark:text-white"
       >
