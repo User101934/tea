@@ -13,12 +13,11 @@ const Hero = () => {
       <div className="max-w-[1440px] mx-auto px-6">
 
         {/* Headline + CTAs — Precise Original Style */}
-        <div className="max-w-4xl mx-auto text-center mb-24 flex flex-col items-center">
+        <div className="max-w-6xl mx-auto text-center mb-12 md:mb-24 flex flex-col items-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[clamp(40px,8vw,100px)] leading-[1.0] tracking-[-0.04em] font-medium text-black mb-8 md:mb-10"
-            style={{ fontFamily: "'DM Serif Display', serif" }}
+            className="text-[clamp(36px,6.5vw,86px)] leading-[1.1] tracking-[-0.04em] font-semibold text-black mb-6 md:mb-10 font-sans px-4"
           >
             AI-powered Learning <br className="hidden md:block" />
             for Smarter Education.
@@ -28,27 +27,27 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[19px] md:text-[21px] text-[#424242] max-w-[580px] mx-auto mb-8 md:mb-14 leading-[1.5] font-sans"
+            className="text-[16px] md:text-[19px] text-[#4b5563] mb-8 md:mb-12 max-w-xl mx-auto leading-relaxed font-sans px-6"
           >
-            TeachGrid is where powerful AI meets practical education solutions — so you can
-            teach and learn smarter.
+            TeachGrid is where powerful AI meets practical education solutions — 
+            so you can teach and learn smarter.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-row items-center justify-center gap-6 md:gap-12"
+            className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 w-full max-w-[260px] md:max-w-none mx-auto"
           >
             <Link
               href="/demo"
-              className="bg-[#111110] text-white px-8 md:px-10 py-3.5 md:py-4.5 rounded-full text-[16px] md:text-[17px] font-medium hover:bg-black/90 transition-all active:scale-[0.98] font-sans"
+              className="w-full md:w-auto bg-[#111110] text-white px-8 md:px-10 py-3.5 md:py-4 rounded-full text-[16px] font-medium hover:bg-black/90 transition-all active:scale-[0.98] font-sans text-center"
             >
               Request a demo
             </Link>
             <Link
               href="/platform/features"
-              className="text-[16px] md:text-[17px] font-normal text-black hover:text-black transition-all underline decoration-[1px] underline-offset-[12px] decoration-[#cccccc] hover:decoration-black font-sans"
+              className="text-[16px] font-normal text-black hover:text-black transition-all underline decoration-[1px] underline-offset-[10px] decoration-[#cccccc] hover:decoration-black font-sans text-center"
             >
               Explore Features
             </Link>
@@ -66,13 +65,13 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-white w-full h-[400px] md:h-[580px] md:flex-[0_0_72%]"
+            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-white w-full h-[360px] md:h-[580px] md:flex-[0_0_72%]"
           >
             {/* Background Image — Modern Platform Abstract */}
             <img
               src="/hero_2.jpeg"
               alt="Intelligent LMS Platform"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-[1.03]"
             />
 
             {/* Grain overlay for depth */}
@@ -100,13 +99,13 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-slate-50 w-full h-[400px] md:h-[580px] md:flex-1"
+            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-slate-50 w-full h-[360px] md:h-[580px] md:flex-1"
           >
             {/* Real photo — Student learning interaction */}
             <img
               src="/hero_1.jpeg"
               alt="Digital Education"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-[1.03]"
             />
 
             {/* Grain overlay */}

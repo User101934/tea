@@ -28,12 +28,12 @@ const platformMenu = {
   ],
   portals: [
     { label: 'LXP', abbr: 'LX', desc: 'Learner Experience Portal', href: '/platform/features/lxp-learner-portal', color: '#6366f1' },
-    { label: 'MXP', abbr: 'MX', desc: 'Mentor Experience Portal',  href: '/platform/features/mxp-mentor-portal',  color: '#a855f7' },
+    { label: 'MXP', abbr: 'MX', desc: 'Mentor Experience Portal', href: '/platform/features/mxp-mentor-portal', color: '#a855f7' },
     { label: 'CRM', abbr: 'CR', desc: 'Customer Relationship Management', href: '/platform/features/crm-portal', color: '#10b981' },
   ],
   footer: [
     { label: 'Customize →', href: '#' },
-    { label: 'Features →',   href: '/platform/features' },
+    { label: 'Features →', href: '/platform/features' },
   ],
 };
 
@@ -161,10 +161,10 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
    NAVBAR
 ───────────────────────────────────────── */
 const Navbar = () => {
-  const [isScrolled, setIsScrolled]       = useState(false);
-  const [mobileOpen, setMobileOpen]       = useState(false);
-  const [activeMenu, setActiveMenu]       = useState<string | null>(null);
-  const closeTimer                        = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -182,18 +182,18 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { label: 'Products',  hasDropdown: true  },
-    { label: 'Solutions', hasDropdown: true  },
-    { label: 'Resources', hasDropdown: true  },
-    { label: 'Company',   hasDropdown: true  },
-    { label: 'Pricing',   hasDropdown: false, href: '/pricing' },
+    { label: 'Platform', hasDropdown: true },
+    { label: 'Solutions', hasDropdown: true },
+    { label: 'Resources', hasDropdown: true },
+    { label: 'Company', hasDropdown: true },
+    { label: 'Pricing', hasDropdown: false, href: '/pricing' },
   ];
 
   /* Dropdown animation — matches Cohere: pure translateY + opacity, no scale */
   const dropVariants: any = {
-    hidden:  { opacity: 0, y: 10, x: "-50%" },
-    visible: { opacity: 1, y: 0,  x: "-50%", transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] } },
-    exit:    { opacity: 0, y: 10, x: "-50%", transition: { duration: 0.13, ease: 'easeIn' } },
+    hidden: { opacity: 0, y: 10, x: "-50%" },
+    visible: { opacity: 1, y: 0, x: "-50%", transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] } },
+    exit: { opacity: 0, y: 10, x: "-50%", transition: { duration: 0.13, ease: 'easeIn' } },
   };
 
   return (
@@ -254,7 +254,7 @@ const Navbar = () => {
           {/* ── Dropdown panel — Robust Centered Logic ── */}
           <div className="absolute top-full left-1/2 -translate-x-1/2 w-full max-w-7xl px-10 pointer-events-none">
             <div className="relative w-full h-0">
-               <AnimatePresence>
+              <AnimatePresence>
                 {activeMenu && navItems.find(i => (i.label === activeMenu || (i.label === 'Products' && activeMenu === 'Platform')))?.hasDropdown && (
                   <motion.div
                     variants={dropVariants}
@@ -268,9 +268,9 @@ const Navbar = () => {
                       /* Widths — large, Cohere-level spacious */
                       width:
                         activeMenu === 'Platform' ? 820
-                        : activeMenu === 'Solutions' ? 880
-                        : activeMenu === 'Resources' ? 840
-                        : 820,
+                          : activeMenu === 'Solutions' ? 880
+                            : activeMenu === 'Resources' ? 840
+                              : 820,
                       boxShadow:
                         '0 0 0 1px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.04), 0 20px 60px -8px rgba(0,0,0,0.14)',
                     }}
@@ -390,7 +390,7 @@ const Navbar = () => {
             </Link>
             <Link
               href="/get-started"
-              className="bg-[#111110] hover:bg-[#2d2d2b] text-white px-6 py-[10px] rounded-full text-[14.5px] font-medium transition-all duration-150 active:scale-[0.97]"
+              className="bg-[#111110] hover:bg-[#2d2d2b] text-white px-5 md:px-6 py-[9px] md:py-[10px] rounded-full text-[14px] md:text-[14.5px] font-medium transition-all duration-150 active:scale-[0.97]"
             >
               Get Started
             </Link>
@@ -432,8 +432,7 @@ const Navbar = () => {
                   >
                     <Link
                       href={item.href || '#'}
-                      className="block text-[32px] text-[#111110] py-4 border-b border-slate-50 last:border-0 font-normal leading-tight tracking-[-0.02em]"
-                      style={{ fontFamily: "'DM Serif Display', serif" }}
+                      className="block text-[32px] text-[#111110] py-4 border-b border-slate-50 last:border-0 font-medium leading-tight tracking-[-0.03em] font-sans"
                       onClick={() => setMobileOpen(false)}
                     >
                       {item.label}
@@ -441,8 +440,8 @@ const Navbar = () => {
                   </motion.div>
                 ))}
               </div>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
