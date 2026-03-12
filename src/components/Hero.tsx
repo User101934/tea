@@ -9,7 +9,7 @@ const GRAIN = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http:
 
 const Hero = () => {
   return (
-    <section className="relative pt-40 pb-20 bg-white overflow-hidden">
+    <section className="relative pt-24 pb-16 md:pt-40 md:pb-20 bg-white overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6">
 
         {/* Headline + CTAs — Precise Original Style */}
@@ -17,7 +17,7 @@ const Hero = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[clamp(48px,8vw,100px)] leading-[1.0] tracking-[-0.04em] font-normal text-black mb-10"
+            className="text-[clamp(40px,8vw,100px)] leading-[1.0] tracking-[-0.04em] font-medium text-black mb-8 md:mb-10"
             style={{ fontFamily: "'DM Serif Display', serif" }}
           >
             AI-powered Learning <br className="hidden md:block" />
@@ -28,7 +28,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[19px] md:text-[21px] text-[#424242] max-w-[580px] mx-auto mb-14 leading-[1.5] font-sans"
+            className="text-[19px] md:text-[21px] text-[#424242] max-w-[580px] mx-auto mb-8 md:mb-14 leading-[1.5] font-sans"
           >
             TeachGrid is where powerful AI meets practical education solutions — so you can
             teach and learn smarter.
@@ -38,17 +38,17 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-row items-center justify-center gap-12"
+            className="flex flex-row items-center justify-center gap-6 md:gap-12"
           >
             <Link
               href="/demo"
-              className="bg-[#111110] text-white px-10 py-4.5 rounded-full text-[17px] font-medium hover:bg-black/90 transition-all active:scale-[0.98] font-sans"
+              className="bg-[#111110] text-white px-8 md:px-10 py-3.5 md:py-4.5 rounded-full text-[16px] md:text-[17px] font-medium hover:bg-black/90 transition-all active:scale-[0.98] font-sans"
             >
               Request a demo
             </Link>
             <Link
               href="/platform/features"
-              className="text-[17px] font-normal text-black hover:text-black transition-all underline decoration-[1px] underline-offset-[12px] decoration-[#cccccc] hover:decoration-black font-sans"
+              className="text-[16px] md:text-[17px] font-normal text-black hover:text-black transition-all underline decoration-[1px] underline-offset-[12px] decoration-[#cccccc] hover:decoration-black font-sans"
             >
               Explore Features
             </Link>
@@ -56,10 +56,9 @@ const Hero = () => {
         </div>
 
         {/* ── Cards — exact ratio from reference image ────────────────── */}
-        {/* Proportions: ~62% Left, ~38% Right. Fixed height 580px. */}
+        {/* Proportions: ~62% Left, ~38% Right. Responsive heights. */}
         <div
-          className="flex flex-col md:flex-row gap-4 max-w-[1440px] mx-auto items-stretch"
-          style={{ height: 'auto' }}
+          className="flex flex-col md:flex-row gap-4 max-w-[1440px] mx-auto items-stretch mb-12 md:mb-24"
         >
 
           {/* ── Card 1: Wide primary — matching reference layout ── */}
@@ -67,8 +66,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-white w-full md:flex-none"
-            style={{ height: '580px', flex: '0 0 72%' }}
+            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-white w-full h-[400px] md:h-[580px] md:flex-[0_0_72%]"
           >
             {/* Background Image — Modern Platform Abstract */}
             <img
@@ -88,8 +86,6 @@ const Hero = () => {
               }}
             />
 
-
-
             {/* Bottom-left small label (Requested "Collaborative") */}
             <div className="absolute bottom-8 left-8">
               <div className="bg-white/80 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/20">
@@ -104,8 +100,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-slate-50 w-full md:flex-1"
-            style={{ height: '580px' }}
+            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-slate-50 w-full h-[400px] md:h-[580px] md:flex-1"
           >
             {/* Real photo — Student learning interaction */}
             <img
