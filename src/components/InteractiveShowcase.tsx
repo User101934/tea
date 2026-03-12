@@ -1,140 +1,103 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import React from "react";
+import { motion } from "framer-motion";
 
-const InteractiveShowcase = () => {
+const FounderStory = () => {
     return (
-        <section className="py-32 bg-[#0d1f0e] text-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="flex flex-col lg:flex-row gap-20 items-center">
+        <section className="relative py-32 bg-[#111110] text-white overflow-hidden">
 
-                    {/* Left Content */}
-                    <div className="flex-1">
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="font-serif text-[clamp(40px,5vw,64px)] font-normal tracking-tight mb-8 leading-[1.1]"
-                        >
-                            Built for educators.<br />Loved by developers.
-                        </motion.h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-white/70 text-[17px] leading-relaxed max-w-lg mb-12"
-                        >
-                            TeachGrid’s API-first architecture means you can deeply integrate learning into any product. Use our robust SDKs and webhooks to build custom learning experiences.
-                        </motion.p>
+            {/* Grain texture */}
+            <div
+                className="absolute inset-0 opacity-[0.18] pointer-events-none"
+                style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+                    backgroundSize: "200px 200px",
+                }}
+            />
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="space-y-6"
-                        >
-                            {[
-                                "Comprehensive REST & GraphQL APIs",
-                                "Real-time Event Webhooks",
-                                "SSO & Identity Management (SAML, OAuth2)",
-                                "Custom domain & whitelabeling"
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                    <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </div>
-                                    <span className="text-sm font-medium">{item}</span>
-                                </div>
-                            ))}
-                        </motion.div>
+            {/* Glow lights */}
+            <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-indigo-400/20 blur-[120px] rounded-full" />
+            <div className="absolute bottom-0 -right-40 w-[500px] h-[500px] bg-emerald-400/20 blur-[120px] rounded-full" />
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                            className="mt-12"
-                        >
-                            <Link href="#" className="inline-flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-emerald-400 hover:text-emerald-300 transition-colors group">
-                                Read the Documentation
-                                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                        </motion.div>
-                    </div>
+            <div className="max-w-7xl mx-auto px-6 relative">
 
-                    {/* Right Terminal View */}
+                <div className="grid lg:grid-cols-2 gap-24 items-center">
+
+                    {/* IMAGE */}
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="flex-[1.2] w-full"
+                        className="relative"
                     >
-                        <div className="bg-[#fcfcfa] rounded-2xl overflow-hidden shadow-2xl border border-white/10 text-slate-800">
-                            {/* Window Header */}
-                            <div className="px-4 py-3 border-b border-slate-200 flex items-center gap-2 bg-white">
-                                <div className="flex gap-1.5">
-                                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-                                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-                                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-                                </div>
-                                <div className="flex-1 text-center">
-                                    <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400">docs.teachgrid.ai</span>
-                                </div>
-                            </div>
+                        <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/10">
 
-                            <div className="flex">
-                                {/* Sidebar */}
-                                <div className="hidden sm:block w-48 border-r border-slate-200 p-4 bg-slate-50">
-                                    <ul className="space-y-4">
-                                        <li>
-                                            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Getting Started</span>
-                                            <ul className="mt-2 space-y-2 text-sm text-slate-600 font-medium">
-                                                <li>Authentication</li>
-                                                <li className="text-indigo-600 font-bold bg-indigo-50 px-2 py-1 -mx-2 rounded">API Reference</li>
-                                                <li>Webhooks</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <img
+                                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
+                                alt="Corporate learning session"
+                                className="w-full h-[520px] object-cover"
+                            />
 
-                                {/* Content */}
-                                <div className="flex-1 p-6 md:p-8">
-                                    <h3 className="text-xl font-bold font-serif mb-2 text-slate-900">Create a new course</h3>
-                                    <p className="text-sm text-slate-500 mb-6 font-medium">Generate a fully structured AI course via POST request.</p>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-                                    <div className="bg-[#111110] rounded-xl p-4 overflow-x-auto">
-                                        <pre className="text-sm font-mono leading-relaxed text-slate-300">
-                                            <span className="text-indigo-400">curl</span> -X POST https://api.teachgrid.ai/v1/courses \
-                                            -H <span className="text-emerald-400">"Authorization: Bearer tg_live_****"</span> \
-                                            -H <span className="text-emerald-400">"Content-Type: application/json"</span> \
-                                            -d <span className="text-coral-400">'{'{'}
-                                                "title": "Machine Learning Fundamentals",
-                                                "description": "Introductory course based on provided PDF",
-                                                "source_material": "url_to_pdf",
-                                                "ai_generation": true,
-                                                "module_count": 5
-                                                {'}'}'</span></pre>
-                                    </div>
-
-                                    <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
-                                        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Response</span>
-                                        <span className="text-xs font-bold text-emerald-500 bg-emerald-50 px-2 py-1 rounded">200 OK</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </motion.div>
+
+
+                    {/* CONTENT */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
+
+                        <p className="text-xs uppercase tracking-widest text-emerald-400 mb-4">
+                            Founder’s Vision
+                        </p>
+
+                        <h2 className="font-serif text-[clamp(42px,5vw,64px)] leading-[1.1] mb-8">
+                            Why TeachGrid exists
+                        </h2>
+
+                        <p className="text-white/70 text-[17px] leading-relaxed mb-10">
+                            We created TeachGrid to make learning more accessible, engaging,
+                            and measurable for institutions and organizations. Traditional
+                            learning systems often fail to connect educators, learners, and
+                            outcomes. TeachGrid bridges that gap by providing a platform that
+                            simplifies learning delivery while improving engagement and
+                            visibility.
+                        </p>
+
+                        <blockquote className="font-serif text-2xl leading-relaxed text-white mb-10">
+                            “Our goal with TeachGrid is simple — give educators the tools they
+                            need to deliver meaningful learning experiences at scale while
+                            keeping learners engaged and motivated.”
+                        </blockquote>
+
+                        {/* Founder */}
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-emerald-500 flex items-center justify-center font-bold">
+                                PR
+                            </div>
+
+                            <div>
+                                <p className="font-semibold text-white">
+                                    Prashanth Radhakrishnan
+                                </p>
+                                <p className="text-sm text-white/50">
+                                    Founder & Managing Director, TeachGrid
+                                </p>
+                            </div>
+                        </div>
+
+                    </motion.div>
+
                 </div>
+
             </div>
         </section>
     );
 };
 
-export default InteractiveShowcase;
+export default FounderStory;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -24,7 +24,7 @@
 }
 
 :root {
-  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --background: #fdfdfd;
   --foreground: #0f172a;
@@ -91,6 +91,15 @@
 
   .btn-ghost {
     @apply px-6 py-2.5 rounded-full text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 transition-all font-medium;
+  }
+
+  /* Hide scrollbar completely but keep scroll functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
   .custom-scrollbar::-webkit-scrollbar {

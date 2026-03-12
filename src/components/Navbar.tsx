@@ -6,95 +6,62 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-/* ── Dropdown content definitions ── */
+/* ─────────────────────────────────────────
+   DATA
+───────────────────────────────────────── */
 const platformMenu = {
   cards: [
     {
-      label: 'TEACHGRID CAMPUS',
-      title: 'Campus',
-      desc: 'The comprehensive AI infrastructure designed for universities and large-scale higher education.',
+      title: 'TeachGrid Campus',
+      desc: 'Comprehensive AI infrastructure for universities and large-scale higher education.',
       dot: '#6366f1',
       gradient: 'linear-gradient(135deg, #1e1b4b 0%, #4338ca 50%, #7c3aed 100%)',
+      href: '/platform/campus',
     },
     {
-      label: 'TEACHGRID SPARK',
-      title: 'Spark',
-      desc: 'A nimble, high-performance platform for training institutes, bootcamps, and agile learning teams.',
+      title: 'TeachGrid Spark',
+      desc: 'A nimble, high-performance platform for training institutes, bootcamps, and agile teams.',
       dot: '#a855f7',
       gradient: 'linear-gradient(135deg, #2e1065 0%, #7e22ce 50%, #c026d3 100%)',
-    },
-    {
-      label: 'LUMI AI ✦',
-      title: 'Lumi AI',
-      desc: 'Enterprise-grade AI agents for automated grading, 24/7 student support, and intelligent content creation.',
-      dot: '#f97316',
-      gradient: 'linear-gradient(135deg, #431407 0%, #c2410c 50%, #f97316 100%)',
+      href: '/platform/spark',
     },
   ],
-  middle: {
-    heading: 'LEARNING & DELIVERY',
-    links: [
-      'Smart Learning Management',
-      'Cohort Management',
-      'Live Sessions',
-      'Calendar',
-      'Whiteboard AI ✦',
-      'Virtual Labs',
-      'Microlearning Studio',
-      'Community',
-      'Mobile-Friendly Experience',
-    ],
-    heading2: 'EXPERIENCE PORTALS',
-    links2: [
-      'LXP (Learner Portal)',
-      'MXP (Mentor Portal)',
-      'Learner Feedback Submission',
-      'Personalized Dashboard',
-    ],
-  },
-  right: {
-    heading: 'ASSESSMENT',
-    links: [
-      'Quizzes & Assignments',
-      'Live Proctoring',
-      'Grading',
-      'Polls & Surveys',
-      'Certificates & Certificate Designer',
-      'Attendance',
-    ],
-    heading2: 'INTELLIGENCE',
-    links2: ['AI Features & AI Agents ✦', 'Intelligent Analytics'],
-    heading3: 'ENGAGEMENT',
-    links3: ['Leaderboard & Badges'],
-    heading4: 'ADMINISTRATION',
-    links4: ['Billing Desk', 'Integrations', 'Admin Controls', 'System Settings'],
-  },
-  footer: ['CUSTOMIZATION →', 'PRICING →'],
+  portals: [
+    { label: 'LXP', abbr: 'LX', desc: 'Learner Experience Portal', href: '/platform/features/lxp-learner-portal', color: '#6366f1' },
+    { label: 'MXP', abbr: 'MX', desc: 'Mentor Experience Portal',  href: '/platform/features/mxp-mentor-portal',  color: '#a855f7' },
+    { label: 'CRM', abbr: 'CR', desc: 'Customer Relationship Management', href: '/platform/features/crm-portal', color: '#10b981' },
+  ],
+  footer: [
+    { label: 'Customize →', href: '#' },
+    { label: 'Features →',   href: '/platform/features' },
+  ],
 };
 
 const solutionsMenu = {
-  left: {
+  col1: {
     heading: 'TEACHGRID FOR',
-    links: ['Organizations', 'Colleges & Universities', 'Institutes & Academies'],
+    links: ['Organizations', 'Schools, Colleges & Universities', 'Institutes & Academies'],
     heading2: 'EXTENDED SOLUTIONS',
     links2: ['Instructional Design', 'AI for Education', 'White-labelled Solution', 'API Solution'],
-    heading3: 'INDUSTRY',
-    links3: ['Software', 'Finance', 'Healthcare', 'Education', 'Consulting', 'Tech / IT Services', 'Manufacturing'],
+  },
+  col2: {
+    heading: 'INDUSTRY',
+    links: ['Software', 'Finance', 'Healthcare', 'Education', 'Consulting', 'Tech / IT Services', 'Manufacturing'],
   },
   card: {
     title: 'TeachGrid Enterprise →',
     desc: 'Your all-in-one AI-powered learning infrastructure — built for scale.',
     gradient: 'linear-gradient(135deg, #0a0a14 0%, #1e1040 40%, #c2410c 130%)',
   },
-  footer: ['SECURITY →', 'PRIVATE DEPLOYMENTS →'],
+  footer: ['Security →', 'Private Deployments →'],
 };
 
 const resourcesMenu = {
-  left: {
+  col1: {
     heading: 'SUPPORT & CONTENT',
     links: ['Documentation', 'Help Center', 'Community & Q/A', 'Blog & Insights', 'Release Notes'],
   },
-  middle: {
+  col2: {
     heading: 'CUSTOMER FEEDBACK',
     links: ['Submit Feedback', 'Feature Requests', 'Product Suggestions'],
   },
@@ -106,368 +73,401 @@ const resourcesMenu = {
 };
 
 const companyMenu = {
-  heading: 'COMPANY',
-  links: ['About Us', 'Case Studies', 'Customer Reviews', 'Security', 'Legal', 'Customers', 'Testimonials', 'Careers', 'Contact', 'Comparison'],
+  col1: {
+    heading: 'COMPANY',
+    links: ['About Us', 'Case Studies', 'Customer Reviews', 'Security', 'Legal'],
+  },
+  col2: {
+    heading: 'CONNECT',
+    links: ['Customers', 'Testimonials', 'Careers', 'Contact', 'Comparison'],
+  },
+  card: {
+    title: 'Join our mission →',
+    desc: 'We are looking for passionate individuals to help reshape the future of education.',
+    gradient: 'linear-gradient(135deg, #4c1d95 0%, #5b21b6 40%, #7c3aed 100%)',
+  },
 };
 
-/* ── Reusable dropdown link ── */
-const DropLink = ({ children }: { children: React.ReactNode }) => (
-  <Link href="#" className="block text-[15.5px] text-[#1a1a1a] hover:text-[#5b47e0] transition-colors duration-100 py-[5px] leading-snug font-normal">
-    {children}
-  </Link>
-);
+/* ─────────────────────────────────────────
+   SHARED COMPONENTS
+───────────────────────────────────────── */
 
-const DropHeading = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-[10.5px] font-bold tracking-[0.14em] uppercase text-[#9ca3af] mb-3 mt-7 first:mt-0">
+/* Tiny uppercase section label — matches Cohere style */
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mb-5">
     {children}
   </p>
 );
 
-/* ── Gradient image card used in dropdowns — Cohere style ── */
-const DropImageCard = ({
-  gradient,
-  title,
-  desc,
-  className = '',
-}: {
-  gradient: string;
-  title: string;
-  desc: string;
-  className?: string;
-}) => (
+/* Large nav link inside dropdown — Cohere uses ~17-18px, clean, serif-feel */
+const DropNavItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <Link
-    href="#"
+    href={href}
+    className="block text-[17px] text-[#1a1a1a] hover:text-[#5b47e0] transition-colors duration-100 leading-none py-[11px]"
+  >
+    {children}
+  </Link>
+);
+
+/* Gradient image card */
+const GradientCard = ({
+  gradient, title, desc, href = '#', className = '',
+}: { gradient: string; title: string; desc: string; href?: string; className?: string }) => (
+  <Link
+    href={href}
     className={cn(
-      'relative overflow-hidden rounded-xl flex flex-col justify-end p-5 group cursor-pointer',
+      'relative overflow-hidden rounded-2xl flex flex-col justify-end p-6 group cursor-pointer',
       className
     )}
     style={{ background: gradient }}
   >
-    {/* Grain texture */}
     <div
       className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none"
       style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
         backgroundSize: '160px 160px',
       }}
     />
-    {/* Bottom gradient overlay for text legibility */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent pointer-events-none" />
     <div className="relative z-10">
-      <p className="text-white font-semibold text-[16px] leading-snug mb-1.5 group-hover:underline underline-offset-2">
-        {title}
-      </p>
-      <p className="text-white/65 text-[13px] leading-snug">{desc}</p>
+      <p className="text-white font-semibold text-[15px] leading-snug mb-1.5 group-hover:underline underline-offset-2">{title}</p>
+      <p className="text-white/60 text-[13px] leading-relaxed">{desc}</p>
     </div>
   </Link>
 );
 
-/* ── Main Navbar ── */
+/* Grain texture for platform thumbnails */
+const Grain = () => (
+  <div
+    className="absolute inset-0 opacity-[0.18] mix-blend-overlay pointer-events-none"
+    style={{
+      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+      backgroundSize: '120px 120px',
+    }}
+  />
+);
+
+/* Footer link row inside dropdown */
+const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <Link
+    href={href}
+    className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#9ca3af] hover:text-[#111110] transition-colors"
+  >
+    {children}
+  </Link>
+);
+
+/* ─────────────────────────────────────────
+   NAVBAR
+───────────────────────────────────────── */
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isScrolled, setIsScrolled]       = useState(false);
+  const [mobileOpen, setMobileOpen]       = useState(false);
+  const [activeMenu, setActiveMenu]       = useState<string | null>(null);
+  const closeTimer                        = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const openDropdown = (label: string) => {
+  const open = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setActiveDropdown(label);
+    setActiveMenu(label);
   };
 
-  const closeDropdown = () => {
-    closeTimer.current = setTimeout(() => setActiveDropdown(null), 120);
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(() => setActiveMenu(null), 140);
   };
 
   const navItems = [
-    { label: 'Platform', hasDropdown: true },
-    { label: 'Solutions', hasDropdown: true },
-    { label: 'Pricing', hasDropdown: false },
-    { label: 'Resources', hasDropdown: true },
-    { label: 'Company', hasDropdown: true },
+    { label: 'Products',  hasDropdown: true  },
+    { label: 'Solutions', hasDropdown: true  },
+    { label: 'Resources', hasDropdown: true  },
+    { label: 'Company',   hasDropdown: true  },
+    { label: 'Pricing',   hasDropdown: false, href: '/pricing' },
   ];
+
+  /* Dropdown animation — matches Cohere: pure translateY + opacity, no scale */
+  const dropVariants: any = {
+    hidden:  { opacity: 0, y: 10, x: "-50%" },
+    visible: { opacity: 1, y: 0,  x: "-50%", transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] } },
+    exit:    { opacity: 0, y: 10, x: "-50%", transition: { duration: 0.13, ease: 'easeIn' } },
+  };
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      {/* Main Navigation */}
-      <nav
-        className={cn(
-          'bg-white transition-all duration-300',
-          isScrolled ? 'shadow-[0_1px_0_0_rgba(0,0,0,0.06)]' : ''
-        )}
-      >
-        <div className="max-w-7xl mx-auto px-8 flex items-center justify-between h-[68px]">
 
-          {/* Logo — unchanged */}
+      {/* ── Top bar ── */}
+      <nav className={cn(
+        'bg-white transition-shadow duration-300',
+        isScrolled ? 'shadow-[0_1px_0_0_rgba(0,0,0,0.08)]' : 'border-b border-[#ececea]'
+      )}>
+        <div className="max-w-full mx-auto px-12 flex items-center justify-between h-[68px] relative">
+
+          {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
-            <img src="/logo.png" alt="Teachgrid Logo" className="h-9 w-auto" />
+            <img src="/logo.png" alt="TeachGrid" className="h-[44px] w-auto" />
           </Link>
 
-          {/* Nav Links */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => item.hasDropdown && openDropdown(item.label)}
-                onMouseLeave={closeDropdown}
-              >
+          {/* ── Nav links — Cohere style: just text, underline on active ── */}
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center">
+            {navItems.map((item) => {
+              const isActive = activeMenu === item.label || (item.label === 'Products' && activeMenu === 'Platform');
+
+              const trigger = (
                 <button
                   className={cn(
-                    'relative flex items-center px-4 py-2 text-[15px] font-normal transition-colors duration-150',
-                    activeDropdown === item.label
-                      ? 'text-[#111110]'
-                      : 'text-[#374151] hover:text-[#111110]'
+                    'relative px-5 py-2 text-[15px] transition-colors duration-150 select-none',
+                    isActive ? 'text-[#111110]' : 'text-[#4b5563] hover:text-[#111110]'
                   )}
                 >
                   {item.label}
-                  {/* Cohere active underline */}
-                  {item.hasDropdown && activeDropdown === item.label && (
-                    <span className="absolute bottom-0 left-4 right-4 h-[1.5px] bg-[#111110] rounded-full" />
+                  {/* Cohere-style underline on active */}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-5 right-5 h-[1.5px] bg-[#111110] rounded-full" />
                   )}
                 </button>
+              );
 
-                {/* ── Dropdown Panels ── */}
-                <AnimatePresence>
-                  {item.hasDropdown && activeDropdown === item.label && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 6 }}
-                      transition={{ duration: 0.13, ease: 'easeOut' }}
-                      onMouseEnter={() => openDropdown(item.label)}
-                      onMouseLeave={closeDropdown}
-                      className="absolute top-full mt-2 bg-white rounded-2xl overflow-y-auto overflow-x-hidden custom-scrollbar"
-                      style={{
-                        left: item.label === 'Platform' ? '-100px' : '50%',
-                        transform: item.label === 'Platform' ? 'none' : 'translateX(-50%)',
-                        minWidth:
-                          item.label === 'Platform' ? 860
-                            : item.label === 'Solutions' ? 700
-                              : item.label === 'Resources' ? 680
-                                : 300,
-                        maxHeight: 'calc(100vh - 90px)',
-                        boxShadow:
-                          '0 0 0 1px rgba(0,0,0,0.06), 0 8px 32px -4px rgba(0,0,0,0.12), 0 24px 64px -12px rgba(0,0,0,0.10)',
-                      }}
-                    >
-
-                      {/* ── PLATFORM MEGA MENU ── */}
-                      {item.label === 'Platform' && (
-                        <div>
-                          {/* Header row with "Platform →" label */}
-                          <div className="px-5 pt-5 pb-0 flex items-center gap-2 mb-4">
-                            <span className="text-[16px] font-medium text-[#111110]">Platform</span>
-                            <span className="text-[#9ca3af] text-[16px]">→</span>
-                          </div>
-
-                          {/* Three gradient image cards */}
-                          <div className="px-5 grid grid-cols-3 gap-3">
-                            {platformMenu.cards.map((card) => (
-                              <Link href="#" key={card.label} className="group block">
-                                {/* Gradient image thumbnail */}
-                                <div
-                                  className="h-[110px] w-full rounded-xl relative overflow-hidden mb-2.5"
-                                  style={{ background: card.gradient }}
-                                >
-                                  <div
-                                    className="absolute inset-0 opacity-[0.2] mix-blend-overlay"
-                                    style={{
-                                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-                                      backgroundSize: '120px 120px',
-                                    }}
-                                  />
-                                </div>
-                                {/* Category label */}
-                                <p className="text-[9.5px] font-bold tracking-[0.15em] uppercase text-[#9ca3af] mb-1">{card.label}</p>
-                                {/* Dot + product name */}
-                                <div className="flex items-center gap-1.5 mb-1">
-                                  <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: card.dot }} />
-                                  <span className="text-[14.5px] font-medium text-[#111110] group-hover:text-[#5b47e0] transition-colors">{card.title}</span>
-                                </div>
-                                {/* Description */}
-                                <p className="text-[12px] text-[#6b7280] leading-snug">{card.desc}</p>
-                              </Link>
-                            ))}
-                          </div>
-
-                          {/* Divider */}
-                          <div className="mx-5 my-5 h-px bg-[#ebebea]" />
-
-                          {/* Two text columns */}
-                          <div className="grid grid-cols-2 gap-0 px-5 pb-5">
-                            <div className="pr-6 border-r border-[#ebebea]">
-                              <DropHeading>{platformMenu.middle.heading}</DropHeading>
-                              {platformMenu.middle.links.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                              <DropHeading>{platformMenu.middle.heading2}</DropHeading>
-                              {platformMenu.middle.links2.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                            </div>
-                            <div className="pl-6">
-                              <DropHeading>{platformMenu.right.heading}</DropHeading>
-                              {platformMenu.right.links.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                              <DropHeading>{platformMenu.right.heading2}</DropHeading>
-                              {platformMenu.right.links2.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                              <DropHeading>{platformMenu.right.heading3}</DropHeading>
-                              {platformMenu.right.links3.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                              <DropHeading>{platformMenu.right.heading4}</DropHeading>
-                              {platformMenu.right.links4.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                            </div>
-                          </div>
-
-                          {/* Footer quick-links */}
-                          <div className="border-t border-[#ebebea] px-5 py-3 flex items-center justify-end gap-8">
-                            {platformMenu.footer.map((f) => (
-                              <Link key={f} href="#" className="text-[10.5px] font-bold tracking-[0.12em] uppercase text-[#6b7280] hover:text-[#111110] transition-colors">
-                                {f}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* ── SOLUTIONS ── */}
-                      {item.label === 'Solutions' && (
-                        <div>
-                          <div className="grid grid-cols-[1fr_240px] gap-0 p-5">
-                            {/* Left text links */}
-                            <div className="pr-5 border-r border-[#ebebea]">
-                              <DropHeading>{solutionsMenu.left.heading}</DropHeading>
-                              {solutionsMenu.left.links.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                              <DropHeading>{solutionsMenu.left.heading2}</DropHeading>
-                              {solutionsMenu.left.links2.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                              <DropHeading>{solutionsMenu.left.heading3}</DropHeading>
-                              {solutionsMenu.left.links3.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                            </div>
-                            {/* Right: gradient image card */}
-                            <div className="pl-5">
-                              <DropImageCard
-                                gradient={solutionsMenu.card.gradient}
-                                title={solutionsMenu.card.title}
-                                desc={solutionsMenu.card.desc}
-                                className="w-full h-full min-h-[180px]"
-                              />
-                            </div>
-                          </div>
-                          {/* Footer */}
-                          <div className="border-t border-[#ebebea] px-5 py-3 flex items-center justify-end gap-8">
-                            {solutionsMenu.footer.map((f) => (
-                              <Link key={f} href="#" className="text-[10.5px] font-bold tracking-[0.12em] uppercase text-[#6b7280] hover:text-[#111110] transition-colors">
-                                {f}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* ── RESOURCES ── */}
-                      {item.label === 'Resources' && (
-                        <div className="grid grid-cols-[1fr_1fr_230px] gap-0 p-5">
-                          <div className="pr-5 border-r border-[#ebebea]">
-                            <DropHeading>{resourcesMenu.left.heading}</DropHeading>
-                            {resourcesMenu.left.links.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                          </div>
-                          <div className="px-5 border-r border-[#ebebea]">
-                            <DropHeading>{resourcesMenu.middle.heading}</DropHeading>
-                            {resourcesMenu.middle.links.map((l) => <DropLink key={l}>{l}</DropLink>)}
-                          </div>
-                          <div className="pl-5">
-                            <DropImageCard
-                              gradient={resourcesMenu.card.gradient}
-                              title={resourcesMenu.card.title}
-                              desc={resourcesMenu.card.desc}
-                              className="w-full h-full min-h-[160px]"
-                            />
-                          </div>
-                        </div>
-                      )}
-
-                      {/* ── COMPANY ── simple list, no image (matches video) */}
-                      {item.label === 'Company' && (
-                        <div className="p-5">
-                          <DropHeading>{companyMenu.heading}</DropHeading>
-                          <div className="grid grid-cols-2 gap-x-10">
-                            <div>{companyMenu.links.slice(0, 5).map((l) => <DropLink key={l}>{l}</DropLink>)}</div>
-                            <div>{companyMenu.links.slice(5).map((l) => <DropLink key={l}>{l}</DropLink>)}</div>
-                          </div>
-                        </div>
-                      )}
-
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
+              return (
+                <div
+                  key={item.label}
+                  className=""
+                  onMouseEnter={() => {
+                    if (item.hasDropdown) {
+                      open(item.label === 'Products' ? 'Platform' : item.label);
+                    }
+                  }}
+                  onMouseLeave={scheduleClose}
+                >
+                  {item.hasDropdown
+                    ? trigger
+                    : <Link href={item.href || '#'}>{trigger}</Link>
+                  }
+                </div>
+              );
+            })}
           </div>
 
-          {/* CTA Buttons */}
+          {/* ── Dropdown panel — Robust Centered Logic ── */}
+          <div className="absolute top-full left-1/2 -translate-x-1/2 w-full max-w-7xl px-10 pointer-events-none">
+            <div className="relative w-full h-0">
+               <AnimatePresence>
+                {activeMenu && navItems.find(i => (i.label === activeMenu || (i.label === 'Products' && activeMenu === 'Platform')))?.hasDropdown && (
+                  <motion.div
+                    variants={dropVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    onMouseEnter={() => open(activeMenu)}
+                    onMouseLeave={scheduleClose}
+                    className="absolute top-2 left-1/2 bg-white rounded-2xl overflow-hidden pointer-events-auto"
+                    style={{
+                      /* Widths — large, Cohere-level spacious */
+                      width:
+                        activeMenu === 'Platform' ? 820
+                        : activeMenu === 'Solutions' ? 880
+                        : activeMenu === 'Resources' ? 840
+                        : 820,
+                      boxShadow:
+                        '0 0 0 1px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.04), 0 20px 60px -8px rgba(0,0,0,0.14)',
+                    }}
+                  >
+                    {/* ════════════════ PRODUCTS (PLATFORM) ════════════════ */}
+                    {activeMenu === 'Platform' && (
+                      <div>
+                        <div className="px-8 pt-7 pb-0 flex items-center gap-2">
+                          <span className="text-[14px] font-semibold text-[#111110]">Products</span>
+                          <span className="text-[#c4c4c0] text-[14px]">→</span>
+                        </div>
+                        <div className="grid grid-cols-2 divide-x divide-[#f0f0ee] mt-5">
+                          <div className="px-8 pb-8 flex flex-col gap-7">
+                            {platformMenu.cards.map((card) => (
+                              <Link key={card.title} href={card.href} className="group flex flex-col gap-3">
+                                <div className="w-full h-[112px] rounded-xl relative overflow-hidden" style={{ background: card.gradient }}>
+                                  <Grain />
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="w-[7px] h-[7px] rounded-full flex-shrink-0" style={{ background: card.dot }} />
+                                  <span className="text-[15px] font-medium text-[#111110] group-hover:text-[#5b47e0] transition-colors">{card.title}</span>
+                                </div>
+                                <p className="text-[13px] text-[#6b7280] leading-relaxed -mt-1">{card.desc}</p>
+                              </Link>
+                            ))}
+                          </div>
+                          <div className="px-8 pb-8 flex flex-col">
+                            <SectionLabel>Portals</SectionLabel>
+                            <div className="flex flex-col gap-2">
+                              {platformMenu.portals.map((portal) => (
+                                <Link key={portal.label} href={portal.href} className="group flex items-center gap-3 px-4 py-4 rounded-xl hover:bg-[#f7f7f5] transition-colors">
+                                  <span className="flex-shrink-0 w-2 h-2 rounded-full mt-0.5" style={{ background: portal.color }} />
+                                  <div className="flex flex-col gap-0.5">
+                                    <span className="text-[15px] font-medium text-[#111110] group-hover:text-[#5b47e0] transition-colors leading-tight">{portal.label}</span>
+                                    <span className="text-[12.5px] text-[#9ca3af] leading-snug">{portal.desc}</span>
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="px-8 py-5 border-t border-[#f0f0ee] flex items-center justify-end gap-8">
+                          {platformMenu.footer.map((f) => <FooterLink key={f.label} href={f.href}>{f.label}</FooterLink>)}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* ════════════════ SOLUTIONS ════════════════ */}
+                    {activeMenu === 'Solutions' && (
+                      <div>
+                        <div className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
+                          <div className="px-8 py-8">
+                            <SectionLabel>{solutionsMenu.col1.heading}</SectionLabel>
+                            {solutionsMenu.col1.links.map((l) => <DropNavItem key={l} href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                            <div className="mt-7"><SectionLabel>{solutionsMenu.col1.heading2}</SectionLabel>{solutionsMenu.col1.links2.map((l) => <DropNavItem key={l} href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}</div>
+                          </div>
+                          <div className="px-8 py-8">
+                            <SectionLabel>{solutionsMenu.col2.heading}</SectionLabel>
+                            {solutionsMenu.col2.links.map((l) => <DropNavItem key={l} href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                          </div>
+                          <div className="px-8 py-8">
+                            <GradientCard gradient={solutionsMenu.card.gradient} title={solutionsMenu.card.title} desc={solutionsMenu.card.desc} className="w-full h-full min-h-[200px]" />
+                          </div>
+                        </div>
+                        <div className="px-8 py-5 border-t border-[#f0f0ee] flex items-center justify-end gap-8">
+                          {solutionsMenu.footer.map((f) => <FooterLink key={f} href="#">{f}</FooterLink>)}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* ════════════════ RESOURCES ════════════════ */}
+                    {activeMenu === 'Resources' && (
+                      <div className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
+                        <div className="px-8 py-8">
+                          <SectionLabel>{resourcesMenu.col1.heading}</SectionLabel>
+                          {resourcesMenu.col1.links.map((l) => <DropNavItem key={l} href={`/resources/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                        </div>
+                        <div className="px-8 py-8">
+                          <SectionLabel>{resourcesMenu.col2.heading}</SectionLabel>
+                          {resourcesMenu.col2.links.map((l) => <DropNavItem key={l} href={`/resources/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                        </div>
+                        <div className="px-8 py-8">
+                          <GradientCard gradient={resourcesMenu.card.gradient} title={resourcesMenu.card.title} desc={resourcesMenu.card.desc} className="w-full h-full min-h-[190px]" />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* ════════════════ COMPANY ════════════════ */}
+                    {activeMenu === 'Company' && (
+                      <div className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
+                        <div className="px-8 py-8">
+                          <SectionLabel>{companyMenu.col1.heading}</SectionLabel>
+                          {companyMenu.col1.links.map((l) => <DropNavItem key={l} href={`/company/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                        </div>
+                        <div className="px-8 py-8">
+                          <SectionLabel>{companyMenu.col2.heading}</SectionLabel>
+                          {companyMenu.col2.links.map((l) => <DropNavItem key={l} href={`/company/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                        </div>
+                        <div className="px-8 py-8">
+                          <GradientCard gradient={companyMenu.card.gradient} title={companyMenu.card.title} desc={companyMenu.card.desc} className="w-full h-full min-h-[190px]" />
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* ── CTA buttons ── */}
           <div className="flex items-center gap-3">
             <Link
               href="/login"
-              className="hidden sm:block text-[15px] font-normal text-[#374151] hover:text-[#111110] transition-colors px-3 py-2"
+              className="hidden sm:block text-[15px] text-[#4b5563] hover:text-[#111110] transition-colors px-3 py-2"
             >
               Sign in
             </Link>
             <Link
               href="/get-started"
-              className="bg-[#111110] hover:bg-[#2d2d2b] text-white px-5 py-2.5 rounded-full text-[15px] font-medium transition-all duration-150 active:scale-[0.98]"
+              className="bg-[#111110] hover:bg-[#2d2d2b] text-white px-6 py-[10px] rounded-full text-[14.5px] font-medium transition-all duration-150 active:scale-[0.97]"
             >
               Get Started
             </Link>
-
-            {/* Mobile Toggle */}
             <button
               className="md:hidden p-2 text-[#374151] hover:text-black"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => setMobileOpen(!mobileOpen)}
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* ── Mobile menu ── */}
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-200 p-6 flex flex-col gap-4 shadow-xl"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href="#"
-                className="text-lg font-normal text-[#111110] py-2 border-b border-slate-50"
-                onClick={() => setMobileMenuOpen(false)}
+        {mobileOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-[-1]"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 flex flex-col shadow-2xl z-50 px-8 py-10"
+            >
+              <div className="flex flex-col gap-1">
+                {navItems.map((item, idx) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                  >
+                    <Link
+                      href={item.href || '#'}
+                      className="block text-[32px] text-[#111110] py-4 border-b border-slate-50 last:border-0 font-normal leading-tight tracking-[-0.02em]"
+                      style={{ fontFamily: "'DM Serif Display', serif" }}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col gap-4 pt-12"
               >
-                {item.label}
-              </Link>
-            ))}
-            <div className="flex flex-col gap-3 pt-4">
-              <Link
-                href="/login"
-                className="text-center py-3 rounded-xl border border-slate-200 font-medium text-[#374151]"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Sign in
-              </Link>
-              <Link
-                href="/get-started"
-                className="text-center py-3 rounded-full bg-[#111110] text-white font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Get Started
-              </Link>
-            </div>
-          </motion.div>
+                <Link
+                  href="/login"
+                  className="text-center py-4 rounded-xl border border-slate-200 font-medium text-[#111110] text-[16px] hover:bg-slate-50 transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/get-started"
+                  className="text-center py-4.5 rounded-full bg-[#111110] text-white font-medium text-[16px] shadow-lg shadow-black/10 active:scale-[0.98] transition-all"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Get Started
+                </Link>
+              </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
+
     </div>
   );
 };

@@ -5,110 +5,144 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
+const GRAIN = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`;
+
 const Hero = () => {
   return (
     <section className="relative pt-40 pb-20 bg-white overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6">
-        {/* Content */}
-        <div className="max-w-4xl mx-auto text-center mb-20">
+
+        {/* Headline + CTAs — Precise Original Style */}
+        <div className="max-w-4xl mx-auto text-center mb-24 flex flex-col items-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-[clamp(48px,8vw,100px)] leading-[0.95] tracking-[-0.03em] text-[#111110] mb-10"
+            className="text-[clamp(48px,8vw,100px)] leading-[1.0] tracking-[-0.04em] font-normal text-black mb-10"
+            style={{ fontFamily: "'DM Serif Display', serif" }}
           >
-            AI-powered <br />
-            Learning for <br />
-            Smarter Education.
+            AI-powered Learning <br className="hidden md:block" />
+            for Smarter Education.
           </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-[19px] md:text-[21px] text-[#424242] max-w-[580px] mx-auto mb-14 leading-[1.5] font-sans"
+          >
+            TeachGrid is where powerful AI meets practical education solutions — so you can
+            teach and learn smarter.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            transition={{ delay: 0.2 }}
+            className="flex flex-row items-center justify-center gap-12"
           >
             <Link
-              href="/get-started"
-              className="bg-[#111110] text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-black/90 transition-all active:scale-[0.98]"
-            >
-              Start Learning
-            </Link>
-            <Link
               href="/demo"
-              className="group flex items-center gap-2 text-lg font-medium text-slate-900 border-b border-transparent hover:border-black transition-all"
+              className="bg-[#111110] text-white px-10 py-4.5 rounded-full text-[17px] font-medium hover:bg-black/90 transition-all active:scale-[0.98] font-sans"
             >
               Request a demo
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/platform/features"
+              className="text-[17px] font-normal text-black hover:text-black transition-all underline decoration-[1px] underline-offset-[12px] decoration-[#cccccc] hover:decoration-black font-sans"
+            >
+              Explore Features
             </Link>
           </motion.div>
         </div>
 
-        {/* Visuals - Side by Side Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {/* Card 1: Collaborative Learning */}
+        {/* ── Cards — exact ratio from reference image ────────────────── */}
+        {/* Proportions: ~62% Left, ~38% Right. Fixed height 580px. */}
+        <div
+          className="flex flex-col md:flex-row gap-4 max-w-[1440px] mx-auto items-stretch"
+          style={{ height: 'auto' }}
+        >
+
+          {/* ── Card 1: Wide primary — matching reference layout ── */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden group border border-slate-100 shadow-2xl"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-white w-full md:flex-none"
+            style={{ height: '580px', flex: '0 0 72%' }}
           >
+            {/* Background Image — Modern Platform Abstract */}
             <img
-              src="/images/grid-abstract.png"
-              alt="Collaborative AI Learning"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              src="/hero_2.jpeg"
+              alt="Intelligent LMS Platform"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
             />
-            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
 
-            {/* Floating Tags */}
-            <div className="absolute top-8 left-8 flex flex-col gap-3">
-              <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-white/20 flex items-center gap-2">
-                <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                <span className="text-sm font-semibold tracking-tight">Live Cohorts</span>
-              </div>
-              <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-white/20">
-                <span className="text-sm font-bold">97.4% Completion Rate</span>
-              </div>
-            </div>
+            {/* Grain overlay for depth */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: GRAIN,
+                backgroundSize: '150px 150px',
+                opacity: 0.15,
+                mixBlendMode: 'overlay',
+              }}
+            />
 
-            <div className="absolute bottom-10 left-10 right-10">
-              <div className="bg-[#111110]/80 backdrop-blur-xl p-6 rounded-2xl border border-white/10 text-white">
-                <p className="text-sm font-medium opacity-60 mb-2 uppercase tracking-widest text-emerald-400">Collaborative</p>
-                <h3 className="text-2xl font-serif">Create and deliver learning content at scale.</h3>
+
+
+            {/* Bottom-left small label (Requested "Collaborative") */}
+            <div className="absolute bottom-8 left-8">
+              <div className="bg-white/80 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/20">
+                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-indigo-600 mb-1">Collaborative</p>
+                <h3 className="text-base font-serif text-[#111110]">Deliver learning content at scale.</h3>
               </div>
             </div>
           </motion.div>
 
-          {/* Card 2: Strategic Insights */}
+          {/* ── Card 2: Narrow portrait — matching reference layout ── */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden group border border-slate-100 shadow-2xl"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-2xl bg-slate-50 w-full md:flex-1"
+            style={{ height: '580px' }}
           >
+            {/* Real photo — Student learning interaction */}
             <img
-              src="/images/professional-lifestyle.png"
-              alt="Strategic Insights"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              src="/hero_1.jpeg"
+              alt="Digital Education"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
             />
-            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
 
-            {/* Floating Tags */}
-            <div className="absolute top-8 right-8 flex flex-col items-end gap-3">
-              <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-white/20">
-                <span className="text-sm font-bold">100+ Happy Clients ⭐</span>
-              </div>
-              <div className="bg-indigo-600 px-4 py-2 rounded-full shadow-lg text-white">
-                <span className="text-sm font-semibold">AI-Powered ✨</span>
+            {/* Grain overlay */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: GRAIN,
+                backgroundSize: '150px 150px',
+                opacity: 0.1,
+                mixBlendMode: 'multiply',
+              }}
+            />
+
+            {/* Top-right floating tag */}
+            <div className="absolute top-8 right-8">
+              <div className="bg-white/95 backdrop-blur-xl px-4 py-2.5 rounded-full shadow-lg border border-slate-100">
+                <span className="text-xs font-bold text-slate-800 tracking-tight">AI-Powered ✦</span>
               </div>
             </div>
 
-            <div className="absolute bottom-10 left-10 right-10">
-              <div className="bg-white/80 backdrop-blur-xl p-6 rounded-2xl border border-slate-200 text-[#111110]">
-                <p className="text-sm font-medium opacity-60 mb-2 uppercase tracking-widest text-indigo-600">Education Ready</p>
-                <h3 className="text-2xl font-serif">Impact-driven learning. Zero friction delivery.</h3>
+            {/* Bottom frosted label (Requested "Education Ready") */}
+            <div className="absolute bottom-8 left-8 right-8">
+              <div className="bg-white/90 backdrop-blur-xl px-5 py-3.5 rounded-2xl border border-slate-200">
+                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-indigo-600 mb-1">Education Ready</p>
+                <h3 className="text-[17px] font-serif leading-tight text-[#111110]">
+                  Impact-driven learning.
+                </h3>
               </div>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

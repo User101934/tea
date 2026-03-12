@@ -32,7 +32,7 @@ const SocialProof = () => {
                     animation-play-state: paused;
                 }
             `}</style>
-
+    
             <div className="marquee-track py-4">
                 {phrases.map((phrase, i) => (
                     <span

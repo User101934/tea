@@ -1,146 +1,260 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+    Plus,
+    Minus,
+    ArrowRight,
+    BarChart3,
+    Video,
+    ShieldCheck,
+    Sparkles,
+} from "lucide-react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+/* ─── Feature data ───────────────────────── */
+const features = [
+    {
+        icon: <BarChart3 size={18} className="text-indigo-500" />,
+        title: "Learner Progress & Analytics",
+        description:
+            "Track completion rates, quiz scores, and learning progress across all courses with powerful analytics.",
+        details: [
+            "Completion Rate Tracking",
+            "Quiz Score Reports",
+            "Department Insights",
+            "Time-on-Course Data",
+        ],
+    },
+    {
+        icon: <Video size={18} className="text-emerald-500" />,
+        title: "Live Instructor Sessions",
+        description:
+            "Host instructor-led classes, schedule cohorts, and interact with learners live.",
+        details: [
+            "Cohort Scheduling",
+            "Live Classrooms",
+            "Attendance Tracking",
+            "Session Recordings",
+        ],
+    },
+    {
+        icon: <ShieldCheck size={18} className="text-amber-500" />,
+        title: "Live Proctoring",
+        description:
+            "AI monitors exams in real time and flags suspicious behaviour automatically.",
+        details: [
+            "AI Monitoring",
+            "Real-time Alerts",
+            "Screen Watch",
+            "Audit Reports",
+        ],
+    },
+    {
+        icon: <Sparkles size={18} className="text-purple-500" />,
+        title: "Lumi AI Assistant",
+        description:
+            "Your AI learning assistant that answers questions, summarises modules and guides learners.",
+        details: [
+            "In-course Q&A",
+            "Smart Recommendations",
+            "Module Summaries",
+            "Progress Nudges",
+        ],
+    },
+];
+
+/* ─── Panels ───────────────────────── */
+const panels = [
+    {
+        badge: "Analytics",
+        badgeStyle: "bg-indigo-50 text-indigo-600",
+        accentStyle: "text-indigo-500",
+        title: "Understand learner progress instantly",
+        body: "Real-time insights into engagement, progress, and performance.",
+        stat: "94% completion this week",
+    },
+    {
+        badge: "Live Classes",
+        badgeStyle: "bg-emerald-50 text-emerald-600",
+        accentStyle: "text-emerald-500",
+        title: "Run interactive live classes",
+        body: "Engage learners through real-time instructor-led sessions.",
+        stat: "3 sessions live right now",
+    },
+    {
+        badge: "Proctoring",
+        badgeStyle: "bg-amber-50 text-amber-600",
+        accentStyle: "text-amber-500",
+        title: "Maintain exam integrity",
+        body: "AI powered monitoring ensures secure and fair assessments.",
+        stat: "0 integrity breaches",
+    },
+    {
+        badge: "Lumi AI",
+        badgeStyle: "bg-purple-50 text-purple-600",
+        accentStyle: "text-purple-500",
+        title: "AI learning companion",
+        body: "Lumi helps learners stay on track with intelligent support.",
+        stat: "Available 24 / 7",
+    },
+];
+
+/* ─── Component ───────────────────────── */
 
 const PlatformShowcase = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-
-    const features = [
-        {
-            title: "AI-Powered Content Creation",
-            description: "Create, deliver, and assess learning content in seconds with TeachGrid's advanced platform. Turn documents into structured courses instantly.",
-            details: ["Doc-to-Course Engine", "Auto Assessment Builder", "Multi-language Support"]
-        },
-        {
-            title: "Collaborative Learning ✨",
-            description: "Collaborate with educators and learners without missing a beat. TeachGrid keeps you in sync and ahead with real-time co-creation tools.",
-            details: ["Real-time Co-authoring", "Shared Workspaces", "Peer Review Tools"]
-        },
-        {
-            title: "Unified Learning Dashboard",
-            description: "TeachGrid brings all your educational tools together. Instantly create, track, and optimize your courses with AI-powered insights right from a single dashboard.",
-            details: ["Course Analytics", "Learner Progress Tracking", "Engagement Heatmaps"]
-        },
-        {
-            title: "Seamless Integrations",
-            description: "Connect TeachGrid to your favorite tools — Linear, Netlify, GitHub, Zoom, Discord, WhatsApp and more. Automate your workflow and focus on delivering impactful education.",
-            details: ["50+ Native Connectors", "Webhook Support", "API-first Architecture"]
-        }
-    ];
+    const panel = panels[activeIndex];
 
     return (
-        <section className="py-32 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6">
-                <h2 className="font-serif text-[clamp(40px,5vw,64px)] font-normal tracking-tight mb-20 text-[#111110]">
+        <section className="relative py-40 overflow-hidden bg-white">
+            {/* Subtle background elements for depth */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-50/20 rounded-full blur-[120px] -mr-96 -mt-96" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-50/50 rounded-full blur-[100px] -ml-40 -mb-40" />
+
+            <div className="max-w-7xl mx-auto px-10 relative">
+                {/* Title */}
+                <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="font-serif text-[clamp(48px,5.5vw,82px)] leading-[1.05] tracking-[-0.02em] mb-24 text-[#111110]"
+                >
                     Our platform. <br /> All learning.
-                </h2>
+                </motion.h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-                    {/* Left: Beige/Cream AI Chat Mockup */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="aspect-[4/5] bg-[#f9f8f4] rounded-[3rem] p-10 flex flex-col shadow-inner"
-                    >
-                        <div className="mb-auto">
-                            <div className="flex items-center gap-3 mb-8">
-                                <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white">
-                                    <span className="font-bold">L</span>
-                                </div>
-                                <div className="px-4 py-2 bg-white rounded-2xl shadow-sm border border-slate-100 max-w-[80%]">
-                                    <p className="text-sm font-medium text-slate-800">How can I create a course from my existing training materials?</p>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-row-reverse items-center gap-3 group">
-                                <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white">
-                                    <div className="w-4 h-4 border-2 border-white rounded-sm rotate-45" />
-                                </div>
-                                <div className="px-5 py-4 bg-[#111110] text-white rounded-2xl rounded-tr-none shadow-xl max-w-[85%] border border-white/5">
-                                    <p className="text-sm leading-relaxed mb-4">
-                                        Upload your documents and TeachGrid AI will automatically structure them into **modules**, add quizzes, and adapt content to your learners&apos; level.
-                                    </p>
-                                    <div className="h-px w-full bg-white/10 mb-4" />
-                                    <p className="text-[12px] font-bold text-emerald-400 uppercase tracking-widest">Course deployed to 38 active learners</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-8 pt-8 border-t border-slate-200 flex items-center justify-between">
-                            <div className="flex gap-2">
-                                <div className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 font-bold text-[10px]">AI</div>
-                                <p className="text-[12px] font-bold tracking-widest uppercase text-slate-400 flex items-center">Cognitive Engine v4.2</p>
-                            </div>
-                            <Link href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-indigo-600 shadow-sm border border-slate-100">
-                                <ArrowRight size={18} />
-                            </Link>
-                        </div>
-                    </motion.div>
-
-                    {/* Right: Accordion */}
-                    <div className="space-y-6">
-                        {features.map((feature, index) => (
-                            <div
-                                key={feature.title}
-                                className={cn(
-                                    "border-b border-slate-100 overflow-hidden transition-all duration-300",
-                                    activeIndex === index ? "pb-8" : "pb-6"
-                                )}
-                            >
-                                <button
-                                    onClick={() => setActiveIndex(index)}
-                                    className="w-full flex items-center justify-between text-left group"
+                <div className="grid lg:grid-cols-2 gap-20 items-center">
+                    {/* LEFT PANEL */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeIndex}
+                            initial={{ opacity: 0, scale: 0.98, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 1.02, y: -20 }}
+                            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                            className="relative rounded-2xl p-10 bg-white border border-slate-100 shadow-xl overflow-hidden min-h-[480px] flex flex-col justify-center"
+                        >
+                            <div className="relative z-10">
+                                <span
+                                    className={`text-[11px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full font-sans ${panel.badgeStyle}`}
                                 >
-                                    <h3 className={cn(
-                                        "text-2xl font-serif transition-colors",
-                                        activeIndex === index ? "text-[#111110]" : "text-slate-400 hover:text-slate-600"
-                                    )}>
-                                        {feature.title}
-                                    </h3>
-                                    <div className={cn(
-                                        "w-8 h-8 rounded-full flex items-center justify-center transition-all",
-                                        activeIndex === index ? "bg-black text-white" : "bg-slate-50 text-slate-400 group-hover:text-slate-600"
-                                    )}>
-                                        {activeIndex === index ? <Minus size={16} /> : <Plus size={16} />}
-                                    </div>
-                                </button>
+                                    {panel.badge}
+                                </span>
 
-                                <AnimatePresence>
-                                    {activeIndex === index && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.3 }}
+                                <h3 className="font-serif text-3xl leading-tight mt-10 text-[#111110]">
+                                    {panel.title}
+                                </h3>
+
+                                <p className="text-slate-500 text-[17px] leading-relaxed mt-5 max-w-md font-sans">
+                                    {panel.body}
+                                </p>
+
+                                <div className="mt-16 pt-8 border-t border-slate-100 flex items-center justify-between">
+                                    <div className="flex flex-col gap-1">
+                                        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-sans">
+                                            Status Update
+                                        </span>
+                                        <span
+                                            className={`text-[15px] font-semibold font-sans ${panel.accentStyle}`}
                                         >
-                                            <div className="pt-6">
-                                                <p className="text-[17px] text-slate-600 leading-relaxed mb-8">
-                                                    {feature.description}
-                                                </p>
-                                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                    {feature.details.map((detail) => (
-                                                        <li key={detail} className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                                            {detail}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        ))}
+                                            {panel.stat}
+                                        </span>
+                                    </div>
 
-                        <div className="pt-8">
-                            <Link href="#" className="inline-flex items-center gap-2 text-lg font-medium text-indigo-600 group">
-                                Download the technical specs
-                                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                    <Link
+                                        href="#"
+                                        className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center hover:bg-slate-100 transition-colors"
+                                    >
+                                        <ArrowRight size={20} className="text-[#111110]" />
+                                    </Link>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+
+                    {/* RIGHT ACCORDION */}
+                    <div className="space-y-3">
+                        {features.map((feature, index) => {
+                            const isActive = activeIndex === index;
+                            return (
+                                <motion.div
+                                    key={feature.title}
+                                    className={cn(
+                                        "rounded-2xl border transition-all duration-300 px-2",
+                                        isActive 
+                                            ? "bg-[#fafafa] border-[#ebebea] pb-8 shadow-sm" 
+                                            : "bg-white/50 border-transparent hover:bg-slate-50 pb-4"
+                                    )}
+                                >
+                                    <button
+                                        onClick={() => setActiveIndex(index)}
+                                        className="w-full flex items-center justify-between p-6 text-left"
+                                    >
+                                        <div className="flex items-center gap-5">
+                                            <div className={cn(
+                                                "w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300",
+                                                isActive ? "bg-white shadow-sm" : "bg-slate-100"
+                                            )}>
+                                                {React.cloneElement(feature.icon as React.ReactElement<{ size: number }>, { size: 20 })}
+                                            </div>
+
+                                            <h3 className={cn(
+                                                "font-serif text-[22px] transition-colors duration-300",
+                                                isActive ? "text-[#111110]" : "text-[#4b5563]"
+                                            )}>
+                                                {feature.title}
+                                            </h3>
+                                        </div>
+
+                                        <div className={cn(
+                                            "w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300",
+                                            isActive ? "bg-white shadow-sm rotate-90" : "text-slate-300"
+                                        )}>
+                                            {isActive ? <ArrowRight size={14} className="text-[#111110]" /> : <Plus size={16} />}
+                                        </div>
+                                    </button>
+
+                                    <AnimatePresence>
+                                        {isActive && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: "auto" }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                                            >
+                                                <div className="pl-[72px] pr-8">
+                                                    <p className="text-[#6b7280] text-[16px] leading-relaxed mb-6 font-sans">
+                                                        {feature.description}
+                                                    </p>
+
+                                                    <ul className="grid grid-cols-2 gap-x-8 gap-y-3 pb-4">
+                                                        {feature.details.map((d) => (
+                                                            <li
+                                                                key={d}
+                                                                className="flex items-center gap-3 text-[14px] font-medium text-[#374151] font-sans"
+                                                            >
+                                                                <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></div>
+                                                                {d}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.div>
+                            );
+                        })}
+
+                        <div className="pt-10 pl-8">
+                            <Link
+                                href="/platform/features"
+                                className="inline-flex items-center gap-2 text-[15px] font-semibold text-indigo-600 hover:gap-3 transition-all font-sans"
+                            >
+                                Explore all features
+                                <ArrowRight size={18} />
                             </Link>
                         </div>
                     </div>

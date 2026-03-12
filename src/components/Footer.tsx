@@ -2,89 +2,137 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#111110] text-white pt-32 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-[#0a0a0a] text-white pt-32 pb-12 font-sans">
+      <div className="max-w-[1440px] mx-auto px-10">
 
         {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-32">
-          {/* Left: CTA */}
-          <div>
-            <h2 className="font-serif text-[clamp(48px,6vw,80px)] leading-[1.1] font-normal tracking-tight mb-8 text-coral-500">
-              Build the future <br /> of learning.
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-32">
+          
+          {/* Left: Newsletter/CTA (Column Span 5) */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5"
+          >
+            <p className="text-[13px] font-semibold text-[#ff6b6b] mb-4 tracking-tight">AI moves fast</p>
+            <h2 className="text-[32px] md:text-[40px] font-serif font-bold leading-[1.15] mb-6 max-w-sm tracking-tight">
+              We'll keep you up to date with the latest.
             </h2>
-            <div className="flex items-center gap-4 max-w-md bg-white/5 p-2 rounded-full border border-white/10 focus-within:bg-white/10 focus-within:border-white/20 transition-colors">
+            <p className="text-[13px] text-white/40 mb-12 max-w-sm leading-relaxed">
+              Enter your business email below to receive updates from TeachGrid. 
+              Please refer to our <Link href="#" className="underline hover:text-white transition-colors">privacy policy</Link> for details.
+            </p>
+            
+            <div className="relative max-w-sm group">
               <input
                 type="email"
-                placeholder="Work email"
-                className="bg-transparent border-none outline-none px-4 py-2 flex-1 text-sm text-white placeholder:text-white/40"
+                placeholder="Enter your email"
+                className="w-full bg-transparent border-b border-white/20 py-4 outline-none text-[15px] placeholder:text-white/30 focus:border-white transition-colors font-medium"
               />
-              <button className="bg-white text-black px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-200 transition-colors">
-                Get Started
+              <button className="absolute right-0 bottom-4 text-white/40 group-focus-within:text-white transition-colors">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.16666 10H15.8333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10.8333 5L15.8333 10L10.8333 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </button>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right: Links Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
+          {/* Right: Links Grid (Column Span 7) */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12"
+          >
+            {/* Products (Platform in our case) */}
             <div>
-              <h4 className="text-[11px] font-bold tracking-widest uppercase text-white/40 mb-6">Platform</h4>
-              <ul className="space-y-4 text-sm font-medium text-white/80">
-                <li><Link href="#" className="hover:text-white transition-colors">Models</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">API</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Pricing</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Security</Link></li>
+              <Link href="/platform/features" className="group flex items-center gap-1 mb-8">
+                <h4 className="text-[15px] font-bold text-white tracking-tight">Products</h4>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60 group-hover:translate-x-0.5 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+              <ul className="space-y-4 text-[14px] text-white/60 font-medium">
+                <li><Link href="/platform/campus" className="hover:text-white transition-colors">Campus</Link></li>
+                <li><Link href="/platform/spark" className="hover:text-white transition-colors">Spark</Link></li>
+                <li><Link href="/platform/features/lxp-learner-portal" className="hover:text-white transition-colors">LXP</Link></li>
+                <li><Link href="/platform/features/mxp-mentor-portal" className="hover:text-white transition-colors">MXP</Link></li>
+                <li><Link href="/platform/features/crm-portal" className="hover:text-white transition-colors">CRM / Admin</Link></li>
+                <li><Link href="/platform/features" className="hover:text-white transition-colors">Capabilities</Link></li>
+                <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
               </ul>
             </div>
+
+            {/* Solutions */}
             <div>
-              <h4 className="text-[11px] font-bold tracking-widest uppercase text-white/40 mb-6">Use Cases</h4>
-              <ul className="space-y-4 text-sm font-medium text-white/80">
-                <li><Link href="#" className="hover:text-white transition-colors">Corporate Training</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Higher Education</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Customer Onboarding</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Developer Docs</Link></li>
+              <Link href="/solutions" className="group flex items-center gap-1 mb-8">
+                <h4 className="text-[15px] font-bold text-white tracking-tight">Solutions</h4>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60 group-hover:translate-x-0.5 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+              <ul className="space-y-4 text-[14px] text-white/60 font-medium">
+                <li><Link href="/solutions/organizations" className="hover:text-white transition-colors">Technology</Link></li>
+                <li><Link href="/solutions/higher-education" className="hover:text-white transition-colors">Education</Link></li>
+                <li><Link href="/solutions/institutes" className="hover:text-white transition-colors">Higher Ed</Link></li>
+                <li><Link href="/solutions/instructional-design" className="hover:text-white transition-colors">Finance</Link></li>
+                <li><Link href="/solutions/ai-for-education" className="hover:text-white transition-colors">Healthcare</Link></li>
+                <li><Link href="/solutions/white-label" className="hover:text-white transition-colors">Consulting</Link></li>
+                <li><Link href="/solutions/api" className="hover:text-white transition-colors">API Solution</Link></li>
               </ul>
             </div>
+
+            {/* Resources */}
             <div>
-              <h4 className="text-[11px] font-bold tracking-widest uppercase text-white/40 mb-6">Company</h4>
-              <ul className="space-y-4 text-sm font-medium text-white/80">
-                <li><Link href="#" className="hover:text-white transition-colors">About Us</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Careers</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Blog</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Contact</Link></li>
+              <h4 className="text-[15px] font-bold text-white tracking-tight mb-8">Resources</h4>
+              <ul className="space-y-4 text-[14px] text-white/60 font-medium">
+                <li><Link href="/resources/blog" className="hover:text-white transition-colors">Blog</Link></li>
+                <li><Link href="/resources/docs" className="hover:text-white transition-colors">Developers</Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors">Events</Link></li>
+                <li><Link href="/resources/community" className="hover:text-white transition-colors">Community</Link></li>
+                <li><Link href="/resources/docs" className="hover:text-white transition-colors">Documentation</Link></li>
+                <li><Link href="/resources/release-notes" className="hover:text-white transition-colors">Release Notes</Link></li>
+                <li><Link href="/resources/feedback" className="hover:text-white transition-colors">Feedback</Link></li>
               </ul>
             </div>
-          </div>
+
+            {/* Company */}
+            <div>
+              <h4 className="text-[15px] font-bold text-white tracking-tight mb-8">Company</h4>
+              <ul className="space-y-4 text-[14px] text-white/60 font-medium">
+                <li><Link href="/company/about" className="hover:text-white transition-colors">About</Link></li>
+                <li><Link href="/company/careers" className="hover:text-white transition-colors">Careers</Link></li>
+                <li><Link href="/company/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors">Newsroom</Link></li>
+                <li><Link href="/company/security" className="hover:text-white transition-colors">Security</Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors">Trust Center</Link></li>
+                <li><Link href="/company/legal" className="hover:text-white transition-colors">Legal</Link></li>
+              </ul>
+            </div>
+          </motion.div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-6">
-            {/* Replace SVG text logo with Image logo */}
-            <Link href="/" className="inline-block relative">
+        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex items-center gap-10">
+            <Link href="/">
               <img
                 src="/logo.png"
                 alt="TeachGrid Logo"
-                className="h-6 w-auto brightness-0 invert"
+                className="h-7 w-auto brightness-0 invert opacity-80"
               />
             </Link>
-            <p className="text-xs text-white/40 font-medium">© 2024 TeachGrid Inc.</p>
+            <p className="text-[12px] text-white/30 font-medium tracking-tight">© 2026 TeachGrid Inc.</p>
           </div>
 
-          <div className="flex items-center gap-8 text-xs font-semibold text-white/60">
+          <div className="flex items-center gap-10 text-[12px] font-medium text-white/40 tracking-tight">
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <div className="flex items-center gap-4 ml-4 border-l border-white/10 pl-8">
-              {/* Social Icons (simplified) */}
-              <Link href="#" className="hover:text-white transition-colors">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" /></svg>
-              </Link>
-              <Link href="#" className="hover:text-white transition-colors">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-              </Link>
-            </div>
+            <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
