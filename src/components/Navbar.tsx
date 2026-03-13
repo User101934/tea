@@ -414,13 +414,13 @@ const Navbar = () => {
               href="/login"
               className="hidden sm:block text-[14px] md:text-[15px] text-[#4b5563] hover:text-[#111110] transition-colors px-3 py-2"
             >
-              Sign in
+              Contact Sales
             </Link>
             <Link
               href="/get-started"
               className="bg-[#111110] hover:bg-[#2d2d2b] text-white px-4 md:px-6 py-[8px] md:py-[10px] rounded-full text-[13px] md:text-[14.5px] font-medium transition-all duration-150 active:scale-[0.97]"
             >
-              Get Started
+              Book a Demo
             </Link>
             <button
               className="md:hidden p-2 text-[#374151] hover:text-black"
@@ -566,14 +566,14 @@ const Navbar = () => {
                     className="text-center py-3.5 rounded-xl border border-slate-200 font-medium text-[#111110] text-[16px] hover:bg-slate-50 transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
-                    Sign in
+                    Contact Sales
                   </Link>
                   <Link
                     href="/get-started"
                     className="text-center py-4 rounded-full bg-[#111110] text-white font-medium text-[16px] shadow-lg shadow-black/10 active:scale-[0.98] transition-all"
                     onClick={() => setMobileOpen(false)}
                   >
-                    Get Started
+                    Book a Demo
                   </Link>
                 </motion.div>
               </div>
