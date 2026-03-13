@@ -118,7 +118,7 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
 const DropNavItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <Link
     href={href}
-    className="block text-[17px] text-[#1a1a1a] hover:text-[#5b47e0] transition-colors duration-100 leading-none py-[11px]"
+    className="block text-[17px] text-[#1a1a1a] hover:text-[#5b47e0] transition-colors duration-300 ease-out leading-none py-[11px]"
   >
     {children}
   </Link>
@@ -130,13 +130,13 @@ const GradientCard = ({
   <Link
     href={href}
     className={cn(
-      'relative overflow-hidden rounded-2xl flex flex-col justify-end p-6 group cursor-pointer',
+      'relative overflow-hidden rounded-2xl flex flex-col justify-end p-6 group cursor-pointer transition-transform duration-500 ease-out hover:scale-[1.02] active:scale-[0.98]',
       className
     )}
     style={{ background: gradient }}
   >
     <div
-      className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none"
+      className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.25]"
       style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
         backgroundSize: '160px 160px',
@@ -144,8 +144,8 @@ const GradientCard = ({
     />
     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent pointer-events-none" />
     <div className="relative z-10">
-      <p className="text-white font-semibold text-[15px] leading-snug mb-1.5 group-hover:underline underline-offset-2">{title}</p>
-      <p className="text-white/60 text-[13px] leading-relaxed">{desc}</p>
+      <p className="text-white font-semibold text-[15px] leading-snug mb-1.5 group-hover:underline underline-offset-4 decoration-white/30 transition-all duration-300">{title}</p>
+      <p className="text-white/60 text-[13px] leading-relaxed transition-colors duration-300 group-hover:text-white/80">{desc}</p>
     </div>
   </Link>
 );
@@ -163,7 +163,7 @@ const Grain = () => (
 const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <Link
     href={href}
-    className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#9ca3af] hover:text-[#111110] transition-colors"
+    className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#9ca3af] hover:text-[#111110] transition-colors duration-300 ease-out"
   >
     {children}
   </Link>
@@ -211,9 +211,51 @@ const Navbar = () => {
   ];
 
   const dropVariants: any = {
-    hidden: { opacity: 0, y: 10, x: '-50%' },
-    visible: { opacity: 1, y: 0, x: '-50%', transition: { duration: 0.18, ease: [0.22, 1, 0.36, 1] } },
-    exit: { opacity: 0, y: 10, x: '-50%', transition: { duration: 0.13, ease: 'easeIn' } },
+    hidden: { 
+      opacity: 0, 
+      y: 0, 
+      x: '-50%', 
+      scale: 0.99,
+      clipPath: 'inset(0% 0% 100% 0%)'
+    },
+    visible: { 
+      opacity: 1, 
+      y: 8, 
+      x: '-50%', 
+      scale: 1,
+      clipPath: 'inset(0% 0% 0% 0%)',
+      transition: { 
+        duration: 0.5, 
+        ease: [0.16, 1, 0.3, 1],
+        clipPath: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+        y: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+      } 
+    },
+    exit: { 
+      opacity: 0, 
+      y: 2, 
+      x: '-50%', 
+      scale: 0.995,
+      clipPath: 'inset(0% 0% 100% 0%)',
+      transition: { 
+        duration: 0.2, 
+        ease: [0.7, 0, 0.84, 0],
+        clipPath: { duration: 0.15, ease: [0.7, 0, 0.84, 0] }
+      } 
+    },
+  };
+
+  const staggerVariants: any = {
+    hidden: { opacity: 0, y: 15 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.05 + i * 0.04,
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    }),
   };
 
   return (
@@ -237,13 +279,17 @@ const Navbar = () => {
               const trigger = (
                 <button
                   className={cn(
-                    'relative px-5 py-2 text-[15px] transition-colors duration-150 select-none',
+                    'relative px-5 py-2 text-[15px] transition-all duration-300 ease-out select-none',
                     isActive ? 'text-[#111110]' : 'text-[#4b5563] hover:text-[#111110]'
                   )}
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-5 right-5 h-[1.5px] bg-[#111110] rounded-full" />
+                    <motion.span
+                      layoutId="navItemUnderline"
+                      className="absolute bottom-0 left-5 right-5 h-[1.5px] bg-[#111110] rounded-full"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
                   )}
                 </button>
               );
@@ -272,13 +318,14 @@ const Navbar = () => {
               <AnimatePresence>
                 {activeMenu && navItems.find(i => (i.label === activeMenu || (i.label === 'Products' && activeMenu === 'Platform')))?.hasDropdown && (
                   <motion.div
+                    key={activeMenu}
                     variants={dropVariants}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
                     onMouseEnter={() => open(activeMenu)}
                     onMouseLeave={scheduleClose}
-                    className="absolute top-2 left-1/2 bg-white rounded-2xl overflow-hidden pointer-events-auto"
+                    className="absolute top-2 left-1/2 bg-white/90 backdrop-blur-xl rounded-2xl overflow-hidden pointer-events-auto"
                     style={{
                       width:
                         activeMenu === 'Platform' ? 820
@@ -286,12 +333,12 @@ const Navbar = () => {
                             : activeMenu === 'Resources' ? 840
                               : 820,
                       boxShadow:
-                        '0 0 0 1px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.04), 0 20px 60px -8px rgba(0,0,0,0.14)',
+                        '0 0 0 1px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.03), 0 24px 64px -12px rgba(0,0,0,0.12)',
                     }}
                   >
                     {/* PLATFORM */}
                     {activeMenu === 'Platform' && (
-                      <div>
+                      <motion.div initial="hidden" animate="visible" custom={0} variants={staggerVariants}>
                         <div className="px-8 pt-7 pb-0 flex items-center gap-2">
                           <span className="text-[14px] font-semibold text-[#111110]">Products</span>
                           <span className="text-[#c4c4c0] text-[14px]">→</span>
@@ -299,39 +346,40 @@ const Navbar = () => {
                         <div className="grid grid-cols-2 divide-x divide-[#f0f0ee] mt-5">
                           {/* Left: Cards */}
                           <div className="px-8 pb-8 flex flex-col gap-7">
-                            {platformMenu.cards.map((card) => (
-                              <Link key={card.title} href={card.href} className="group flex flex-col gap-3">
-                                <div className="w-full h-[112px] rounded-xl relative overflow-hidden" style={{ background: card.gradient }}>
-                                  <Grain />
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <span className="w-[7px] h-[7px] rounded-full flex-shrink-0" style={{ background: card.dot }} />
-                                  <span className="text-[15px] font-medium text-[#111110] group-hover:text-[#5b47e0] transition-colors">{card.title}</span>
-                                </div>
-                                <p className="text-[13px] text-[#6b7280] leading-relaxed -mt-1">{card.desc}</p>
-                              </Link>
+                            {platformMenu.cards.map((card, idx) => (
+                              <motion.div key={card.title} custom={idx + 1} variants={staggerVariants}>
+                                <Link href={card.href} className="group flex flex-col gap-3 transition-transform duration-500 ease-out hover:translate-y-[-2px]">
+                                  <div className="w-full h-[112px] rounded-xl relative overflow-hidden ring-1 ring-black/5" style={{ background: card.gradient }}>
+                                    <Grain />
+                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-500" />
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <span className="w-[7px] h-[7px] rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-125" style={{ background: card.dot }} />
+                                    <span className="text-[15px] font-medium text-[#111110] group-hover:text-[#5b47e0] transition-colors duration-300">{card.title}</span>
+                                  </div>
+                                  <p className="text-[13px] text-[#6b7280] leading-relaxed -mt-1 transition-colors duration-300 group-hover:text-[#4b5563]">{card.desc}</p>
+                                </Link>
+                              </motion.div>
                             ))}
                           </div>
 
-                          {/* Right: Portals — one shared gradient box, then items below */}
+                          {/* Right: Portals */}
                           <div className="px-8 pb-8 flex flex-col">
-                            {/* One shared colourful gradient box for all portals */}
-                            <div
-                              className="w-full h-[112px] rounded-xl relative overflow-hidden mb-5"
-                              style={{ background: 'linear-gradient(135deg, #059669 0%, #0d9488 45%, #0ea5e9 100%)' }}
-                            >
+                            <motion.div custom={3} variants={staggerVariants} className="w-full h-[112px] rounded-xl relative overflow-hidden mb-5" style={{ background: 'linear-gradient(135deg, #059669 0%, #0d9488 45%, #0ea5e9 100%)' }}>
                               <Grain />
-                            </div>
+                            </motion.div>
                             <SectionLabel>Portals</SectionLabel>
                             <div className="flex flex-col gap-1">
-                              {platformMenu.portals.map((portal) => (
-                                <Link key={portal.label} href={portal.href} className="group flex items-center gap-3 px-4 py-4 rounded-xl hover:bg-[#f7f7f5] transition-colors">
-                                  <span className="flex-shrink-0 w-2 h-2 rounded-full mt-0.5" style={{ background: portal.color }} />
-                                  <div className="flex flex-col gap-0.5">
-                                    <span className="text-[15px] font-medium text-[#111110] group-hover:text-[#5b47e0] transition-colors leading-tight">{portal.label}</span>
-                                    <span className="text-[12.5px] text-[#9ca3af] leading-snug">{portal.desc}</span>
-                                  </div>
-                                </Link>
+                              {platformMenu.portals.map((portal, idx) => (
+                                <motion.div key={portal.label} custom={idx + 4} variants={staggerVariants}>
+                                  <Link href={portal.href} className="group flex items-center gap-3 px-4 py-4 rounded-xl hover:bg-[#000]/[0.02] transition-all duration-300 ease-out hover:translate-x-1">
+                                    <span className="flex-shrink-0 w-2 h-2 rounded-full mt-0.5 transition-transform duration-300 group-hover:scale-125" style={{ background: portal.color }} />
+                                    <div className="flex flex-col gap-0.5">
+                                      <span className="text-[15px] font-medium text-[#111110] group-hover:text-[#5b47e0] transition-colors duration-300 leading-tight">{portal.label}</span>
+                                      <span className="text-[12.5px] text-[#9ca3af] leading-snug group-hover:text-[#6b7280] transition-colors duration-300">{portal.desc}</span>
+                                    </div>
+                                  </Link>
+                                </motion.div>
                               ))}
                             </div>
                           </div>
@@ -340,67 +388,96 @@ const Navbar = () => {
                         <div className="px-8 py-5 border-t border-[#f0f0ee] flex items-center justify-end gap-8">
                           {platformMenu.footer.map((f) => <FooterLink key={f.label} href={f.href}>{f.label}</FooterLink>)}
                         </div>
-                      </div>
+                      </motion.div>
                     )}
 
                     {/* SOLUTIONS */}
                     {activeMenu === 'Solutions' && (
-                      <div>
-                        <div className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
-                          <div className="px-8 py-8">
-                            <SectionLabel>{solutionsMenu.col1.heading}</SectionLabel>
-                            {solutionsMenu.col1.links.map((l) => <DropNavItem key={l} href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
-                            <div className="mt-7">
-                              <SectionLabel>{solutionsMenu.col1.heading2}</SectionLabel>
-                              {solutionsMenu.col1.links2.map((l) => <DropNavItem key={l} href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
-                            </div>
+                      <motion.div initial="hidden" animate="visible" custom={0} variants={staggerVariants} className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
+                        <div className="px-8 py-8">
+                          <SectionLabel>{solutionsMenu.col1.heading}</SectionLabel>
+                          {solutionsMenu.col1.links.map((l, idx) => (
+                            <motion.div key={l} custom={idx + 1} variants={staggerVariants}>
+                              <DropNavItem href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>
+                            </motion.div>
+                          ))}
+                          <div className="mt-7">
+                            <SectionLabel>{solutionsMenu.col1.heading2}</SectionLabel>
+                            {solutionsMenu.col1.links2.map((l, idx) => (
+                              <motion.div key={l} custom={idx + 4} variants={staggerVariants}>
+                                <DropNavItem href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>
+                              </motion.div>
+                            ))}
                           </div>
-                          <div className="px-8 py-8">
-                            <SectionLabel>{solutionsMenu.col2.heading}</SectionLabel>
-                            {solutionsMenu.col2.links.map((l) => <DropNavItem key={l} href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
-                          </div>
-                          <div className="px-8 py-8">
+                        </div>
+                        <div className="px-8 py-8">
+                          <SectionLabel>{solutionsMenu.col2.heading}</SectionLabel>
+                          {solutionsMenu.col2.links.map((l, idx) => (
+                            <motion.div key={l} custom={idx + 1} variants={staggerVariants}>
+                              <DropNavItem href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>
+                            </motion.div>
+                          ))}
+                        </div>
+                        <div className="px-8 py-8">
+                          <motion.div custom={6} variants={staggerVariants} className="h-full">
                             <GradientCard gradient={solutionsMenu.card.gradient} title={solutionsMenu.card.title} desc={solutionsMenu.card.desc} className="w-full h-full min-h-[200px]" />
-                          </div>
+                          </motion.div>
                         </div>
-                        <div className="px-8 py-5 border-t border-[#f0f0ee] flex items-center justify-end gap-8">
-                          {solutionsMenu.footer.map((f) => <FooterLink key={f} href="#">{f}</FooterLink>)}
-                        </div>
-                      </div>
+                      </motion.div>
                     )}
 
                     {/* RESOURCES */}
                     {activeMenu === 'Resources' && (
-                      <div className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
+                      <motion.div initial="hidden" animate="visible" custom={0} variants={staggerVariants} className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
                         <div className="px-8 py-8">
                           <SectionLabel>{resourcesMenu.col1.heading}</SectionLabel>
-                          {resourcesMenu.col1.links.map((l) => <DropNavItem key={l} href={`/resources/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                          {resourcesMenu.col1.links.map((l, idx) => (
+                            <motion.div key={l} custom={idx + 1} variants={staggerVariants}>
+                              <DropNavItem href={`/resources/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>
+                            </motion.div>
+                          ))}
                         </div>
                         <div className="px-8 py-8">
                           <SectionLabel>{resourcesMenu.col2.heading}</SectionLabel>
-                          {resourcesMenu.col2.links.map((l) => <DropNavItem key={l} href={`/resources/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                          {resourcesMenu.col2.links.map((l, idx) => (
+                            <motion.div key={l} custom={idx + 1} variants={staggerVariants}>
+                              <DropNavItem href={`/resources/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>
+                            </motion.div>
+                          ))}
                         </div>
                         <div className="px-8 py-8">
-                          <GradientCard gradient={resourcesMenu.card.gradient} title={resourcesMenu.card.title} desc={resourcesMenu.card.desc} className="w-full h-full min-h-[190px]" />
+                          <motion.div custom={6} variants={staggerVariants} className="h-full">
+                            <GradientCard gradient={resourcesMenu.card.gradient} title={resourcesMenu.card.title} desc={resourcesMenu.card.desc} className="w-full h-full min-h-[190px]" />
+                          </motion.div>
                         </div>
-                      </div>
+                      </motion.div>
                     )}
 
                     {/* COMPANY */}
                     {activeMenu === 'Company' && (
-                      <div className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
+                      <motion.div initial="hidden" animate="visible" custom={0} variants={staggerVariants} className="grid grid-cols-[1fr_1fr_260px] divide-x divide-[#f0f0ee]">
                         <div className="px-8 py-8">
                           <SectionLabel>{companyMenu.col1.heading}</SectionLabel>
-                          {companyMenu.col1.links.map((l) => <DropNavItem key={l} href={`/company/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                          {companyMenu.col1.links.map((l, idx) => (
+                            <motion.div key={l} custom={idx + 1} variants={staggerVariants}>
+                              <DropNavItem href={`/company/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>
+                            </motion.div>
+                          ))}
                         </div>
                         <div className="px-8 py-8">
                           <SectionLabel>{companyMenu.col2.heading}</SectionLabel>
-                          {companyMenu.col2.links.map((l) => <DropNavItem key={l} href={`/company/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>)}
+                          {companyMenu.col2.links.map((l, idx) => (
+                            <motion.div key={l} custom={idx + 1} variants={staggerVariants}>
+                              <DropNavItem href={`/company/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</DropNavItem>
+                            </motion.div>
+                          ))}
                         </div>
                         <div className="px-8 py-8">
-                          <GradientCard gradient={companyMenu.card.gradient} title={companyMenu.card.title} desc={companyMenu.card.desc} className="w-full h-full min-h-[190px]" />
+                          <motion.div custom={6} variants={staggerVariants} className="h-full">
+                            <GradientCard gradient={companyMenu.card.gradient} title={companyMenu.card.title} desc={companyMenu.card.desc} className="w-full h-full min-h-[190px]" />
+                          </motion.div>
                         </div>
-                      </div>
+                      </motion.div>
                     )}
                   </motion.div>
                 )}
@@ -412,18 +489,18 @@ const Navbar = () => {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/login"
-              className="hidden sm:block text-[14px] md:text-[15px] text-[#4b5563] hover:text-[#111110] transition-colors px-3 py-2"
+              className="hidden sm:block text-[14px] md:text-[15px] text-[#4b5563] hover:text-[#111110] transition-all duration-300 px-3 py-2 hover:translate-y-[-1px]"
             >
               Contact Sales
             </Link>
             <Link
               href="/get-started"
-              className="bg-[#111110] hover:bg-[#2d2d2b] text-white px-4 md:px-6 py-[8px] md:py-[10px] rounded-full text-[13px] md:text-[14.5px] font-medium transition-all duration-150 active:scale-[0.97]"
+              className="bg-[#111110] hover:bg-[#2d2d2b] text-white px-4 md:px-6 py-[8px] md:py-[10px] rounded-full text-[13px] md:text-[14.5px] font-medium transition-all duration-300 ease-out active:scale-[0.96] hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.3)] hover:translate-y-[-1px]"
             >
               Book a Demo
             </Link>
             <button
-              className="md:hidden p-2 text-[#374151] hover:text-black"
+              className="md:hidden p-2 text-[#374151] hover:text-black transition-colors duration-300"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
