@@ -24,9 +24,7 @@ export default function Home() {
         <InteractiveShowcase />
 
         {/* Final CTA — Dark grained section */}
-        <section className="relative py-40 overflow-hidden" style={{ backgroundColor: '#0f0e0d' }}>
-
-          {/* Professional LMS background image — grayscale + high contrast */}
+        <section className="relative py-24 md:py-40 overflow-hidden" style={{ backgroundColor: '#0f0e0d' }}>
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
@@ -34,16 +32,10 @@ export default function Home() {
               filter: 'grayscale(100%) contrast(1.1) brightness(0.28)',
             }}
           />
-
-          {/* Vignette */}
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(15,14,13,0.0) 0%, rgba(15,14,13,0.55) 60%, rgba(15,14,13,0.92) 100%)',
-            }}
+            style={{ background: 'radial-gradient(ellipse at center, rgba(15,14,13,0.0) 0%, rgba(15,14,13,0.55) 60%, rgba(15,14,13,0.92) 100%)' }}
           />
-
-          {/* Grain texture */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -52,35 +44,29 @@ export default function Home() {
               backgroundSize: '140px 140px',
             }}
           />
-
-          {/* Bottom fade into footer */}
           <div
             className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
             style={{ background: 'linear-gradient(to bottom, transparent, #111110)' }}
           />
 
-          {/* Content */}
           <div className="relative z-10 container mx-auto px-6 text-center">
-
-            {/* Headline only */}
-            <h2 className="text-5xl md:text-7xl font-serif tracking-tight text-white mb-14 leading-[1.05]">
-              Ready to transform <br className="hidden md:block" /> your learning experience?
+            <h2 className="text-[clamp(32px,6vw,88px)] md:text-7xl font-serif tracking-tight text-white mb-10 md:mb-14 leading-[1.05]">
+              Ready to transform{' '}
+              <br className="hidden md:block" />
+              your learning experience?
             </h2>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
               <button
-                className="px-12 py-5 text-base rounded-full font-semibold transition-all active:scale-[0.98]"
+                className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5 text-[15px] md:text-base rounded-full font-semibold transition-all active:scale-[0.98]"
                 style={{ backgroundColor: '#ffffff', color: '#0f0e0d' }}
               >
                 Get Started Free
               </button>
-              <button className="text-base font-medium text-white/50 hover:text-white transition-colors flex items-center gap-2 group">
+              <button className="text-[15px] md:text-base font-medium text-white/50 hover:text-white transition-colors flex items-center gap-2 group">
                 Watch TeachGrid in Action
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
-
           </div>
         </section>
       </main>

@@ -1,18 +1,16 @@
 "use client";
-
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a0a0a] text-white pt-32 pb-12 font-sans">
-      <div className="max-w-[1440px] mx-auto px-10">
-
+    <footer className="bg-[#0a0a0a] text-white pt-16 md:pt-32 pb-12 font-sans">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
         {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-32">
-          
-          {/* Left: Newsletter/CTA (Column Span 5) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 mb-16 md:mb-32">
+
+          {/* Left: Newsletter/CTA */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -21,14 +19,16 @@ const Footer = () => {
             className="lg:col-span-5"
           >
             <p className="text-[13px] font-semibold text-[#ff6b6b] mb-4 tracking-tight">AI moves fast</p>
-            <h2 className="text-[32px] md:text-[40px] font-serif font-bold leading-[1.15] mb-6 max-w-sm tracking-tight">
+            <h2 className="text-[26px] md:text-[40px] font-serif font-bold leading-[1.15] mb-6 max-w-sm tracking-tight">
               We'll keep you up to date with the latest.
             </h2>
-            <p className="text-[13px] text-white/40 mb-12 max-w-sm leading-relaxed">
-              Enter your business email below to receive updates from TeachGrid. 
-              Please refer to our <Link href="#" className="underline hover:text-white transition-colors">privacy policy</Link> for details.
+            <p className="text-[13px] text-white/40 mb-10 max-w-sm leading-relaxed">
+              Enter your business email below to receive updates from TeachGrid.{' '}
+              Please refer to our{' '}
+              <Link href="#" className="underline hover:text-white transition-colors">privacy policy</Link>{' '}
+              for details.
             </p>
-            
+
             <div className="relative max-w-sm group">
               <input
                 type="email"
@@ -44,21 +44,21 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Right: Links Grid (Column Span 7) */}
-          <motion.div 
+          {/* Right: Links Grid */}
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12"
+            className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10"
           >
-            {/* Products (Platform in our case) */}
+            {/* Products */}
             <div>
-              <Link href="/platform/features" className="group flex items-center gap-1 mb-8">
-                <h4 className="text-[15px] font-bold text-white tracking-tight">Products</h4>
+              <Link href="/platform/features" className="group flex items-center gap-1 mb-6">
+                <h4 className="text-[14px] md:text-[15px] font-bold text-white tracking-tight">Products</h4>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60 group-hover:translate-x-0.5 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </Link>
-              <ul className="space-y-4 text-[14px] text-white/60 font-medium">
+              <ul className="space-y-3 text-[13px] md:text-[14px] text-white/60 font-medium">
                 <li><Link href="/platform/campus" className="hover:text-white transition-colors">Campus</Link></li>
                 <li><Link href="/platform/spark" className="hover:text-white transition-colors">Spark</Link></li>
                 <li><Link href="/platform/features/lxp-learner-portal" className="hover:text-white transition-colors">LXP</Link></li>
@@ -71,11 +71,11 @@ const Footer = () => {
 
             {/* Solutions */}
             <div>
-              <Link href="/solutions" className="group flex items-center gap-1 mb-8">
-                <h4 className="text-[15px] font-bold text-white tracking-tight">Solutions</h4>
+              <Link href="/solutions" className="group flex items-center gap-1 mb-6">
+                <h4 className="text-[14px] md:text-[15px] font-bold text-white tracking-tight">Solutions</h4>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60 group-hover:translate-x-0.5 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </Link>
-              <ul className="space-y-4 text-[14px] text-white/60 font-medium">
+              <ul className="space-y-3 text-[13px] md:text-[14px] text-white/60 font-medium">
                 <li><Link href="/solutions/organizations" className="hover:text-white transition-colors">Technology</Link></li>
                 <li><Link href="/solutions/higher-education" className="hover:text-white transition-colors">Education</Link></li>
                 <li><Link href="/solutions/institutes" className="hover:text-white transition-colors">Higher Ed</Link></li>
@@ -88,8 +88,8 @@ const Footer = () => {
 
             {/* Resources */}
             <div>
-              <h4 className="text-[15px] font-bold text-white tracking-tight mb-8">Resources</h4>
-              <ul className="space-y-4 text-[14px] text-white/60 font-medium">
+              <h4 className="text-[14px] md:text-[15px] font-bold text-white tracking-tight mb-6">Resources</h4>
+              <ul className="space-y-3 text-[13px] md:text-[14px] text-white/60 font-medium">
                 <li><Link href="/resources/blog" className="hover:text-white transition-colors">Blog</Link></li>
                 <li><Link href="/resources/docs" className="hover:text-white transition-colors">Developers</Link></li>
                 <li><Link href="#" className="hover:text-white transition-colors">Events</Link></li>
@@ -102,8 +102,8 @@ const Footer = () => {
 
             {/* Company */}
             <div>
-              <h4 className="text-[15px] font-bold text-white tracking-tight mb-8">Company</h4>
-              <ul className="space-y-4 text-[14px] text-white/60 font-medium">
+              <h4 className="text-[14px] md:text-[15px] font-bold text-white tracking-tight mb-6">Company</h4>
+              <ul className="space-y-3 text-[13px] md:text-[14px] text-white/60 font-medium">
                 <li><Link href="/company/about" className="hover:text-white transition-colors">About</Link></li>
                 <li><Link href="/company/careers" className="hover:text-white transition-colors">Careers</Link></li>
                 <li><Link href="/company/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
@@ -117,19 +117,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center gap-10">
+        <div className="border-t border-white/10 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-6 md:gap-10">
             <Link href="/">
-              <img
-                src="/logo.png"
-                alt="TeachGrid Logo"
-                className="h-7 w-auto brightness-0 invert opacity-80"
-              />
+              <img src="/logo.png" alt="TeachGrid Logo" className="h-6 md:h-7 w-auto brightness-0 invert opacity-80" />
             </Link>
-            <p className="text-[12px] text-white/30 font-medium tracking-tight">© 2026 TeachGrid Inc.</p>
+            <p className="text-[11px] md:text-[12px] text-white/30 font-medium tracking-tight">© 2026 TeachGrid Inc.</p>
           </div>
-
-          <div className="flex items-center gap-10 text-[12px] font-medium text-white/40 tracking-tight">
+          <div className="flex items-center gap-6 md:gap-10 text-[11px] md:text-[12px] font-medium text-white/40 tracking-tight flex-wrap">
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
