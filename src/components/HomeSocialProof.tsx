@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
-/* ─── Inline SVGs — all logos at 2× size, guaranteed visible ─── */
+/* ─── Inline SVGs ─── */
 
 const MercuryLogo = () => (
   <svg height="44" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@ const ArcLogo = () => (
   </svg>
 );
 
-/* ── Brand list ───────────────────────────────────────────────── */
+/* ── Brand list ── */
 const BRANDS: { name: string; Logo: React.FC; color: string }[] = [
   { name: 'Mercury',    Logo: MercuryLogo,    color: '#6d3bef' },
   { name: 'Watershed',  Logo: WatershedLogo,  color: '#0ea5e9' },
@@ -91,26 +91,22 @@ const BRANDS: { name: string; Logo: React.FC; color: string }[] = [
   { name: 'Arc',        Logo: ArcLogo,        color: '#6366f1' },
 ];
 
+// Triple for seamless loop
 const TRACK = [...BRANDS, ...BRANDS, ...BRANDS];
 
-/* ── Logo item ────────────────────────────────────────────────── */
+/* ── Scrolling logo item ── */
 const LogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
   const [hovered, setHovered] = useState(false);
-
   return (
     <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="relative flex-shrink-0 flex flex-col items-center justify-center cursor-pointer"
-      style={{ marginLeft: 100, marginRight: 100, paddingBottom: 32 }}
+      // Reduced margins from 100 → 36 so ~7 logos fit in view
+      style={{ marginLeft: 36, marginRight: 36, paddingBottom: 28 }}
     >
-      {/* Logo */}
       <motion.div
-        animate={{
-          opacity: hovered ? 1   : 0.45,
-          scale:   hovered ? 1.1 : 1,
-          y:       hovered ? -5  : 0,
-        }}
+        animate={{ opacity: hovered ? 1 : 0.45, scale: hovered ? 1.08 : 1, y: hovered ? -4 : 0 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
         style={{ display: 'flex', alignItems: 'center', height: 52 }}
       >
@@ -122,16 +118,9 @@ const LogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
         animate={{ opacity: hovered ? 1 : 0, scaleX: hovered ? 1 : 0 }}
         transition={{ duration: 0.18 }}
         style={{
-          position:    'absolute',
-          bottom:      12,
-          left:        '50%',
-          transform:   'translateX(-50%)',
-          width:       52,
-          height:      8,
-          borderRadius: 99,
-          background:  brand.color,
-          filter:      'blur(6px)',
-          pointerEvents: 'none',
+          position: 'absolute', bottom: 10, left: '50%', transform: 'translateX(-50%)',
+          width: 48, height: 7, borderRadius: 99, background: brand.color,
+          filter: 'blur(5px)', pointerEvents: 'none',
         }}
       />
 
@@ -140,16 +129,11 @@ const LogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
         animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 5 }}
         transition={{ duration: 0.16 }}
         style={{
-          position:      'absolute',
-          bottom:        2,
-          fontFamily:    "'DM Sans', system-ui, sans-serif",
-          fontSize:      11,
-          fontWeight:    700,
-          letterSpacing: '0.12em',
-          textTransform: 'uppercase',
-          color:         brand.color,
-          whiteSpace:    'nowrap',
-          pointerEvents: 'none',
+          position: 'absolute', bottom: 0,
+          fontFamily: "'DM Sans', system-ui, sans-serif",
+          fontSize: 10, fontWeight: 700, letterSpacing: '0.12em',
+          textTransform: 'uppercase', color: brand.color,
+          whiteSpace: 'nowrap', pointerEvents: 'none',
         }}
       >
         {brand.name}
@@ -158,15 +142,73 @@ const LogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
   );
 };
 
-/* ── Section ──────────────────────────────────────────────────── */
+/* ── Static grid logo item (for the expanded view) ── */
+const GridLogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <motion.div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative flex flex-col items-center justify-center cursor-pointer rounded-2xl border border-transparent hover:border-[#ebebea] hover:bg-white transition-all duration-200"
+      style={{ padding: '24px 12px 38px', minWidth: 0 }}
+    >
+      {/* Container specifically designed to hold SVG without overflowing */}
+      <motion.div
+        animate={{ opacity: hovered ? 1 : 0.5, y: hovered ? -3 : 0 }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
+        style={{
+          width: '100%',
+          height: 48,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <div className="w-full flex justify-center [&>svg]:w-[90%] [&>svg]:max-w-[120px] [&>svg]:h-auto">
+          <brand.Logo />
+        </div>
+      </motion.div>
+
+      {/* Colour glow */}
+      <motion.div
+        animate={{ opacity: hovered ? 1 : 0, scaleX: hovered ? 1 : 0 }}
+        transition={{ duration: 0.18 }}
+        style={{
+          position: 'absolute', bottom: 14, left: '50%', transform: 'translateX(-50%)',
+          width: 40, height: 6, borderRadius: 99, background: brand.color,
+          filter: 'blur(5px)', pointerEvents: 'none',
+        }}
+      />
+
+      {/* Name label */}
+      <motion.span
+        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 4 }}
+        transition={{ duration: 0.16 }}
+        style={{
+          position: 'absolute', bottom: 6,
+          fontFamily: "'DM Sans', system-ui, sans-serif",
+          fontSize: 9, fontWeight: 700, letterSpacing: '0.12em',
+          textTransform: 'uppercase', color: brand.color,
+          whiteSpace: 'nowrap', pointerEvents: 'none',
+        }}
+      >
+        {brand.name}
+      </motion.span>
+    </motion.div>
+  );
+};
+
+/* ── Section ── */
 const HomeSocialProof = () => {
+  const [showAll, setShowAll] = useState(false);
+
   return (
     <section
       className="relative overflow-hidden"
       style={{
-        background:    'linear-gradient(160deg, #eeeef6 0%, #f5f5fa 40%, #fafafa 70%, #f0eff8 100%)',
-        paddingTop:    '6rem',
-        paddingBottom: '6.5rem',
+        background: 'linear-gradient(160deg, #eeeef6 0%, #f5f5fa 40%, #fafafa 70%, #f0eff8 100%)',
+        paddingTop: '6rem',
+        paddingBottom: '5rem',
       }}
     >
       <style>{`
@@ -178,7 +220,8 @@ const HomeSocialProof = () => {
           display: flex;
           align-items: center;
           width: max-content;
-          animation: logo-scroll 40s linear infinite;
+          /* Slowed from 40s → 70s */
+          animation: logo-scroll 70s linear infinite;
         }
         .logo-track:hover { animation-play-state: paused; }
 
@@ -201,18 +244,18 @@ const HomeSocialProof = () => {
 
       {/* Edge fades */}
       <div className="absolute inset-y-0 left-0 z-10 pointer-events-none"
-        style={{ width: 160, background: 'linear-gradient(to right, #eeeef6 30%, transparent)' }} />
+        style={{ width: 120, background: 'linear-gradient(to right, #eeeef6 30%, transparent)' }} />
       <div className="absolute inset-y-0 right-0 z-10 pointer-events-none"
-        style={{ width: 160, background: 'linear-gradient(to left, #f0eff8 30%, transparent)' }} />
+        style={{ width: 120, background: 'linear-gradient(to left, #f0eff8 30%, transparent)' }} />
 
-      {/* ── Premium headline ── */}
+      {/* ── Headline ── */}
       <motion.div
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className="relative z-10 text-center px-6"
-        style={{ marginBottom: '4rem' }}
+        style={{ marginBottom: '5rem' }}
       >
         {/* Eyebrow */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 20 }}>
@@ -241,17 +284,14 @@ const HomeSocialProof = () => {
           />
         </div>
 
-        {/* Headline */}
         <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(26px, 3.5vw, 42px)', lineHeight: 1.2, letterSpacing: '-0.025em', color: '#111110', marginBottom: 10 }}>
           Trusted by <span className="shimmer-word">leading</span> educational institutions.
         </h2>
 
-        {/* Subtitle */}
         <p style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(16px, 1.8vw, 22px)', fontStyle: 'italic', color: '#94a3b8', letterSpacing: '-0.01em', margin: 0 }}>
           From global enterprises to premier universities.
         </p>
 
-        {/* Hairline */}
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
@@ -261,12 +301,13 @@ const HomeSocialProof = () => {
         />
       </motion.div>
 
-      {/* ── Logos ── */}
+      {/* ── Scrolling logos — moved slightly down via mt ── */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.7 }}
+        style={{ marginTop: '1.5rem' }}
       >
         <div className="logo-track">
           {TRACK.map((brand, i) => (
@@ -274,6 +315,62 @@ const HomeSocialProof = () => {
           ))}
         </div>
       </motion.div>
+
+      {/* ── Show All button ── */}
+      <div className="relative z-10 flex justify-center">
+        <motion.button
+          onClick={() => setShowAll(!showAll)}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="flex items-center gap-2 px-6 py-3 rounded-full border border-[#d8d4f0] bg-white/80 backdrop-blur-sm text-[13px] font-semibold text-[#6d3bef] hover:bg-white hover:border-[#a78bfa] transition-all duration-200 shadow-sm"
+          style={{ fontFamily: "'DM Sans', system-ui, sans-serif", letterSpacing: '0.02em', marginTop: '3rem' }}
+        >
+          {showAll ? 'Hide partners' : 'View all partners'}
+          <motion.svg
+            width="14" height="14" viewBox="0 0 14 14" fill="none"
+            animate={{ rotate: showAll ? 180 : 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <path d="M2.5 5L7 9.5L11.5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </motion.svg>
+        </motion.button>
+      </div>
+
+      {/* ── Expanded all-partners grid ── */}
+      <AnimatePresence>
+        {showAll && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <motion.div
+              initial={{ y: 16 }}
+              animate={{ y: 0 }}
+              exit={{ y: 8 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-5xl mx-auto px-6 mt-10"
+            >
+              <div
+                className="rounded-2xl border border-[#e8e6f4] bg-white/60 backdrop-blur-sm p-6"
+                style={{ boxShadow: '0 4px 32px -8px rgba(109,59,239,0.08)' }}
+              >
+                <p className="text-center text-[11px] font-bold tracking-[0.2em] uppercase text-[#a78bfa] mb-6"
+                  style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}>
+                  All Partners
+                </p>
+                <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-3">
+                  {BRANDS.map((brand) => (
+                    <GridLogoItem key={brand.name} brand={brand} />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

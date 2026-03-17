@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// ─── DATA ──────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const platformMenu = {
   cards: [
@@ -51,15 +51,9 @@ const platformMenu = {
     },
   ],
   footer: [
-    { label: 'Customize →', href: '#' },
-    { label: 'Features →', href: '/platform/features' },
+    { label: 'Customize â†’', href: '#' },
+    { label: 'Features â†’', href: '/platform/features' },
   ],
-  portalCard: {
-    title: 'Explore all Platform Features →',
-    desc: 'Every tool you need, from intelligent delivery to AI-powered assessments.',
-    gradient: 'linear-gradient(135deg, #1a0a0f 0%, #881337 50%, #e11d48 100%)',
-    href: '/platform/features',
-  },
 };
 
 const solutionsMenu = {
@@ -74,11 +68,11 @@ const solutionsMenu = {
     links: ['Software', 'Finance', 'Healthcare', 'Education', 'Consulting', 'Tech / IT Services', 'Manufacturing'],
   },
   card: {
-    title: 'TeachGrid Enterprise →',
+    title: 'TeachGrid Enterprise â†’',
     desc: 'Your all-in-one AI-powered learning infrastructure built for scale.',
     gradient: 'linear-gradient(135deg, #0a0a14 0%, #1e1040 40%, #c2410c 130%)',
   },
-  footer: ['Security →', 'Private Deployments →'],
+  footer: ['Security â†’', 'Private Deployments â†’'],
 };
 
 const resourcesMenu = {
@@ -91,7 +85,7 @@ const resourcesMenu = {
     links: ['Submit Feedback', 'Feature Requests', 'Product Suggestions'],
   },
   card: {
-    title: 'Customer Stories →',
+    title: 'Customer Stories â†’',
     desc: 'Explore education case studies and success stories from TeachGrid users.',
     gradient: 'linear-gradient(135deg, #0c4a6e 0%, #0369a1 40%, #34d399 100%)',
   },
@@ -107,13 +101,13 @@ const companyMenu = {
     links: ['Customers', 'Testimonials', 'Careers', 'Contact', 'Comparison'],
   },
   card: {
-    title: 'Join our mission →',
+    title: 'Join our mission â†’',
     desc: 'We are looking for passionate individuals to help reshape the future of education.',
     gradient: 'linear-gradient(135deg, #4c1d95 0%, #5b21b6 40%, #7c3aed 100%)',
   },
 };
 
-// ─── SHARED COMPONENTS ─────────────────────────────────────────────────────────
+// â”€â”€â”€ SHARED COMPONENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mb-5">
@@ -175,7 +169,7 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
   </Link>
 );
 
-// ─── NAVBAR ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ NAVBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -217,37 +211,37 @@ const Navbar = () => {
   ];
 
   const dropVariants: any = {
-    hidden: {
-      opacity: 0,
-      y: 0,
-      x: '-50%',
+    hidden: { 
+      opacity: 0, 
+      y: 0, 
+      x: '-50%', 
       scale: 0.99,
       clipPath: 'inset(0% 0% 100% 0%)'
     },
-    visible: {
-      opacity: 1,
-      y: 8,
-      x: '-50%',
+    visible: { 
+      opacity: 1, 
+      y: 8, 
+      x: '-50%', 
       scale: 1,
       clipPath: 'inset(0% 0% 0% 0%)',
-      transition: {
-        duration: 0.5,
+      transition: { 
+        duration: 0.5, 
         ease: [0.16, 1, 0.3, 1],
         clipPath: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
         y: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
-      }
+      } 
     },
-    exit: {
-      opacity: 0,
-      y: 2,
-      x: '-50%',
+    exit: { 
+      opacity: 0, 
+      y: 2, 
+      x: '-50%', 
       scale: 0.995,
       clipPath: 'inset(0% 0% 100% 0%)',
-      transition: {
-        duration: 0.2,
+      transition: { 
+        duration: 0.2, 
         ease: [0.7, 0, 0.84, 0],
         clipPath: { duration: 0.15, ease: [0.7, 0, 0.84, 0] }
-      }
+      } 
     },
   };
 
@@ -347,7 +341,7 @@ const Navbar = () => {
                       <motion.div initial="hidden" animate="visible" custom={0} variants={staggerVariants}>
                         <div className="px-8 pt-7 pb-0 flex items-center gap-2">
                           <span className="text-[14px] font-semibold text-[#111110]">Products</span>
-                          <span className="text-[#c4c4c0] text-[14px]">→</span>
+                          <span className="text-[#c4c4c0] text-[14px]">â†’</span>
                         </div>
                         <div className="grid grid-cols-2 divide-x divide-[#f0f0ee] mt-5">
                           {/* Left: Cards */}
@@ -385,18 +379,9 @@ const Navbar = () => {
                                 </motion.div>
                               ))}
                             </div>
-
-                            {/* ── REPLACED: plain green box → GradientCard ── */}
-                            <motion.div custom={3} variants={staggerVariants} className="mt-auto">
-                              <GradientCard
-                                gradient={platformMenu.portalCard.gradient}
-                                title={platformMenu.portalCard.title}
-                                desc={platformMenu.portalCard.desc}
-                                href={platformMenu.portalCard.href}
-                                className="w-full h-[112px]"
-                              />
+                            <motion.div custom={3} variants={staggerVariants} className="w-full h-[112px] rounded-xl relative overflow-hidden flex-shrink-0" style={{ background: 'linear-gradient(135deg, #059669 0%, #0d9488 45%, #0ea5e9 100%)' }}>
+                              <Grain />
                             </motion.div>
-
                           </div>
                         </div>
 
@@ -494,7 +479,6 @@ const Navbar = () => {
                         </div>
                       </motion.div>
                     )}
-
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -504,16 +488,16 @@ const Navbar = () => {
           {/* CTA buttons */}
           <div className="flex items-center gap-2 md:gap-3">
             <Link
-              href="/get-started"
+              href="/login"
               className="hidden sm:block text-[14px] md:text-[15px] text-[#4b5563] hover:text-[#111110] transition-all duration-300 px-3 py-2 hover:translate-y-[-1px]"
             >
-              Book a Demo
+              Contact Sales
             </Link>
             <Link
-              href="/login"
+              href="/get-started"
               className="bg-[#111110] hover:bg-[#2d2d2b] text-white px-4 md:px-6 py-[8px] md:py-[10px] rounded-full text-[13px] md:text-[14.5px] font-medium transition-all duration-300 ease-out active:scale-[0.96] hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.3)] hover:translate-y-[-1px]"
             >
-              Login
+              Book a Demo
             </Link>
             <button
               className="md:hidden p-2 text-[#374151] hover:text-black transition-colors duration-300"
@@ -526,7 +510,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* ── MOBILE MENU ──────────────────────────────────────────────────────── */}
+      {/* â”€â”€ MOBILE MENU â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -628,20 +612,6 @@ const Navbar = () => {
                                         </div>
                                       </Link>
                                     ))}
-
-                                    {/* Mobile portal card CTA */}
-                                    <Link
-                                      href={platformMenu.portalCard.href}
-                                      className="mt-2 mx-1 rounded-xl overflow-hidden relative h-[80px] flex items-end p-4"
-                                      style={{ background: platformMenu.portalCard.gradient }}
-                                      onClick={() => setMobileOpen(false)}
-                                    >
-                                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-                                      <p className="relative z-10 text-white font-semibold text-[13px] leading-snug">
-                                        {platformMenu.portalCard.title}
-                                      </p>
-                                    </Link>
-
                                   </div>
                                 </motion.div>
                               )}
@@ -669,18 +639,18 @@ const Navbar = () => {
                   className="flex flex-col gap-3 pt-8"
                 >
                   <Link
-                    href="/get-started"
+                    href="/login"
                     className="text-center py-3.5 rounded-xl border border-slate-200 font-medium text-[#111110] text-[16px] hover:bg-slate-50 transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
-                    Book a Demo
+                    Contact Sales
                   </Link>
                   <Link
-                    href="/login"
+                    href="/get-started"
                     className="text-center py-4 rounded-full bg-[#111110] text-white font-medium text-[16px] shadow-lg shadow-black/10 active:scale-[0.98] transition-all"
                     onClick={() => setMobileOpen(false)}
                   >
-                    Login
+                    Book a Demo
                   </Link>
                 </motion.div>
               </div>

@@ -122,7 +122,7 @@ const Footer = () => {
             <Link href="/">
               <img src="/logo.png" alt="TeachGrid Logo" className="h-6 md:h-7 w-auto brightness-0 invert opacity-80" />
             </Link>
-            <p className="text-[11px] md:text-[12px] text-white/30 font-medium tracking-tight">© 2026 TeachGrid Inc.</p>
+            <p className="text-[11px] md:text-[12px] text-white/30 font-medium tracking-tight">© 2026 HashInkludes. All rights reserved.</p>
           </div>
           <div className="flex items-center gap-6 md:gap-10 text-[11px] md:text-[12px] font-medium text-white/40 tracking-tight flex-wrap">
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
