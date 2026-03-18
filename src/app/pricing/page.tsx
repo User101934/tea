@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ArrowRight, Zap, ShieldCheck, Sparkles, Globe, Mail, Users, HardDrive, HelpCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 
 const PricingPage = () => {
     const [isYearly, setIsYearly] = useState(true);
@@ -250,7 +250,7 @@ const PricingPage = () => {
                 </div>
             </main>
 
-            <Footer />
+            
         </div>
     );
 };

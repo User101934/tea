@@ -8,11 +8,10 @@ import PlatformSection from '@/components/PlatformSection';
 import IndustryCarousel from '@/components/IndustryCarousel';
 import PlatformShowcase from '@/components/PlatformShowcase';
 import InteractiveShowcase from '@/components/InteractiveShowcase';
-import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
       <main className="flex-grow">
         <Hero />
@@ -20,57 +19,85 @@ export default function Home() {
         <ValueProps />
         <PlatformSection />
         <IndustryCarousel />
-        <PlatformShowcase />
-        <InteractiveShowcase />
 
-        {/* Final CTA — Dark grained section */}
-        <section className="relative py-24 md:py-40 overflow-hidden" style={{ backgroundColor: '#0f0e0d' }}>
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=85')`,
-              filter: 'grayscale(100%) contrast(1.1) brightness(0.28)',
-            }}
-          />
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at center, rgba(15,14,13,0.0) 0%, rgba(15,14,13,0.55) 60%, rgba(15,14,13,0.92) 100%)' }}
-          />
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              opacity: 0.28,
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E")`,
-              backgroundSize: '140px 140px',
-            }}
-          />
-          <div
-            className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-            style={{ background: 'linear-gradient(to bottom, transparent, #111110)' }}
-          />
+        {/* --- EXACT REPLICA OF THE SPREAD HONEYCOMB GRID --- */}
+        <section className="relative py-32 overflow-hidden flex flex-col items-center justify-center bg-gradient-to-r from-blue-50/50 via-white to-orange-50/50">
 
-          <div className="relative z-10 container mx-auto px-6 text-center">
-            <h2 className="text-[clamp(32px,6vw,88px)] md:text-7xl font-serif tracking-tight text-white mb-10 md:mb-14 leading-[1.05]">
-              Ready to transform{' '}
-              <br className="hidden md:block" />
-              your learning experience?
-            </h2>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
-              <button
-                className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5 text-[15px] md:text-base rounded-full font-semibold transition-all active:scale-[0.98]"
-                style={{ backgroundColor: '#ffffff', color: '#0f0e0d' }}
-              >
-                Get Started Free
-              </button>
-              <button className="text-[15px] md:text-base font-medium text-white/50 hover:text-white transition-colors flex items-center gap-2 group">
-                Watch TeachGrid in Action
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+          <h1 className="relative z-10 max-w-3xl text-center text-5xl font-medium tracking-tighter md:text-6xl mb-24 text-slate-900">
+            The only learning platform you need to <br />
+            <span className="italic font-serif text-slate-500">Transform Education</span>
+          </h1>
+
+          {/* The Grid Container - Matching the staggered layout in your image */}
+          <div className="flex items-center justify-center gap-6 md:gap-10">
+
+            {/* Column 1 (Single Icon) */}
+            <div className="flex flex-col">
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/nextjs-icon.svg" />
             </div>
+
+            {/* Column 2 (Two Icons) */}
+            <div className="flex flex-col gap-16 -mt-8">
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/tailwind-icon.svg" />
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-icon.svg" />
+            </div>
+
+            {/* Column 3 (Three Icons - Center) */}
+            <div className="flex flex-col gap-16 -mt-16">
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/github-icon.svg" />
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/laravel-icon.svg" />
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/gatsby-icon.svg" />
+            </div>
+
+            {/* Column 4 (Two Icons) */}
+            <div className="flex flex-col gap-16 -mt-8">
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vite-icon.svg" />
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/sketch-icon.svg" />
+            </div>
+
+            {/* Column 5 (Three Icons) */}
+            <div className="flex flex-col gap-16 -mt-16">
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vercel-icon.svg" />
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-icon.svg" />
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/nike-icon.svg" />
+            </div>
+
+            {/* Column 6 (Two Icons) */}
+            <div className="flex flex-col gap-16 -mt-8">
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/slack-icon.svg" />
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/linkedin-icon.svg" />
+            </div>
+
+            {/* Column 7 (Single Icon) */}
+            <div className="flex flex-col">
+              <IconCard src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/notion-icon.svg" />
+            </div>
+
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-32">
+            <button className="px-10 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-colors">
+              Get Started Free
+            </button>
+            <button className="text-slate-500 hover:text-slate-900 flex items-center gap-2 group transition-colors">
+              Watch TeachGrid in Action
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </section>
+
+        <InteractiveShowcase />
+        <PlatformShowcase />
       </main>
-      <Footer />
+    </div>
+  );
+}
+
+// Exact Icon Card styling from the image: Large white rounded squares with soft shadows
+function IconCard({ src }: { src: string }) {
+  return (
+    <div className="flex size-24 md:size-28 items-center justify-center bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 transition-transform hover:scale-105">
+      <img src={src} alt="Logo" className="size-10 md:size-12 object-contain" />
     </div>
   );
 }

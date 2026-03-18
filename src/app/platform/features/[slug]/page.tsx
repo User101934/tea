@@ -1,7 +1,5 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import SocialProof from '@/components/SocialProof';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { platformFeatures } from '@/lib/platform-features';
 import { notFound } from 'next/navigation';
@@ -115,9 +113,6 @@ export default function PlatformFeaturePage({ params }: { params: { slug: string
                 </section>
 
             </main>
-            <SocialProof />
-
-            <Footer />
         </div>
     );
 }

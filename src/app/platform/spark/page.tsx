@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import SocialProof from '@/components/SocialProof';
+
 import { ArrowRight, Zap, Target, LineChart } from 'lucide-react';
 
 export default function SparkPage() {
@@ -101,9 +100,7 @@ export default function SparkPage() {
                 </section>
 
             </main>
-            <SocialProof />
-
-            <Footer />
+            
         </div>
     );
 }

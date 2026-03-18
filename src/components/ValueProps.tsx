@@ -3,60 +3,35 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+import { GraduationCap, Library, Building2 } from "lucide-react";
+
 const ValueProps = () => {
     const props = [
-        {
-            title: "For Organizations",
-            href: "/solutions/organizations",
-            description:
-                "Deliver scalable, AI-powered training programs tailored to your organization's goals with zero friction setup.",
-            svg: (
-                // Org chart / hierarchy — represents team structure of an organization
-                <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
-                    <circle cx="36" cy="16" r="7" stroke="#6366f1" strokeWidth="1.8" fill="#eef2ff"/>
-                    <circle cx="16" cy="52" r="7" stroke="#6366f1" strokeWidth="1.8" fill="#eef2ff"/>
-                    <circle cx="56" cy="52" r="7" stroke="#6366f1" strokeWidth="1.8" fill="#eef2ff"/>
-                    <line x1="36" y1="23" x2="36" y2="33" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round"/>
-                    <line x1="36" y1="33" x2="16" y2="45" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round"/>
-                    <line x1="36" y1="33" x2="56" y2="45" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round"/>
-                </svg>
-            ),
-        },
         {
             title: "For Colleges & Universities",
             href: "/solutions/schools-colleges-universities",
             description:
                 "Empower educators and students with AI-driven content creation, delivery, and assessment tools built for academia.",
-            svg: (
-                // Graduation cap — unmistakably academic
-                <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
-                    <path d="M36 18 L62 30 L36 42 L10 30 Z" stroke="#10b981" strokeWidth="1.8" strokeLinejoin="round" fill="#d1fae5"/>
-                    <line x1="62" y1="30" x2="62" y2="46" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round"/>
-                    <circle cx="62" cy="49" r="3" fill="#10b981"/>
-                    <path d="M22 38 L22 52 Q36 58 50 52 L50 38" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                </svg>
-            ),
+            icon: <GraduationCap size={32} className="text-emerald-500" strokeWidth={1.5} />,
         },
         {
             title: "For Institutes & Academies",
             href: "/solutions/institutes-academies",
             description:
                 "Manage courses, track learner progress, and automate assessments — all from a single intelligent dashboard.",
-            svg: (
-                // Bar chart / dashboard — intelligent progress tracking
-                <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10">
-                    <rect x="10" y="14" width="52" height="38" rx="6" stroke="#f59e0b" strokeWidth="1.8" fill="#fef3c7"/>
-                    <rect x="20" y="36" width="7" height="10" rx="2" fill="#f59e0b" opacity="0.5"/>
-                    <rect x="32" y="28" width="7" height="18" rx="2" fill="#f59e0b" opacity="0.75"/>
-                    <rect x="44" y="22" width="7" height="24" rx="2" fill="#f59e0b"/>
-                    <path d="M20 34 L35 26 L52 20" stroke="#f59e0b" strokeWidth="1.6" strokeLinecap="round" strokeDasharray="2 2"/>
-                </svg>
-            ),
+            icon: <Library size={32} className="text-amber-500" strokeWidth={1.5} />,
+        },
+        {
+            title: "For Organizations",
+            href: "/solutions/organizations",
+            description:
+                "Deliver scalable, AI-powered training programs tailored to your organization's goals with zero friction setup.",
+            icon: <Building2 size={32} className="text-zinc-600" strokeWidth={1.5} />,
         },
     ];
 
     return (
-        <section className="relative py-20 md:py-40 overflow-hidden bg-white">
+        <section className="relative py-12 md:py-24 overflow-hidden bg-white">
             <style>{`
                 /* Arrow shoots right and reappears from left */
                 @keyframes arrow-shoot {
@@ -80,8 +55,8 @@ const ValueProps = () => {
                 }
             `}</style>
 
-            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-50/20 blur-[120px] rounded-full -ml-80 -mt-80" />
-            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-50/20 blur-[120px] rounded-full -mr-80 -mb-80" />
+            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-zinc-50/20 blur-[120px] rounded-full -ml-80 -mt-80" />
+            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-zinc-100/20 blur-[120px] rounded-full -mr-80 -mb-80" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-10 relative">
                 {/* Section title */}
@@ -90,9 +65,9 @@ const ValueProps = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="max-w-3xl mx-auto text-center mb-16 md:mb-32"
+                    className="max-w-3xl mx-auto text-center mb-12 md:mb-20"
                 >
-                    <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-indigo-600 font-sans mb-6 block">
+                    <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-900 font-sans mb-6 block">
                         Our Vision
                     </span>
                     <h2
@@ -115,12 +90,12 @@ const ValueProps = () => {
                             className="group relative p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] border border-[#ebebea] bg-white hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] transition-all duration-500 overflow-hidden cursor-pointer"
                         >
                             <Link href={prop.href} className="absolute inset-0 z-20" aria-label={`Learn more about ${prop.title}`} />
-                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-zinc-500/5 to-zinc-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative z-10 h-full flex flex-col">
                                 {/* Icon */}
-                                <div className="w-14 h-14 md:w-16 md:h-16 mb-8 md:mb-10 rounded-[1.25rem] bg-slate-50 flex items-center justify-center group-hover:bg-white group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
-                                    {prop.svg}
+                                <div className="w-14 h-14 md:w-16 md:h-16 mb-8 md:mb-10 rounded-[1.25rem] bg-zinc-50 flex items-center justify-center group-hover:bg-white group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
+                                    {prop.icon}
                                 </div>
 
                                 {/* Title */}
@@ -142,16 +117,16 @@ const ValueProps = () => {
                                     className="learn-more-link relative z-30 inline-flex items-center gap-2 self-start transition-transform duration-300 group-hover:translate-x-1"
                                 >
                                     <span className="relative">
-                                        <span className="text-[12px] font-bold tracking-[0.12em] uppercase text-[#111110] group-hover:text-amber-500 transition-colors duration-300 font-sans">
+                                        <span className="learn-more-link text-[12px] font-bold tracking-[0.12em] uppercase text-[#111110] group-hover:text-black transition-colors duration-300 font-sans">
                                             Explore
                                         </span>
                                         {/* Slide-in underline */}
-                                        <span className="lm-bar absolute -bottom-px left-0 right-0 h-[1.5px] bg-amber-500 block" />
+                                        <span className="lm-bar absolute -bottom-px left-0 right-0 h-[1.5px] bg-black block" />
                                     </span>
 
                                     {/* Arrow — shoots right then snaps back */}
                                     <svg
-                                        className="lm-arrow w-3 h-3 text-[#111110] group-hover:text-amber-500 transition-colors duration-300 flex-shrink-0"
+                                        className="lm-arrow w-3 h-3 text-[#111110] group-hover:text-black transition-colors duration-300 flex-shrink-0"
                                         fill="none"
                                         viewBox="0 0 14 14"
                                         stroke="currentColor"

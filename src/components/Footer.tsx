@@ -1,133 +1,119 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { Twitter, Linkedin, Github, Instagram, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a0a0a] text-white pt-16 md:pt-32 pb-12 font-sans">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
-        {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 mb-16 md:mb-32">
+    /* z-10 and -mt-12 pulls the black footer over the marquee to hide the bottom edge and white spots */
+    <footer className="w-full relative z-10 -mt-12">
+      {/* Background set to black and full width */}
+      <div className="w-full bg-[#0a0a0a] text-white pt-24 pb-12 rounded-t-[40px] md:rounded-t-[50px]">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
 
-          {/* Left: Newsletter/CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-5"
-          >
-            <p className="text-[13px] font-semibold text-[#ff6b6b] mb-4 tracking-tight">AI moves fast</p>
-            <h2 className="text-[26px] md:text-[40px] font-serif font-bold leading-[1.15] mb-6 max-w-sm tracking-tight">
-              We'll keep you up to date with the latest.
-            </h2>
-            <p className="text-[13px] text-white/40 mb-10 max-w-sm leading-relaxed">
-              Enter your business email below to receive updates from TeachGrid.{' '}
-              Please refer to our{' '}
-              <Link href="#" className="underline hover:text-white transition-colors">privacy policy</Link>{' '}
-              for details.
-            </p>
-
-            <div className="relative max-w-sm group">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-transparent border-b border-white/20 py-4 outline-none text-[15px] placeholder:text-white/30 focus:border-white transition-colors font-medium"
-              />
-              <button className="absolute right-0 bottom-4 text-white/40 group-focus-within:text-white transition-colors">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4.16666 10H15.8333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M10.8333 5L15.8333 10L10.8333 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Right: Links Grid */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10"
-          >
-            {/* Products */}
-            <div>
-              <Link href="/platform/features" className="group flex items-center gap-1 mb-6">
-                <h4 className="text-[14px] md:text-[15px] font-bold text-white tracking-tight">Products</h4>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60 group-hover:translate-x-0.5 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
+            {/* Company Info & Newsletter */}
+            <div className="lg:col-span-4 lg:pr-4 flex flex-col">
+              <Link href="/" className="inline-block mb-6">
+                <div className="flex items-center gap-2">
+                  <img src="/logo.png" alt="TeachGrid" className="h-[36px] w-auto brightness-0 invert" />
+                </div>
               </Link>
-              <ul className="space-y-3 text-[13px] md:text-[14px] text-white/60 font-medium">
-                <li><Link href="/platform/campus" className="hover:text-white transition-colors">Campus</Link></li>
-                <li><Link href="/platform/spark" className="hover:text-white transition-colors">Spark</Link></li>
-                <li><Link href="/platform/features/lxp-learner-portal" className="hover:text-white transition-colors">LXP</Link></li>
-                <li><Link href="/platform/features/mxp-mentor-portal" className="hover:text-white transition-colors">MXP</Link></li>
-                <li><Link href="/platform/features/crm-portal" className="hover:text-white transition-colors">CRM / Admin</Link></li>
-                <li><Link href="/platform/features" className="hover:text-white transition-colors">Capabilities</Link></li>
-                <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
-              </ul>
+              <p className="text-white/60 text-[14px] leading-relaxed mb-8 max-w-[320px]">
+                The all-in-one unified intelligence network built to scale and secure the future of global education and enterprise training.
+              </p>
+
+              <div className="mt-auto space-y-4">
+                <div className="flex items-start gap-3 text-white/60 text-[14px]">
+                  <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5 text-white/40" />
+                  <p>123 Innovation Drive, Tech District<br />San Francisco, CA 94105</p>
+                </div>
+                <div className="flex items-center gap-3 text-white/60 text-[14px]">
+                  <Mail className="w-5 h-5 flex-shrink-0 text-white/40" />
+                  <a href="mailto:hello@teachgrid.com" className="hover:text-white transition-colors">hello@teachgrid.com</a>
+                </div>
+              </div>
             </div>
 
-            {/* Solutions */}
-            <div>
-              <Link href="/solutions" className="group flex items-center gap-1 mb-6">
-                <h4 className="text-[14px] md:text-[15px] font-bold text-white tracking-tight">Solutions</h4>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60 group-hover:translate-x-0.5 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </Link>
-              <ul className="space-y-3 text-[13px] md:text-[14px] text-white/60 font-medium">
-                <li><Link href="/solutions/organizations" className="hover:text-white transition-colors">Technology</Link></li>
-                <li><Link href="/solutions/higher-education" className="hover:text-white transition-colors">Education</Link></li>
-                <li><Link href="/solutions/institutes" className="hover:text-white transition-colors">Higher Ed</Link></li>
-                <li><Link href="/solutions/instructional-design" className="hover:text-white transition-colors">Finance</Link></li>
-                <li><Link href="/solutions/ai-for-education" className="hover:text-white transition-colors">Healthcare</Link></li>
-                <li><Link href="/solutions/white-label" className="hover:text-white transition-colors">Consulting</Link></li>
-                <li><Link href="/solutions/api" className="hover:text-white transition-colors">API Solution</Link></li>
-              </ul>
+            {/* Navigation links */}
+            <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 lg:pl-8 mt-4 lg:mt-0">
+              <div>
+                <h4 className="font-bold mb-6 text-[15px]">Products</h4>
+                <ul className="space-y-4 text-white/50 text-[14px] font-medium">
+                  <li><Link href="/platform/campus" className="hover:text-white transition-colors">TeachGrid Campus</Link></li>
+                  <li><Link href="/platform/spark" className="hover:text-white transition-colors">TeachGrid Spark</Link></li>
+                  <li><Link href="/platform/features/lxp-learner-portal" className="hover:text-white transition-colors">LXP</Link></li>
+                  <li><Link href="/platform/features/mxp-mentor-portal" className="hover:text-white transition-colors">MXP</Link></li>
+                  <li><Link href="/platform/features/crm-portal" className="hover:text-white transition-colors">CRM Portal</Link></li>
+                  <li><Link href="/platform/features" className="hover:text-white transition-colors">All Features</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-6 text-[15px]">Solutions</h4>
+                <ul className="space-y-4 text-white/50 text-[14px] font-medium">
+                  <li><Link href="/solutions/organizations" className="hover:text-white transition-colors">For Organizations</Link></li>
+                  <li><Link href="/solutions/schools" className="hover:text-white transition-colors">Schools & Universities</Link></li>
+                  <li><Link href="/solutions/institutes" className="hover:text-white transition-colors">Institutes & Academies</Link></li>
+                  <li><Link href="/solutions/white-labelled" className="hover:text-white transition-colors">White-labelled Solution</Link></li>
+                  <li><Link href="/solutions/api" className="hover:text-white transition-colors">API Solution</Link></li>
+                  <li className="pt-3"><span className="text-white/90 font-semibold mb-2 block text-[12px] uppercase tracking-wider">Industries</span></li>
+                  <li><Link href="/solutions/software" className="hover:text-white transition-colors">Software & IT</Link></li>
+                  <li><Link href="/solutions/healthcare" className="hover:text-white transition-colors">Healthcare</Link></li>
+                  <li><Link href="/solutions/finance" className="hover:text-white transition-colors">Finance</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-6 text-[15px]">Resources</h4>
+                <ul className="space-y-4 text-white/50 text-[14px] font-medium">
+                  <li><Link href="/resources/documentation" className="hover:text-white transition-colors">Documentation</Link></li>
+                  <li><Link href="/resources/help" className="hover:text-white transition-colors">Help Center</Link></li>
+                  <li><Link href="/resources/community" className="hover:text-white transition-colors">Community & Q/A</Link></li>
+                  <li><Link href="/resources/blog" className="hover:text-white transition-colors">Blog & Insights</Link></li>
+                  <li><Link href="/resources/release-notes" className="hover:text-white transition-colors">Release Notes</Link></li>
+                  <li><Link href="/resources/feedback" className="hover:text-white transition-colors">Submit Feedback</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-6 text-[15px]">Company</h4>
+                <ul className="space-y-4 text-white/50 text-[14px] font-medium">
+                  <li><Link href="/company/about" className="hover:text-white transition-colors">About Us</Link></li>
+                  <li><Link href="/company/careers" className="hover:text-white transition-colors">Careers</Link></li>
+                  <li><Link href="/company/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
+                  <li><Link href="/company/reviews" className="hover:text-white transition-colors">Customer Reviews</Link></li>
+                  <li><Link href="/company/security" className="hover:text-white transition-colors">Security</Link></li>
+                  <li><Link href="/company/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                  <li><Link href="/company/legal" className="hover:text-white transition-colors">Legal</Link></li>
+                </ul>
+              </div>
             </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="text-[14px] md:text-[15px] font-bold text-white tracking-tight mb-6">Resources</h4>
-              <ul className="space-y-3 text-[13px] md:text-[14px] text-white/60 font-medium">
-                <li><Link href="/resources/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                <li><Link href="/resources/docs" className="hover:text-white transition-colors">Developers</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Events</Link></li>
-                <li><Link href="/resources/community" className="hover:text-white transition-colors">Community</Link></li>
-                <li><Link href="/resources/docs" className="hover:text-white transition-colors">Documentation</Link></li>
-                <li><Link href="/resources/release-notes" className="hover:text-white transition-colors">Release Notes</Link></li>
-                <li><Link href="/resources/feedback" className="hover:text-white transition-colors">Feedback</Link></li>
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h4 className="text-[14px] md:text-[15px] font-bold text-white tracking-tight mb-6">Company</h4>
-              <ul className="space-y-3 text-[13px] md:text-[14px] text-white/60 font-medium">
-                <li><Link href="/company/about" className="hover:text-white transition-colors">About</Link></li>
-                <li><Link href="/company/careers" className="hover:text-white transition-colors">Careers</Link></li>
-                <li><Link href="/company/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Newsroom</Link></li>
-                <li><Link href="/company/security" className="hover:text-white transition-colors">Security</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Trust Center</Link></li>
-                <li><Link href="/company/legal" className="hover:text-white transition-colors">Legal</Link></li>
-              </ul>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-6 md:gap-10">
-            <Link href="/">
-              <img src="/logo.png" alt="TeachGrid Logo" className="h-6 md:h-7 w-auto brightness-0 invert opacity-80" />
-            </Link>
-            <p className="text-[11px] md:text-[12px] text-white/30 font-medium tracking-tight">© 2026 HashInkludes. All rights reserved.</p>
           </div>
-          <div className="flex items-center gap-6 md:gap-10 text-[11px] md:text-[12px] font-medium text-white/40 tracking-tight flex-wrap">
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-white/10 pt-8 flex flex-col xl:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-4 xl:gap-6 order-2 xl:order-1">
+              <p className="text-white/40 text-[13px] font-medium text-center md:text-left">© 2026 HashInkludes. All rights reserved.</p>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-white/40 text-[13px] font-medium order-3 xl:order-2">
+              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link href="#" className="hover:text-white transition-colors">Cookie Settings</Link>
+            </div>
+
+            <div className="flex items-center gap-5 text-white/40 order-1 xl:order-3">
+              <a href="#" aria-label="Twitter" className="hover:text-white transition-colors hover:scale-110 active:scale-95 transform">
+                <Twitter className="w-[18px] h-[18px]" />
+              </a>
+              <a href="#" aria-label="LinkedIn" className="hover:text-white transition-colors hover:scale-110 active:scale-95 transform">
+                <Linkedin className="w-[18px] h-[18px]" />
+              </a>
+              <a href="#" aria-label="GitHub" className="hover:text-white transition-colors hover:scale-110 active:scale-95 transform">
+                <Github className="w-[18px] h-[18px]" />
+              </a>
+              <a href="#" aria-label="Instagram" className="hover:text-white transition-colors hover:scale-110 active:scale-95 transform">
+                <Instagram className="w-[18px] h-[18px]" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

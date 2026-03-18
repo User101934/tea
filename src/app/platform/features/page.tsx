@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import Link from 'next/link';
 import {
     BookOpen, Users, Video, Calendar,
@@ -194,7 +194,7 @@ export default function PlatformFeaturesPage() {
 
             </main>
 
-            <Footer />
+            
         </div>
     );
 }

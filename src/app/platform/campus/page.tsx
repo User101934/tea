@@ -1,8 +1,7 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 import { ArrowRight, BookOpen, Users, ShieldCheck } from 'lucide-react';
-import SocialProof from '@/components/SocialProof';
 
 export default function CampusPage() {
     return (
@@ -102,9 +101,7 @@ export default function CampusPage() {
 
             </main>
 
-            <SocialProof />
-
-            <Footer />
+            
         </div>
     );
 }

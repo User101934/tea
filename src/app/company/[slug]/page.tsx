@@ -1,7 +1,5 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import SocialProof from '@/components/SocialProof';
 import {
     ArrowLeft, ArrowRight, MapPin, Phone,
     Mail, Send, Globe, Facebook,
@@ -95,9 +93,6 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
                 )}
 
             </main>
-            <SocialProof />
-
-            <Footer />
         </div>
     );
 }

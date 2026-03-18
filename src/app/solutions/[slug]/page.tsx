@@ -1,7 +1,5 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import SocialProof from '@/components/SocialProof';
 import { ArrowLeft, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { solutionsData } from '@/lib/solutions-data';
 import { notFound } from 'next/navigation';
@@ -184,9 +182,6 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
                 )}
 
             </main>
-            <SocialProof />
-
-            <Footer />
         </div>
     );
 }

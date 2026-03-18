@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { ArrowLeft, ArrowRight, Search, BookOpen, MessageCircle } from 'lucide-react';
 import { resourcesData } from '@/lib/resources-data';
 import { notFound } from 'next/navigation';
@@ -125,7 +124,6 @@ export default function ResourcePage({ params }: { params: { slug: string } }) {
 
             </main>
 
-            <Footer />
         </div>
     );
 }
