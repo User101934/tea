@@ -45,9 +45,12 @@ const IndustryCarousel = () => {
     const { scrollXProgress } = useScroll({ container: scrollRef });
 
     return (
-        <section className="py-16 md:py-24 bg-white overflow-hidden">
-            <div className="max-w-[1440px] mx-auto px-6 mb-8 md:mb-10 flex items-end justify-between">
-                <h2 className="font-serif text-[clamp(26px,4vw,56px)] font-normal tracking-tight text-[#111110]">
+        <section className="relative pt-16 pb-24 md:pt-20 md:pb-32 bg-[#f8f9fb] overflow-hidden snap-start">
+            <div className="max-w-[1440px] mx-auto pl-4 md:pl-6 pr-6 md:pr-10 mb-8 md:mb-10 flex items-end justify-between relative z-10">
+                <h2
+                    className="text-[clamp(26px,4vw,56px)] font-medium tracking-tight text-[#111110] leading-[1.1]"
+                    style={{ fontFamily: "'Poppins', sans-serif" }}
+                >
                     Everything your LMS <br /> needs to succeed
                 </h2>
                 {/* Scroll progress bar — desktop only */}

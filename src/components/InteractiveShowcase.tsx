@@ -6,13 +6,7 @@ import { motion } from "framer-motion";
 
 const InteractiveShowcase = () => {
     return (
-        <section className="relative py-24 md:py-36 bg-[#f8f9fb] flex justify-center px-4 md:px-8 overflow-hidden z-0">
-            {/* ── STUNNING MESH GRADIENT BACKGROUND ── */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none z-[-1]">
-                <div className="absolute top-[-10%] left-[10%] w-[600px] h-[600px] bg-indigo-400/30 rounded-full blur-[120px] mix-blend-multiply animate-[pulse_8s_ease-in-out_infinite]" />
-                <div className="absolute bottom-[-10%] right-[10%] w-[550px] h-[550px] bg-purple-400/30 rounded-full blur-[100px] mix-blend-multiply animate-[pulse_10s_ease-in-out_infinite_reverse]" />
-                <div className="absolute top-[40%] left-[40%] w-[400px] h-[400px] bg-pink-300/20 rounded-full blur-[90px] mix-blend-multiply animate-[pulse_6s_ease-in-out_infinite]" />
-            </div>
+        <section className="relative min-h-screen flex flex-col justify-center items-center py-20 bg-[#f8f9fb] px-4 md:px-8 overflow-hidden z-0 snap-start">
 
             <div className="w-full max-w-[1340px] relative z-10">
 
@@ -23,10 +17,13 @@ const InteractiveShowcase = () => {
                     viewport={{ once: true }}
                     className="mb-12 md:mb-16"
                 >
-                    <p className="text-xs uppercase tracking-[0.2em] text-indigo-600 font-bold mb-3">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-500 font-bold mb-3">
                         Founder’s Vision
                     </p>
-                    <h2 className="font-serif text-[clamp(32px,4vw,54px)] leading-[1.1] text-[#111110]">
+                    <h2
+                        className="text-[clamp(32px,5vw,54px)] leading-[1.05] tracking-[-0.04em] text-[#111110] font-medium"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                    >
                         Why TeachGrid exists
                     </h2>
                 </motion.div>
@@ -43,7 +40,7 @@ const InteractiveShowcase = () => {
                     <div className="absolute top-0 left-0 w-[54%] h-full z-10 group" style={{ filter: 'drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.08))' }}>
                         {/* Gradient Outline Border */}
                         <div
-                            className="absolute inset-0 bg-gradient-to-br from-gray-900 via-[#111110] to-gray-800 rounded-[38px] transition-opacity duration-500"
+                            className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-200 rounded-[38px] transition-opacity duration-500"
                             style={{ clipPath: 'polygon(0 0, 100% 0, 86% 100%, 0 100%)' }}
                         />
                         {/* Inner Box Content */}
@@ -58,19 +55,22 @@ const InteractiveShowcase = () => {
                                 {/* Quote */}
                                 <div className="relative pt-4">
                                     <Quote className="absolute -top-6 -left-8 w-16 h-16 text-indigo-500/10 rotate-180" />
-                                    <p className="text-[25px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10">
+                                    <p
+                                        className="text-[25px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10"
+                                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                                    >
                                         “Our goal with TeachGrid is simple — give educators the tools they need to deliver meaningful learning experiences at scale while keeping learners engaged and motivated.”
                                     </p>
                                 </div>
 
                                 {/* Persona */}
                                 <div className="flex items-center gap-4 mt-12">
-                                    <div className="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center border border-indigo-100 flex-shrink-0">
-                                        <span className="text-indigo-600 font-bold text-lg">PR</span>
+                                    <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center border border-slate-200 flex-shrink-0">
+                                        <span className="text-slate-700 font-bold text-lg">PR</span>
                                     </div>
                                     <div>
-                                        <p className="text-[#111110] font-bold text-[15px]">Prashanth Radhakrishnan</p>
-                                        <p className="text-[13px] text-gray-500 font-medium">Founder & Managing Director</p>
+                                        <p className="text-[#111110] font-bold text-[15px]" style={{ fontFamily: "'Poppins', sans-serif" }}>Prashanth Radhakrishnan</p>
+                                        <p className="text-[13px] text-gray-500 font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>Founder & Managing Director</p>
                                     </div>
                                 </div>
                             </div>
@@ -109,29 +109,32 @@ const InteractiveShowcase = () => {
                         className="w-full relative shadow-[0_12px_32px_rgba(0,0,0,0.06)] group"
                     >
                         {/* Gradient Outline Border */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-[#111110] to-gray-800 rounded-[34px] shadow-[0_0_15px_rgba(0,0,0,0.15)] transition-all duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-200 rounded-[34px] shadow-[0_0_15px_rgba(0,0,0,0.05)] transition-all duration-500" />
 
                         {/* Inner Content */}
                         <div className="relative m-[2.5px] bg-white/98 backdrop-blur-3xl rounded-[32px] p-8 md:p-12 flex flex-col overflow-hidden">
                             <div className="relative pt-6 mb-8">
                                 <Quote className="absolute top-0 -left-6 w-14 h-14 text-indigo-500/10 rotate-180" />
-                                <p className="text-[20px] md:text-[24px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10">
+                                <p
+                                    className="text-[20px] md:text-[24px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10"
+                                    style={{ fontFamily: "'Poppins', sans-serif" }}
+                                >
                                     “Our goal with TeachGrid is simple — give educators the tools they need to deliver meaningful learning experiences at scale while keeping learners engaged and motivated.”
                                 </p>
                             </div>
 
                             <div className="flex items-center gap-3 mb-10">
-                                <div className="w-10 h-10 bg-indigo-50 rounded-full flex items-center justify-center border border-indigo-100 flex-shrink-0">
-                                    <span className="text-indigo-600 font-bold text-sm">PR</span>
+                                <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center border border-slate-200 flex-shrink-0">
+                                    <span className="text-slate-700 font-bold text-sm">PR</span>
                                 </div>
                                 <div>
-                                    <p className="text-[#111110] font-bold text-[14px]">Prashanth Radhakrishnan</p>
-                                    <p className="text-[12px] text-gray-400 font-medium">Founder & Managing Director</p>
+                                    <p className="text-[#111110] font-bold text-[14px]" style={{ fontFamily: "'Poppins', sans-serif" }}>Prashanth Radhakrishnan</p>
+                                    <p className="text-[12px] text-gray-400 font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>Founder & Managing Director</p>
                                 </div>
                             </div>
 
                             <div className="mt-auto pt-4 relative">
-                                <a href="#" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#111110] text-white rounded-full font-bold text-[14px] hover:bg-indigo-600 transition-colors">
+                                <a href="#" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#111110] text-white rounded-full font-bold text-[14px] hover:bg-slate-700 transition-colors">
                                     Read more <ArrowUpRight size={16} strokeWidth={2.5} />
                                 </a>
                             </div>

@@ -57,7 +57,7 @@ const platformMenu = {
   portalCard: {
     title: 'Explore all Platform Features →',
     desc: 'Every tool you need, from intelligent delivery to AI-powered assessments.',
-    gradient: 'linear-gradient(135deg, #1a0a0f 0%, #881337 50%, #e11d48 100%)',
+    gradient: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0ea5e9 100%)',
     href: '/platform/features',
   },
 };

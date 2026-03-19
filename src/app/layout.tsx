@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "TeachGrid - AI-powered Learning Platform",
-  description: "The only learning platform you need to Transform Education. Create, deliver, and assess learning content in seconds.",
+  description: "Transform Education with AI-driven infrastructure.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head />
       <body className="antialiased">
         {children}
         <SocialProof />

@@ -30,16 +30,15 @@ const SocialProof = () => {
                 }
             `}</style>
 
-            {/* Reduced padding to shrink the overall height of the gradient strip */}
-            <div className="marquee-track pt-4 pb-16">
+            {/* Balanced padding to create perfectly centered text vertically above the overlapping footer */}
+            <div className="marquee-track pt-6 pb-[72px]">
                 {phrases.map((phrase, i) => (
                     <span
                         key={i}
-                        /* text-xl is a perfect 'medium' size compared to your previous versions */
-                        className="flex items-center gap-10 px-12 text-white font-bold text-xl md:text-xl tracking-wide whitespace-nowrap select-none"
+                        className="flex items-center text-white font-bold text-[16px] md:text-[18px] tracking-[0.01em] whitespace-nowrap select-none"
                     >
                         {phrase}
-                        <span className="ml-4 text-white/50 text-sm">✦</span>
+                        <span className="mx-12 md:mx-14 text-white text-[14px]">✦</span>
                     </span>
                 ))}
             </div>

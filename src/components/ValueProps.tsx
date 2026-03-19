@@ -8,21 +8,21 @@ import { GraduationCap, Library, Building2 } from "lucide-react";
 const ValueProps = () => {
     const props = [
         {
-            title: "For Colleges & Universities",
+            title: "Colleges & Universities",
             href: "/solutions/schools-colleges-universities",
             description:
                 "Empower educators and students with AI-driven content creation, delivery, and assessment tools built for academia.",
             icon: <GraduationCap size={32} className="text-emerald-500" strokeWidth={1.5} />,
         },
         {
-            title: "For Institutes & Academies",
+            title: "Training Institutes & Academies",
             href: "/solutions/institutes-academies",
             description:
                 "Manage courses, track learner progress, and automate assessments — all from a single intelligent dashboard.",
             icon: <Library size={32} className="text-amber-500" strokeWidth={1.5} />,
         },
         {
-            title: "For Organizations",
+            title: "Organizations",
             href: "/solutions/organizations",
             description:
                 "Deliver scalable, AI-powered training programs tailored to your organization's goals with zero friction setup.",
@@ -31,7 +31,7 @@ const ValueProps = () => {
     ];
 
     return (
-        <section className="relative py-12 md:py-24 overflow-hidden bg-white">
+        <section className="relative pt-16 pb-24 md:pt-20 md:pb-32 overflow-hidden bg-[#f8f9fb] snap-start">
             <style>{`
                 /* Arrow shoots right and reappears from left */
                 @keyframes arrow-shoot {
@@ -55,8 +55,6 @@ const ValueProps = () => {
                 }
             `}</style>
 
-            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-zinc-50/20 blur-[120px] rounded-full -ml-80 -mt-80" />
-            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-zinc-100/20 blur-[120px] rounded-full -mr-80 -mb-80" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-10 relative">
                 {/* Section title */}
@@ -71,10 +69,10 @@ const ValueProps = () => {
                         Our Vision
                     </span>
                     <h2
-                        className="text-[clamp(36px,6vw,80px)] leading-[1.05] tracking-[-0.02em] text-[#111110] font-normal"
-                        style={{ fontFamily: "'DM Serif Display', serif" }}
+                        className="text-[clamp(32px,5vw,60px)] leading-[1.05] tracking-[-0.04em] text-[#111110] font-medium italic"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
                     >
-                        Trusted. Flexible. <br /> Built for Education.
+                        Trusted Flexible <br /> Built for Education.
                     </h2>
                 </motion.div>
 
@@ -100,8 +98,8 @@ const ValueProps = () => {
 
                                 {/* Title */}
                                 <h3
-                                    className="text-[22px] md:text-[28px] mb-4 md:mb-5 text-[#111110] leading-[1.2] tracking-[-0.01em] font-normal"
-                                    style={{ fontFamily: "'DM Serif Display', serif" }}
+                                    className="text-[22px] md:text-[28px] mb-4 md:mb-5 text-[#111110] leading-[1.2] tracking-[-0.02em] font-medium"
+                                    style={{ fontFamily: "'Poppins', sans-serif" }}
                                 >
                                     {prop.title}
                                 </h3>

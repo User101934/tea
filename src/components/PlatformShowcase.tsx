@@ -44,7 +44,7 @@ const allTestimonials = [
 ];
 
 const ReviewCard = ({ item }: { item: any }) => (
-  <div className="w-[320px] md:w-[340px] flex-shrink-0 bg-white/60 backdrop-blur-xl border border-white p-6 md:p-8 rounded-[24px] md:rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-500">
+  <div className="w-[320px] md:w-[340px] flex flex-col flex-shrink-0 bg-white/60 backdrop-blur-xl border border-white p-6 md:p-8 rounded-[24px] md:rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-500">
     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-zinc-500/5 to-zinc-900/5 rounded-bl-[100px] -mr-8 -mt-8 transition-transform group-hover:scale-110 duration-500" />
 
     <Quote className="absolute top-8 right-8 w-10 h-10 text-zinc-100 group-hover:text-zinc-200 transition-colors duration-500" />
@@ -55,9 +55,11 @@ const ReviewCard = ({ item }: { item: any }) => (
       ))}
     </div>
 
-    <p className="text-[#374151] text-[15px] leading-[1.6] font-sans mb-6 relative z-10">
-      &ldquo;{item.content}&rdquo;
-    </p>
+    <div className="flex-grow mb-6 relative z-10">
+      <p className="text-[#374151] text-[15px] leading-[1.6] font-sans line-clamp-5 text-justify">
+        &ldquo;{item.content}&rdquo;
+      </p>
+    </div>
 
     <div className="flex items-center gap-4 mt-auto">
       <div className="w-10 h-10 rounded-full bg-slate-50 border-2 border-white shadow-sm flex items-center justify-center overflow-hidden flex-shrink-0 relative z-10">
@@ -73,15 +75,10 @@ const ReviewCard = ({ item }: { item: any }) => (
 
 const PlatformShowcase = () => {
   return (
-    <section className="relative py-12 md:py-24 overflow-hidden bg-[#fafafa]">
-      {/* Dynamic Background */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-zinc-100/40 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-zinc-200/40 blur-[120px] rounded-full" />
-      </div>
+    <section className="relative py-12 md:py-24 overflow-hidden bg-[#f8f9fb]">
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-10 relative z-10 mb-12 md:mb-16">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +97,7 @@ const PlatformShowcase = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-[clamp(36px,6vw,64px)] tracking-tight text-[#111110] leading-[1.05] mb-6"
-            style={{ fontFamily: "'DM Serif Display', serif" }}
+            style={{ fontFamily: "var(--font-sans)" }}
           >
             Don't just take our word for it.
           </motion.h2>
