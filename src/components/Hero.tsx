@@ -120,7 +120,7 @@ const Hero = () => {
             transition={{ delay: 0.1 }}
             className="text-[16px] md:text-[19px] text-[#4b5563] mb-10 md:mb-12 max-w-[620px] mx-auto leading-relaxed font-sans px-4 sm:px-6"
           >
-            TeachGrid is where powerful AI meets practical education solutions —
+            TeachGrid is where powerful AI meets practical education solutions -
             so you can teach and learn smarter.
           </motion.p>
 
