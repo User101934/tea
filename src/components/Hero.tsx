@@ -30,10 +30,8 @@ const Hero = () => {
   return (
     <section className="relative pt-24 pb-16 md:pt-40 md:pb-20 bg-white overflow-hidden">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap');
-
         .hero-headline {
-          font-family: 'Manrope', sans-serif;
+          font-family: var(--font-sans);
           font-weight: 400;
           font-size: clamp(40px, 6vw, 82px);
           line-height: 1.12;

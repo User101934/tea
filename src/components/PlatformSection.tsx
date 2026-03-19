@@ -51,35 +51,40 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
+  visible: {
+    opacity: 1,
+    y: 0,
     scale: 1,
-    transition: { 
-      duration: 0.8, 
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number] 
-    } 
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number]
+    }
   }
 };
 
 const PlatformSection = () => {
   return (
-    <section className="relative pb-8 pt-6 md:pb-16 md:pt-8 bg-[#f8f9fa] overflow-hidden border-y border-[#ebebea]">
-      {/* Premium Background Glows */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.6 }}
-        transition={{ duration: 2 }}
-        className="absolute top-0 right-0 w-[800px] h-[800px] bg-zinc-200/40 rounded-full blur-[120px] pointer-events-none transform translate-x-1/3 -translate-y-1/3" 
-      />
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.6 }}
-        transition={{ duration: 2, delay: 0.5 }}
-        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-zinc-200/40 rounded-full blur-[100px] pointer-events-none transform -translate-x-1/3 translate-y-1/3" 
-      />
+    <section className="relative pb-12 pt-10 md:pb-24 md:pt-16 overflow-hidden border-y border-white/10">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <img
+          src="/pl_2.jpeg"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/60" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 relative">
+        {/* Grain Texture */}
+        <div
+          className="absolute inset-0 opacity-[0.18] mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            backgroundSize: '120px 120px',
+          }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
 
         {/* ── Headline block ── */}
         <motion.div
@@ -89,30 +94,30 @@ const PlatformSection = () => {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="mb-12 md:mb-16 max-w-3xl"
         >
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-900 font-sans mb-6 inline-flex items-center gap-2"
+            className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/80 font-sans mb-6 inline-flex items-center gap-2"
           >
-            <span className="w-8 h-[2px] bg-zinc-900 block rounded-full" />
+            <span className="w-8 h-[2px] bg-white/60 block rounded-full" />
             The Process
           </motion.span>
 
           <h2
-            className="text-[clamp(36px,6vw,80px)] leading-[1.05] tracking-[-0.02em] text-[#111110] font-normal mb-8"
-            style={{ fontFamily: "'DM Serif Display', serif" }}
+            className="text-[clamp(40px,6vw,86px)] leading-[1.05] tracking-[-0.02em] text-white font-normal mb-8"
+            style={{ fontFamily: "var(--font-sans)" }}
           >
             Steps to <br />
-            <span className="text-zinc-500 italic font-serif relative">
+            <span className="text-white/60 italic relative">
               achieve success.
-              <motion.span 
+              <motion.span
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
-                className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-zinc-300 to-zinc-200 origin-left rounded-full"
+                className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-white/30 to-white/10 origin-left rounded-full"
               />
             </span>
           </h2>
@@ -132,25 +137,25 @@ const PlatformSection = () => {
             >
               <motion.path
                 initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.4 }}
+                whileInView={{ pathLength: 1, opacity: 0.3 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
                 d="M0 60C150 130 300 -10 450 60C600 130 750 -10 900 60C1050 130 1200 60 1200 60"
                 stroke="url(#lineGradient)"
-                strokeWidth="4"
+                strokeWidth="3"
                 strokeDasharray="12 12"
               />
               <defs>
                 <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#52525b" />
-                  <stop offset="50%" stopColor="#27272a" />
-                  <stop offset="100%" stopColor="#52525b" />
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.2" />
+                  <stop offset="50%" stopColor="#ffffff" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0.2" />
                 </linearGradient>
               </defs>
             </svg>
           </div>
 
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -162,44 +167,44 @@ const PlatformSection = () => {
                 key={step.number}
                 variants={itemVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-[#ffffffe6] backdrop-blur-md border border-[#ebebea] p-8 rounded-[2rem] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.06)] hover:border-zinc-300 overflow-hidden"
+                className="group relative bg-black/15 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] hover:border-white/25 overflow-hidden"
               >
                 {/* Hover Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-zinc-50/0 via-transparent to-zinc-100/0 group-hover:from-zinc-100/40 group-hover:to-zinc-50/40 transition-colors duration-500 rounded-[2rem] pointer-events-none" />
-                
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 group-hover:from-white/10 group-hover:to-white/10 transition-colors duration-500 rounded-[2rem] pointer-events-none" />
+
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-8">
-                    <span className="text-[11px] font-bold tracking-[0.16em] text-gray-400 group-hover:text-zinc-500 transition-colors duration-300 font-sans">
+                    <span className="text-[11px] font-bold tracking-[0.16em] text-white/40 group-hover:text-white/60 transition-colors duration-300 font-sans">
                       STEP {step.number}
                     </span>
                     {/* Status Indicator */}
-                    <motion.div 
+                    <motion.div
                       whileHover={{ scale: 1.1, rotate: 90 }}
                       transition={{ duration: 0.3 }}
-                      className="w-10 h-10 rounded-full bg-slate-50 group-hover:bg-zinc-100 flex items-center justify-center text-zinc-800 border border-slate-100 group-hover:border-zinc-300 transition-colors duration-300"
+                      className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-white/10 flex items-center justify-center text-white border border-white/10 group-hover:border-white/20 transition-colors duration-300"
                     >
-                      <motion.div 
+                      <motion.div
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", delay: i * 0.2 }}
-                        className="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-zinc-800 transition-colors duration-300 group-hover:shadow-[0_0_8px_rgba(0,0,0,0.15)]" 
+                        className="w-2 h-2 rounded-full bg-white/20 group-hover:bg-white transition-colors duration-300 group-hover:shadow-[0_0_8px_rgba(255,255,255,0.4)]"
                       />
                     </motion.div>
                   </div>
 
                   <h3
-                    className="text-[#111110] text-[26px] leading-[1.2] tracking-[-0.01em] font-normal mb-4 group-hover:text-black transition-colors duration-300"
-                    style={{ fontFamily: "'DM Serif Display', serif" }}
+                    className="text-white text-[26px] leading-[1.2] tracking-[-0.01em] font-medium mb-4 transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-sans)" }}
                   >
                     {step.headline}
                   </h3>
 
-                  <p className="text-[15px] leading-relaxed text-[#4b5563] group-hover:text-[#374151] transition-colors font-sans">
+                  <p className="text-[15px] leading-relaxed text-white/70 group-hover:text-white/90 transition-colors font-sans">
                     {step.body}
                   </p>
                 </div>
 
-                <div className="relative z-10 mt-10 pt-6 border-t border-dashed border-[#ebebea] group-hover:border-zinc-300 transition-colors duration-300">
-                  <span className="inline-block text-[11px] font-semibold tracking-[0.1em] uppercase text-slate-500 group-hover:text-zinc-900 bg-slate-50 group-hover:bg-zinc-100 px-3 py-1.5 rounded-full font-sans transition-all duration-300 transform group-hover:-translate-y-0.5 shadow-sm group-hover:shadow-md">
+                <div className="relative z-10 mt-10 pt-6 border-t border-dashed border-white/10 group-hover:border-white/20 transition-colors duration-300">
+                  <span className="inline-block text-[11px] font-semibold tracking-[0.1em] uppercase text-white/60 group-hover:text-white bg-white/5 group-hover:bg-white/10 px-3 py-1.5 rounded-full font-sans transition-all duration-300 transform group-hover:-translate-y-0.5 shadow-sm group-hover:shadow-md">
                     {step.title}
                   </span>
                 </div>
@@ -214,19 +219,19 @@ const PlatformSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative mt-12 md:mt-16 pt-10 border-t border-[#ebebea] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8"
+          className="relative mt-12 md:mt-16 pt-10 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8"
         >
           <div className="flex items-center gap-4">
-            <motion.div 
+            <motion.div
               whileHover={{ rotate: 180 }}
               transition={{ duration: 0.5 }}
-              className="w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center shrink-0 cursor-pointer"
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/10 flex items-center justify-center shrink-0 cursor-pointer"
             >
-              <svg className="w-5 h-5 text-zinc-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </motion.div>
-            <p className="text-[16px] text-[#4b5563] font-sans max-w-md">
+            <p className="text-[16px] text-white/70 font-sans max-w-md">
               Your journey to smarter education starts with a single step.
             </p>
           </div>
@@ -234,13 +239,13 @@ const PlatformSection = () => {
           <div className="flex items-center gap-6">
             <Link
               href="/onboarding"
-              className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full border border-zinc-200 bg-white hover:border-zinc-900 hover:bg-zinc-900 transition-all duration-300 shadow-sm hover:shadow-[0_15px_30px_-10px_rgba(0,0,0,0.15)] transform hover:-translate-y-1"
+              className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full border border-white/10 bg-white/5 hover:bg-white hover:border-white hover:bg-white transition-all duration-300 shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)] transform hover:-translate-y-1"
             >
-              <span className="text-[13px] font-bold tracking-[0.12em] uppercase text-[#111110] group-hover:text-white transition-colors duration-300 font-sans">
+              <span className="text-[13px] font-bold tracking-[0.12em] uppercase text-white group-hover:text-black transition-colors duration-300 font-sans">
                 Start Now
               </span>
-              <motion.svg 
-                className="w-4 h-4 text-[#111110] group-hover:text-white transition-all duration-300 transform group-hover:translate-x-1" 
+              <motion.svg
+                className="w-4 h-4 text-white group-hover:text-black transition-all duration-300 transform group-hover:translate-x-1"
                 fill="none" viewBox="0 0 14 14" stroke="currentColor"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2 7h10M8 3l4 4-4 4" />
