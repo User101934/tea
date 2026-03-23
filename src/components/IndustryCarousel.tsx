@@ -45,14 +45,12 @@ const IndustryCarousel = () => {
     const { scrollXProgress } = useScroll({ container: scrollRef });
 
     return (
-        <section className="relative pt-16 pb-24 md:pt-20 md:pb-32 bg-[#f8f9fb] overflow-hidden snap-start">
-            <div className="max-w-[1440px] mx-auto pl-4 md:pl-6 pr-6 md:pr-10 mb-8 md:mb-10 flex items-end justify-between relative z-10">
+        <section className="relative pt-10 pb-16 md:pt-12 md:pb-20 bg-transparent overflow-hidden snap-start">
+            <div className="max-w-[1440px] mx-auto pl-0 pr-4 sm:pr-4 md:pr-6 mb-6 md:mb-8 flex items-end justify-between relative z-10">
                 <h2
-                    className="text-[clamp(26px,4vw,56px)] font-medium tracking-tight text-[#111110] leading-[1.1]"
+                    className="text-[clamp(22px,3.5vw,42px)] font-medium tracking-[-0.03em] text-[#111110] leading-[1.1]"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                    Everything your LMS <br /> needs to succeed
-                </h2>
+                >Everything your LMS needs to succeed</h2>
                 {/* Scroll progress bar — desktop only */}
                 <div className="hidden md:flex h-[3px] w-48 bg-slate-100 rounded-full relative overflow-hidden">
                     <motion.div

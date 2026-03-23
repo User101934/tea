@@ -47,17 +47,17 @@ const Hero = () => {
   }, [displayText, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <section className="relative pt-24 pb-16 md:pt-40 md:pb-20 bg-[#f8f9fb] overflow-hidden snap-start">
+    <section className="relative pt-24 pb-16 md:pt-40 md:pb-20 bg-transparent overflow-hidden snap-start">
       <style>{`
         .hero-headline {
           font-weight: 400;
-          font-size: clamp(36px, 6.5vw, 86px);
+          font-size: clamp(30px, 6.5vw, 86px);
           line-height: 1.08;
           letter-spacing: -0.01em;
           text-align: center;
           text-wrap: balance;
           color: #111111;
-          font-style: normal; /* Removed italics */
+          font-style: normal;
         }
 
         @keyframes cursor-blink {
@@ -87,13 +87,13 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
-            className="hero-headline mb-8 px-2 sm:px-4"
+            className="hero-headline mb-8 px-2 sm:px-4 min-h-[130px] sm:min-h-0 flex flex-col items-center justify-center"
           >
-            <span className="flex flex-wrap justify-center items-center gap-x-[0.3em]">
+            <span className="flex flex-wrap justify-center items-center gap-x-[0.3em] gap-y-2 max-w-[100vw]">
               <motion.span
                 layout="size"
                 transition={{ duration: 0.1, ease: "linear" }}
-                className="relative flex items-center justify-center px-4 py-1.5 sm:px-6 sm:py-2.5 bg-white/80 border border-black/[0.04] rounded-xl sm:rounded-2xl shadow-[inset_0_1px_2px_rgba(0,0,0,0.05),0_10px_20px_-5px_rgba(0,0,0,0.03)] backdrop-blur-md mr-1"
+                className="relative flex items-center justify-center px-3 py-1 sm:px-6 sm:py-2.5 bg-white/80 border border-black/[0.04] rounded-xl sm:rounded-2xl shadow-[inset_0_1px_2px_rgba(0,0,0,0.05),0_10px_20px_-5px_rgba(0,0,0,0.03)] backdrop-blur-md mr-1"
               >
                 <motion.span
                   layout="position"
@@ -118,7 +118,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[16px] md:text-[19px] text-[#4b5563] mb-10 md:mb-12 max-w-[620px] mx-auto leading-relaxed font-sans px-4 sm:px-6"
+            className="text-[15px] md:text-[19px] text-[#4b5563] mb-10 md:mb-12 max-w-[620px] mx-auto leading-relaxed font-sans px-4 sm:px-6"
           >
             TeachGrid is where powerful AI meets practical infrastructure solutions -
             so you can deliver impactful learning & teaching with intelligence.
@@ -147,23 +147,21 @@ const Hero = () => {
         </div>
 
         {/* Cards Section */}
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4 max-w-[1440px] mx-auto items-stretch mb-10 md:mb-24">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-4 max-w-[1440px] mx-auto items-stretch mb-10 md:mb-24 px-2 sm:px-0">
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="relative rounded-2xl overflow-hidden border border-white/5 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.5),0_20px_40px_-10px_rgba(0,0,0,0.3)] w-full h-[260px] sm:h-[360px] md:h-[580px] md:flex-[0_0_72%]"
+            className="relative rounded-2xl overflow-hidden border border-white/5 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.5),0_20px_40px_-10px_rgba(0,0,0,0.3)] w-full h-[280px] sm:h-[350px] md:h-[580px] md:flex-[0_0_72%]"
             style={{ background: "#0a0a0f" }}
           >
             <img src="/earth_night.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 1, filter: "brightness(0.85) saturate(1.1)" }} />
             <div className="absolute inset-0" style={{ background: "rgba(5,5,15,0.18)" }} />
+            <div className="absolute top-0 bottom-0 left-0 w-[15%] pointer-events-none z-10" style={{ background: "linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
+            <div className="absolute top-0 bottom-0 right-0 w-[15%] pointer-events-none z-10" style={{ background: "linear-gradient(to left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
 
-            {/* Top Light Fade to video top (semi-transparent) */}
-            <div className="absolute top-0 left-0 right-0 h-[30%] pointer-events-none z-10" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%)" }} />
-            {/* Bottom Light Fade to video bottom (semi-transparent) */}
-            <div className="absolute bottom-0 left-0 right-0 h-[30%] pointer-events-none z-10" style={{ background: "linear-gradient(to top, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%)" }} />
-            <div className="absolute inset-0 flex items-center justify-center z-20" style={{ padding: "6% 8%", md: "10% 12%" } as any}>
-              <div className="w-full rounded-xl overflow-hidden shadow-[0_32px_80px_-12px_rgba(0,0,0,0.9)] ring-1 ring-white/10" style={{ transform: "perspective(1200px) rotateX(3deg) rotateY(-1.5deg)", transformOrigin: "center center", width: "612px", height: "400px", maxWidth: "100%" }}>
+            <div className="absolute inset-0 flex items-center justify-center z-20 p-4 md:p-0" style={{ paddingTop: "6%", paddingBottom: "6%" }}>
+              <div className="w-full rounded-xl overflow-hidden shadow-[0_32px_80px_-12px_rgba(0,0,0,0.9)] ring-1 ring-white/10" style={{ transform: "perspective(1200px) rotateX(3deg) rotateY(-1.5deg)", transformOrigin: "center center", maxWidth: "612px", aspectRatio: "612/400" }}>
                 <video src="https://assets.jitter.video/product-import-hero-hd-20.mp4" autoPlay loop muted playsInline preload="metadata" className="block w-full h-full object-cover object-center" />
               </div>
             </div>
@@ -174,23 +172,22 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.5),0_20px_40px_-10px_rgba(0,0,0,0.3)] bg-slate-50 w-full h-[260px] sm:h-[360px] md:h-[580px] md:flex-1"
+            className="relative rounded-lg overflow-hidden group border border-slate-100 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.5),0_20px_40px_-10px_rgba(0,0,0,0.3)] bg-slate-50 w-full h-[280px] sm:h-[350px] md:h-[580px] md:flex-1"
           >
             <img src="/hero_1.jpeg" alt="Digital Education" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-[1.03]" />
 
-            {/* Top Light Fade */}
-            <div className="absolute top-0 left-0 right-0 h-[30%] pointer-events-none z-10" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%)" }} />
-            {/* Bottom Light Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-[30%] pointer-events-none z-10" style={{ background: "linear-gradient(to top, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%)" }} />
-            <div className="absolute top-8 right-8">
-              <div className="bg-white/95 backdrop-blur-xl px-4 py-2.5 rounded-full shadow-lg border border-slate-100">
-                <span className="text-xs font-bold text-slate-800 tracking-tight">AI-Powered ✦</span>
+            <div className="absolute top-0 bottom-0 left-0 w-[15%] pointer-events-none z-10" style={{ background: "linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
+            <div className="absolute top-0 bottom-0 right-0 w-[15%] pointer-events-none z-10" style={{ background: "linear-gradient(to left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
+
+            <div className="absolute top-4 right-4 sm:top-8 sm:right-8">
+              <div className="bg-white/95 backdrop-blur-xl px-3 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-lg border border-slate-100">
+                <span className="text-[10px] sm:text-xs font-bold text-slate-800 tracking-tight">AI-Powered ✦</span>
               </div>
             </div>
-            <div className="absolute bottom-8 left-8 right-8">
-              <div className="bg-white/90 backdrop-blur-xl px-5 py-3.5 rounded-2xl border border-slate-200">
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8">
+              <div className="bg-white/90 backdrop-blur-xl px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl border border-slate-200">
                 <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-indigo-600 mb-1">Education Ready</p>
-                <h3 className="text-[17px] leading-tight text-[#111110]">Impact-driven learning.</h3>
+                <h3 className="text-[14px] sm:text-[17px] leading-tight text-[#111110]">Impact-driven learning.</h3>
               </div>
             </div>
           </motion.div>

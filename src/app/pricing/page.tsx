@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Zap, ShieldCheck, Sparkles, Globe, Mail, Users, HardDrive, HelpCircle } from 'lucide-react';
+import { Check, ArrowRight, Globe, Users, HelpCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 
 
@@ -77,7 +77,6 @@ const PricingPage = () => {
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-500/5 blur-[120px]" />
                 <div className="absolute bottom-[10%] right-[-5%] w-[35%] h-[35%] rounded-full bg-purple-500/5 blur-[120px]" />
-                {/* Grain overlay */}
                 <div
                     className="absolute inset-0 opacity-[0.03]"
                     style={{
@@ -87,39 +86,41 @@ const PricingPage = () => {
                 />
             </div>
 
-            <main className="relative z-10 pt-32 pb-24 px-6">
+            <main className="relative z-10 pt-28 md:pt-32 pb-16 md:pb-24 px-4 sm:px-6">
                 <div className="max-w-7xl mx-auto">
 
                     {/* Header */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-10 md:mb-16">
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-serif mb-6 text-[#111110]"
+                            className="text-[clamp(30px,5vw,60px)] font-serif mb-4 md:mb-6 text-[#111110] leading-tight"
                         >
-                            TeachGrid pricing that scales <br className="hidden md:block" /> with your growth
+                            TeachGrid pricing that scales{' '}
+                            <br className="hidden md:block" />
+                            with your growth
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto"
+                            className="text-slate-500 text-[15px] md:text-xl max-w-2xl mx-auto px-4"
                         >
                             Pick the TeachGrid plan that fits your organization and start delivering smarter learning experiences today.
                         </motion.p>
                     </div>
 
                     {/* Billing Toggle */}
-                    <div className="flex items-center justify-center gap-4 mb-16 px-1.5 py-1.5 bg-slate-100/80 border border-slate-200 rounded-full w-fit mx-auto backdrop-blur-sm">
+                    <div className="flex items-center justify-center gap-3 mb-10 md:mb-16 px-1.5 py-1.5 bg-slate-100/80 border border-slate-200 rounded-full w-fit mx-auto backdrop-blur-sm">
                         <button
                             onClick={() => setIsYearly(false)}
-                            className={`px-8 py-2 rounded-full text-sm font-bold transition-all duration-300 ${!isYearly ? 'bg-[#111110] text-white shadow-lg' : 'text-slate-500 hover:text-[#111110]'}`}
+                            className={`px-6 sm:px-8 py-2 rounded-full text-sm font-bold transition-all duration-300 ${!isYearly ? 'bg-[#111110] text-white shadow-lg' : 'text-slate-500 hover:text-[#111110]'}`}
                         >
                             Monthly
                         </button>
                         <button
                             onClick={() => setIsYearly(true)}
-                            className={`px-8 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all duration-300 ${isYearly ? 'bg-[#111110] text-white shadow-lg' : 'text-slate-500 hover:text-[#111110]'}`}
+                            className={`px-6 sm:px-8 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all duration-300 ${isYearly ? 'bg-[#111110] text-white shadow-lg' : 'text-slate-500 hover:text-[#111110]'}`}
                         >
                             Yearly
                             <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold tracking-tight transition-colors ${isYearly ? 'bg-indigo-400 text-white' : 'bg-indigo-500 text-white'}`}>Save 16%</span>
@@ -127,49 +128,48 @@ const PricingPage = () => {
                     </div>
 
                     {/* Pricing Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 mb-16 md:mb-24">
                         {plans.map((plan, idx) => (
                             <motion.div
                                 key={plan.name}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 + idx * 0.1 }}
-                                className={`relative group p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden ${plan.popular
+                                className={`relative group p-6 sm:p-8 rounded-[1.75rem] md:rounded-[2rem] border transition-all duration-500 overflow-hidden ${plan.popular
                                         ? 'bg-white border-indigo-100 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.06)]'
                                         : 'bg-white border-slate-100 hover:border-slate-200'
                                     }`}
                             >
                                 {plan.popular && (
-                                    <div className="absolute top-0 right-0 p-4">
+                                    <div className="absolute top-0 right-0 p-3 sm:p-4">
                                         <div className="px-3 py-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-[10px] font-bold uppercase tracking-wider text-white">
                                             Most Popular
                                         </div>
                                     </div>
                                 )}
 
-                                {/* Glow effect on hover */}
                                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity bg-gradient-to-br ${plan.accent}`} />
 
                                 <div className="relative z-10">
-                                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">{plan.name}</p>
+                                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-3 md:mb-4">{plan.name}</p>
                                     <div className="flex items-baseline gap-1 mb-2">
-                                        <span className="text-4xl md:text-5xl font-serif text-[#111110]">${plan.price}</span>
+                                        <span className="text-[40px] md:text-5xl font-serif text-[#111110]">${plan.price}</span>
                                         <span className="text-slate-400 text-sm">/ month</span>
                                     </div>
-                                    <p className="text-xs text-slate-400 mb-8">{isYearly ? 'billed annually' : 'billed monthly'}</p>
-                                    <p className="text-sm font-medium text-slate-600 mb-8 border-l-2 border-indigo-500 pl-4">{plan.description}</p>
+                                    <p className="text-xs text-slate-400 mb-6 md:mb-8">{isYearly ? 'billed annually' : 'billed monthly'}</p>
+                                    <p className="text-sm font-medium text-slate-600 mb-6 md:mb-8 border-l-2 border-indigo-500 pl-4">{plan.description}</p>
 
-                                    <button className={`w-full py-4 rounded-xl font-bold transition-transform active:scale-95 mb-10 ${plan.buttonStyle}`}>
+                                    <button className={`w-full py-3.5 md:py-4 rounded-xl font-bold transition-transform active:scale-95 mb-8 md:mb-10 text-[14px] ${plan.buttonStyle}`}>
                                         Get Started
                                     </button>
 
-                                    <div className="space-y-4">
+                                    <div className="space-y-3 md:space-y-4">
                                         {plan.features.map((feature, fIdx) => (
                                             <div key={fIdx} className="flex gap-3 items-start">
                                                 <div className="mt-1 w-4 h-4 rounded-full bg-indigo-50 flex items-center justify-center flex-shrink-0">
                                                     <Check size={10} className="text-indigo-600" />
                                                 </div>
-                                                <span className={`text-[13px] leading-relaxed ${feature.includes('plus') ? 'font-bold text-[#111110]' : 'text-slate-500'}`}>
+                                                <span className={`text-[12px] sm:text-[13px] leading-relaxed ${feature.includes('plus') ? 'font-bold text-[#111110]' : 'text-slate-500'}`}>
                                                     {feature}
                                                 </span>
                                             </div>
@@ -185,72 +185,66 @@ const PricingPage = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 text-center mb-24 backdrop-blur-sm"
+                        className="p-6 sm:p-8 rounded-[1.75rem] md:rounded-[2rem] bg-slate-50 border border-slate-100 text-center mb-16 md:mb-24 backdrop-blur-sm"
                     >
-                        <p className="text-slate-500 text-sm">
+                        <p className="text-slate-500 text-[13px] sm:text-sm">
                             <span className="text-indigo-600 font-bold mr-2 uppercase tracking-widest italic">Extra Usage:</span>
                             $2.99 per Active Learner / month, $12.99 per Active Instructor / month + Tax
                         </p>
                     </motion.div>
 
                     {/* Academic & Enterprise Section */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Card 1: Academic & Corporate */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="group p-10 rounded-[2.5rem] bg-slate-50/50 border border-slate-100 hover:border-slate-200 transition-all duration-500 overflow-hidden relative"
+                            className="group p-8 sm:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-slate-50/50 border border-slate-100 hover:border-slate-200 transition-all duration-500 overflow-hidden relative"
                         >
                             <div className="absolute inset-0 bg-indigo-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity" />
-
                             <div className="relative z-10">
-                                <div className="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-8">
-                                    <Users size={28} className="text-indigo-600" />
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-6 sm:mb-8">
+                                    <Users size={24} className="text-indigo-600 sm:w-7 sm:h-7" />
                                 </div>
-                                <h3 className="text-3xl font-serif mb-4 text-[#111110]">Academic & Corporate</h3>
-                                <p className="text-slate-500 mb-8 max-w-sm">For large-scale deployments or universities with 500+ learners. Tailored infrastructure and dedicated support.</p>
-                                <button className="px-8 py-3 rounded-full border border-slate-200 bg-white text-[#111110] font-bold transition-all flex items-center gap-2 group/btn hover:bg-slate-50">
+                                <h3 className="text-[24px] sm:text-3xl font-serif mb-3 md:mb-4 text-[#111110]">Academic & Corporate</h3>
+                                <p className="text-slate-500 mb-6 md:mb-8 max-w-sm text-[14px] sm:text-base">For large-scale deployments or universities with 500+ learners. Tailored infrastructure and dedicated support.</p>
+                                <button className="px-7 sm:px-8 py-3 rounded-full border border-slate-200 bg-white text-[#111110] font-bold transition-all flex items-center gap-2 group/btn hover:bg-slate-50 text-[14px]">
                                     Contact Sales
-                                    <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                                 </button>
                             </div>
                         </motion.div>
 
-                        {/* Card 2: White Label */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="group p-10 rounded-[2.5rem] bg-slate-50/50 border border-slate-100 hover:border-slate-200 transition-all duration-500 overflow-hidden relative"
+                            className="group p-8 sm:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-slate-50/50 border border-slate-100 hover:border-slate-200 transition-all duration-500 overflow-hidden relative"
                         >
                             <div className="absolute inset-0 bg-purple-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity" />
-
                             <div className="relative z-10">
-                                <div className="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-8">
-                                    <Globe size={28} className="text-purple-600" />
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-6 sm:mb-8">
+                                    <Globe size={24} className="text-purple-600 sm:w-7 sm:h-7" />
                                 </div>
-                                <h3 className="text-3xl font-serif mb-4 text-[#111110]">White-Label Solution</h3>
-                                <p className="text-slate-500 mb-8 max-w-sm">Host TeachGrid on your own domain and brand. Completely remove all TeachGrid traces and make it yours.</p>
-                                <button className="px-8 py-3 rounded-full border border-slate-200 bg-white text-[#111110] font-bold transition-all flex items-center gap-2 group/btn hover:bg-slate-50">
+                                <h3 className="text-[24px] sm:text-3xl font-serif mb-3 md:mb-4 text-[#111110]">White-Label Solution</h3>
+                                <p className="text-slate-500 mb-6 md:mb-8 max-w-sm text-[14px] sm:text-base">Host TeachGrid on your own domain and brand. Completely remove all TeachGrid traces and make it yours.</p>
+                                <button className="px-7 sm:px-8 py-3 rounded-full border border-slate-200 bg-white text-[#111110] font-bold transition-all flex items-center gap-2 group/btn hover:bg-slate-50 text-[14px]">
                                     Contact Sales
-                                    <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                                 </button>
                             </div>
                         </motion.div>
                     </div>
 
                     {/* FAQ Quick Link */}
-                    <div className="mt-20 text-center">
-                        <p className="text-slate-400 flex items-center justify-center gap-2">
-                            <HelpCircle size={18} />
+                    <div className="mt-14 md:mt-20 text-center">
+                        <p className="text-slate-400 flex items-center justify-center gap-2 text-[13px] sm:text-base">
+                            <HelpCircle size={16} />
                             Have questions about our plans? <a href="#" className="text-indigo-600 hover:text-indigo-500 underline underline-offset-4 decoration-indigo-600/30">View FAQ</a>
                         </p>
                     </div>
                 </div>
             </main>
-
-            
         </div>
     );
 };

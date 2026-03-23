@@ -179,14 +179,32 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [mobilePlatformOpen, setMobilePlatformOpen] = useState(false);
+  const [mobileOpenSection, setMobileOpenSection] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastScrollY = useRef(0);
+
+  const toggleMobileSection = (section: string) => {
+    setMobileOpenSection(prev => prev === section ? null : section);
+  };
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', onScroll);
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 10);
+      
+      // Hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        setIsHidden(true);
+        setActiveMenu(null); // Optional: close dropdowns when scrolling down
+      } else {
+        setIsHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -265,11 +283,13 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
+    <div className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out",
+      isHidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"
+    )}>
       {/* Top bar */}
       <nav className={cn(
-        'bg-white transition-shadow duration-300',
-        isScrolled ? 'shadow-[0_1px_0_0_rgba(0,0,0,0.08)]' : 'border-b border-[#ececea]'
+        'bg-background transition-shadow duration-300'
       )}>
         <div className="max-w-full mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between h-[60px] md:h-[68px] relative">
 
@@ -331,7 +351,7 @@ const Navbar = () => {
                     exit="exit"
                     onMouseEnter={() => open(activeMenu)}
                     onMouseLeave={scheduleClose}
-                    className="absolute top-2 left-1/2 bg-white/90 backdrop-blur-xl rounded-2xl overflow-hidden pointer-events-auto"
+                    className="absolute top-2 left-1/2 bg-pureWhite/98 backdrop-blur-xl rounded-2xl overflow-hidden pointer-events-auto border border-neutral-80 shadow-[0_24px_64px_-12px_rgba(0,0,0,0.12)]"
                     style={{
                       width:
                         activeMenu === 'Platform' ? 820
@@ -375,7 +395,7 @@ const Navbar = () => {
                             <div className="flex flex-col gap-1 mb-5">
                               {platformMenu.portals.map((portal, idx) => (
                                 <motion.div key={portal.label} custom={idx + 4} variants={staggerVariants}>
-                                  <Link href={portal.href} className="group flex items-center gap-3 px-4 py-4 rounded-xl hover:bg-[#000]/[0.02] transition-all duration-300 ease-out hover:translate-x-1">
+                                  <Link href={portal.href} className="group flex items-center gap-3 px-4 py-4 rounded-xl hover:bg-neutral-90 transition-all duration-300 ease-out hover:translate-x-1">
                                     <span className="flex-shrink-0 w-2 h-2 rounded-full mt-0.5 transition-transform duration-300 group-hover:scale-125" style={{ background: portal.color }} />
                                     <div className="flex flex-col gap-0.5">
                                       <span className="text-[17px] font-medium text-[#111110] group-hover:text-[#5b47e0] transition-colors duration-300 leading-tight">{portal.label}</span>
@@ -545,12 +565,12 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-2xl z-50 overflow-y-auto max-h-[calc(100vh-60px)]"
+              className="md:hidden absolute top-full left-0 right-0 bg-pureWhite border-b border-neutral-80 shadow-2xl z-50 overflow-y-auto max-h-[calc(100vh-60px)]"
             >
               <div className="px-6 py-8">
                 <div className="flex flex-col gap-0">
                   {navItems.map((item, idx) => {
-                    const isPlatform = item.label === 'Platform';
+                    const isOpen = mobileOpenSection === item.label;
                     return (
                       <motion.div
                         key={item.label}
@@ -558,91 +578,158 @@ const Navbar = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.05 }}
                       >
-                        {isPlatform ? (
+                        {item.hasDropdown ? (
                           <div>
                             <button
-                              className="w-full flex items-center justify-between text-[28px] text-[#111110] py-4 border-b border-slate-100 font-medium leading-tight tracking-[-0.03em] font-sans"
-                              onClick={() => setMobilePlatformOpen(!mobilePlatformOpen)}
+                              className="w-full flex items-center justify-between text-[28px] text-[#111110] py-4 border-b border-neutral-80 font-medium leading-tight tracking-[-0.03em] font-sans"
+                              onClick={() => toggleMobileSection(item.label)}
                             >
-                              Platform
+                              {item.label}
                               <ChevronDown
                                 size={20}
                                 className={cn(
                                   'transition-transform duration-200 text-[#9ca3af]',
-                                  mobilePlatformOpen ? 'rotate-180' : ''
+                                  isOpen ? 'rotate-180' : ''
                                 )}
                               />
                             </button>
 
-                            {/* Mobile Platform Submenu */}
                             <AnimatePresence>
-                              {mobilePlatformOpen && (
+                              {isOpen && (
                                 <motion.div
                                   initial={{ opacity: 0, height: 0 }}
                                   animate={{ opacity: 1, height: 'auto' }}
                                   exit={{ opacity: 0, height: 0 }}
-                                  transition={{ duration: 0.2 }}
+                                  transition={{ duration: 0.22 }}
                                   className="overflow-hidden"
                                 >
-                                  <div className="py-4 pl-2 flex flex-col gap-2">
-                                    {/* Products heading */}
-                                    <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mb-2 px-2">Products</p>
-
-                                    {/* Campus & Spark cards */}
-                                    {platformMenu.cards.map((card) => (
-                                      <Link
-                                        key={card.title}
-                                        href={card.href}
-                                        className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#f7f7f5] transition-colors"
-                                        onClick={() => setMobileOpen(false)}
-                                      >
-                                        {/* Mini gradient box */}
-                                        <div
-                                          className="flex-shrink-0 w-10 h-10 rounded-lg relative overflow-hidden"
-                                          style={{ background: card.gradient }}
+                                  {/* PLATFORM submenu */}
+                                  {item.label === 'Platform' && (
+                                    <div className="py-4 pl-2 flex flex-col gap-2">
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mb-2 px-2">Products</p>
+                                      {platformMenu.cards.map((card) => (
+                                        <Link
+                                          key={card.title}
+                                          href={card.href}
+                                          className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
                                         >
-                                          <Grain />
-                                        </div>
-                                        <div>
-                                          <p className="text-[15px] font-medium text-[#111110] leading-tight">{card.title}</p>
-                                          <p className="text-[12px] text-[#9ca3af] leading-snug mt-0.5">{card.desc}</p>
-                                        </div>
-                                      </Link>
-                                    ))}
-
-                                    {/* Portals heading */}
-                                    <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mt-4 mb-2 px-2">Portals</p>
-
-                                    {/* LXP / MXP / CRM */}
-                                    {platformMenu.portals.map((portal) => (
+                                          <div className="flex-shrink-0 w-10 h-10 rounded-lg relative overflow-hidden" style={{ background: card.gradient }}>
+                                            <Grain />
+                                          </div>
+                                          <div>
+                                            <p className="text-[15px] font-medium text-[#111110] leading-tight">{card.title}</p>
+                                            <p className="text-[12px] text-[#9ca3af] leading-snug mt-0.5">{card.desc}</p>
+                                          </div>
+                                        </Link>
+                                      ))}
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mt-4 mb-2 px-2">Portals</p>
+                                      {platformMenu.portals.map((portal) => (
+                                        <Link
+                                          key={portal.label}
+                                          href={portal.href}
+                                          className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
+                                        >
+                                          <span className="flex-shrink-0 w-2 h-2 rounded-full" style={{ background: portal.color }} />
+                                          <div>
+                                            <p className="text-[15px] font-medium text-[#111110] leading-tight">{portal.label}</p>
+                                            <p className="text-[12px] text-[#9ca3af] leading-snug mt-0.5">{portal.desc}</p>
+                                          </div>
+                                        </Link>
+                                      ))}
                                       <Link
-                                        key={portal.label}
-                                        href={portal.href}
-                                        className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                        href={platformMenu.portalCard.href}
+                                        className="mt-2 mx-1 rounded-xl overflow-hidden relative h-[80px] flex items-end p-4"
+                                        style={{ background: platformMenu.portalCard.gradient }}
                                         onClick={() => setMobileOpen(false)}
                                       >
-                                        <span className="flex-shrink-0 w-2 h-2 rounded-full" style={{ background: portal.color }} />
-                                        <div>
-                                          <p className="text-[15px] font-medium text-[#111110] leading-tight">{portal.label}</p>
-                                          <p className="text-[12px] text-[#9ca3af] leading-snug mt-0.5">{portal.desc}</p>
-                                        </div>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+                                        <p className="relative z-10 text-white font-semibold text-[13px] leading-snug">{platformMenu.portalCard.title}</p>
                                       </Link>
-                                    ))}
+                                    </div>
+                                  )}
 
-                                    {/* Mobile portal card CTA */}
-                                    <Link
-                                      href={platformMenu.portalCard.href}
-                                      className="mt-2 mx-1 rounded-xl overflow-hidden relative h-[80px] flex items-end p-4"
-                                      style={{ background: platformMenu.portalCard.gradient }}
-                                      onClick={() => setMobileOpen(false)}
-                                    >
-                                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-                                      <p className="relative z-10 text-white font-semibold text-[13px] leading-snug">
-                                        {platformMenu.portalCard.title}
-                                      </p>
-                                    </Link>
+                                  {/* SOLUTIONS submenu */}
+                                  {item.label === 'Solutions' && (
+                                    <div className="py-4 pl-2 flex flex-col gap-1">
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mb-1 px-2">{solutionsMenu.col1.heading}</p>
+                                      {solutionsMenu.col1.links.map((l) => (
+                                        <Link
+                                          key={l}
+                                          href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                          className="block px-3 py-2.5 text-[15px] font-medium text-[#111110] rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
+                                        >{l}</Link>
+                                      ))}
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mt-4 mb-1 px-2">{solutionsMenu.col1.heading2}</p>
+                                      {solutionsMenu.col1.links2.map((l) => (
+                                        <Link
+                                          key={l}
+                                          href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                          className="block px-3 py-2.5 text-[15px] font-medium text-[#111110] rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
+                                        >{l}</Link>
+                                      ))}
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mt-4 mb-1 px-2">{solutionsMenu.col2.heading}</p>
+                                      {solutionsMenu.col2.links.map((l) => (
+                                        <Link
+                                          key={l}
+                                          href={`/solutions/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                          className="block px-3 py-2.5 text-[15px] font-medium text-[#111110] rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
+                                        >{l}</Link>
+                                      ))}
+                                    </div>
+                                  )}
 
-                                  </div>
+                                  {/* RESOURCES submenu */}
+                                  {item.label === 'Resources' && (
+                                    <div className="py-4 pl-2 flex flex-col gap-1">
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mb-1 px-2">{resourcesMenu.col1.heading}</p>
+                                      {resourcesMenu.col1.links.map((l) => (
+                                        <Link
+                                          key={l}
+                                          href={`/resources/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                          className="block px-3 py-2.5 text-[15px] font-medium text-[#111110] rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
+                                        >{l}</Link>
+                                      ))}
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mt-4 mb-1 px-2">{resourcesMenu.col2.heading}</p>
+                                      {resourcesMenu.col2.links.map((l) => (
+                                        <Link
+                                          key={l}
+                                          href={`/resources/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                          className="block px-3 py-2.5 text-[15px] font-medium text-[#111110] rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
+                                        >{l}</Link>
+                                      ))}
+                                    </div>
+                                  )}
+
+                                  {/* COMPANY submenu */}
+                                  {item.label === 'Company' && (
+                                    <div className="py-4 pl-2 flex flex-col gap-1">
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mb-1 px-2">{companyMenu.col1.heading}</p>
+                                      {companyMenu.col1.links.map((l) => (
+                                        <Link
+                                          key={l}
+                                          href={`/company/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                          className="block px-3 py-2.5 text-[15px] font-medium text-[#111110] rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
+                                        >{l}</Link>
+                                      ))}
+                                      <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9ca3af] mt-4 mb-1 px-2">{companyMenu.col2.heading}</p>
+                                      {companyMenu.col2.links.map((l) => (
+                                        <Link
+                                          key={l}
+                                          href={`/company/${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                          className="block px-3 py-2.5 text-[15px] font-medium text-[#111110] rounded-xl hover:bg-[#f7f7f5] transition-colors"
+                                          onClick={() => setMobileOpen(false)}
+                                        >{l}</Link>
+                                      ))}
+                                    </div>
+                                  )}
                                 </motion.div>
                               )}
                             </AnimatePresence>

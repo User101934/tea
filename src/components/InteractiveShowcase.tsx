@@ -6,65 +6,57 @@ import { motion } from "framer-motion";
 
 const InteractiveShowcase = () => {
     return (
-        <section className="relative min-h-screen flex flex-col justify-center items-center py-20 bg-[#f8f9fb] px-4 md:px-8 overflow-hidden z-0 snap-start">
+        <section className="relative min-h-screen flex flex-col justify-center items-center py-16 md:py-20 bg-transparent px-4 md:px-8 overflow-hidden z-0 snap-start">
 
             <div className="w-full max-w-[1340px] relative z-10">
 
-                {/* ── Header Above the Outer Box ── */}
+                {/* Header */}
+                {/* Header Above the Outer Box */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-12 md:mb-16"
+                    className="mb-6 md:mb-10"
                 >
                     <p className="text-xs uppercase tracking-[0.2em] text-slate-500 font-bold mb-3">
-                        Founder’s Vision
+                        Founder's Vision
                     </p>
                     <h2
-                        className="text-[clamp(32px,5vw,54px)] leading-[1.05] tracking-[-0.04em] text-[#111110] font-medium"
+                        className="text-[clamp(28px,5vw,54px)] leading-[1.05] tracking-[-0.04em] text-[#111110] font-medium"
                         style={{ fontFamily: "'Poppins', sans-serif" }}
                     >
                         Why TeachGrid exists
                     </h2>
                 </motion.div>
 
-                {/* ── Desktop Split Layout (Visible lg and up) ── */}
+                {/* Desktop Split Layout */}
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="hidden lg:block relative w-full h-[620px]"
+                    className="hidden lg:block relative w-full h-[480px] xl:h-[520px]"
                 >
-                    {/* LEFT CARD WRAPPER WITH ULTRA-SOFT DROP SHADOW */}
-                    <div className="absolute top-0 left-0 w-[54%] h-full z-10 group" style={{ filter: 'drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.08))' }}>
-                        {/* Gradient Outline Border */}
+                    {/* LEFT CARD */}
+                    <div className="absolute top-0 left-0 w-[54%] h-full z-10" style={{ filter: 'drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.06))' }}>
                         <div
-                            className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-200 rounded-[38px] transition-opacity duration-500"
-                            style={{ clipPath: 'polygon(0 0, 100% 0, 86% 100%, 0 100%)' }}
-                        />
-                        {/* Inner Box Content */}
-                        <div
-                            className="absolute inset-[2.5px] bg-white/98 backdrop-blur-3xl rounded-[36px] p-16 flex flex-col justify-between"
+                            className="w-full h-full bg-white/95 backdrop-blur-3xl border-[2px] border-slate-200/80 rounded-[36px] p-8 xl:p-12 flex flex-col justify-between overflow-hidden"
                             style={{ clipPath: 'polygon(0 0, 100% 0, 86% 100%, 0 100%)' }}
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/40 to-white/10 pointer-events-none rounded-[36px]" />
 
-                            <div className="max-w-[80%] pr-4 relative z-10">
-
-                                {/* Quote */}
+                            <div className="max-w-[85%] pr-4 relative z-10">
                                 <div className="relative pt-4">
-                                    <Quote className="absolute -top-6 -left-8 w-16 h-16 text-indigo-500/10 rotate-180" />
+                                    <Quote className="absolute -top-6 -left-6 w-12 h-12 text-indigo-500/10 rotate-180" />
                                     <p
-                                        className="text-[25px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10"
+                                        className="text-[18px] xl:text-[22px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10"
                                         style={{ fontFamily: "'Poppins', sans-serif" }}
                                     >
-                                        “Our goal with TeachGrid is simple — give educators the tools they need to deliver meaningful learning experiences at scale while keeping learners engaged and motivated.”
+                                        "Our goal with TeachGrid is simple - give educators the tools they need to deliver meaningful learning experiences at scale while keeping learners engaged and motivated."
                                     </p>
                                 </div>
 
-                                {/* Persona */}
-                                <div className="flex items-center gap-4 mt-12">
+                                <div className="flex items-center gap-4 mt-10">
                                     <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center border border-slate-200 flex-shrink-0">
                                         <span className="text-slate-700 font-bold text-lg">PR</span>
                                     </div>
@@ -75,7 +67,6 @@ const InteractiveShowcase = () => {
                                 </div>
                             </div>
 
-                            {/* Link */}
                             <div className="mt-4 relative z-10">
                                 <a href="#" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#111110] text-white rounded-full font-bold text-[15px] hover:bg-slate-800 transition-colors group shadow-xl shadow-slate-900/10">
                                     Read more
@@ -85,7 +76,7 @@ const InteractiveShowcase = () => {
                         </div>
                     </div>
 
-                    {/* RIGHT CARD WRAPPER WITH DROP SHADOW */}
+                    {/* RIGHT CARD */}
                     <div className="absolute top-0 right-0 w-[50%] h-full z-0 group" style={{ filter: 'drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.08))' }}>
                         <div
                             className="w-full h-full bg-white/95 backdrop-blur-3xl border-[2px] border-slate-200/80 rounded-[36px] relative overflow-hidden"
@@ -100,7 +91,7 @@ const InteractiveShowcase = () => {
                     </div>
                 </motion.div>
 
-                {/* ── Mobile & Tablet Layout (Hidden directly on lg and up) ── */}
+                {/* Mobile & Tablet Layout */}
                 <div className="lg:hidden flex flex-col gap-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -112,14 +103,14 @@ const InteractiveShowcase = () => {
                         <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-slate-200 rounded-[34px] shadow-[0_0_15px_rgba(0,0,0,0.05)] transition-all duration-500" />
 
                         {/* Inner Content */}
-                        <div className="relative m-[2.5px] bg-white/98 backdrop-blur-3xl rounded-[32px] p-8 md:p-12 flex flex-col overflow-hidden">
+                        <div className="relative m-[2.5px] bg-white/98 backdrop-blur-3xl rounded-[32px] p-6 sm:p-8 md:p-12 flex flex-col overflow-hidden">
                             <div className="relative pt-6 mb-8">
                                 <Quote className="absolute top-0 -left-6 w-14 h-14 text-indigo-500/10 rotate-180" />
                                 <p
                                     className="text-[20px] md:text-[24px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10"
                                     style={{ fontFamily: "'Poppins', sans-serif" }}
                                 >
-                                    “Our goal with TeachGrid is simple — give educators the tools they need to deliver meaningful learning experiences at scale while keeping learners engaged and motivated.”
+                                    "Our goal with TeachGrid is simple — give educators the tools they need to deliver meaningful learning experiences at scale while keeping learners engaged and motivated."
                                 </p>
                             </div>
 

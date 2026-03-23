@@ -12,28 +12,27 @@ const ValueProps = () => {
             href: "/solutions/schools-colleges-universities",
             description:
                 "Empower educators and students with AI-driven content creation, delivery, and assessment tools built for academia.",
-            icon: <GraduationCap size={32} className="text-emerald-500" strokeWidth={1.5} />,
+            icon: <GraduationCap size={28} className="text-emerald-500" strokeWidth={1.5} />,
         },
         {
             title: "Training Institutes & Academies",
             href: "/solutions/institutes-academies",
             description:
                 "Manage courses, track learner progress, and automate assessments — all from a single intelligent dashboard.",
-            icon: <Library size={32} className="text-amber-500" strokeWidth={1.5} />,
+            icon: <Library size={28} className="text-amber-500" strokeWidth={1.5} />,
         },
         {
             title: "Organizations",
             href: "/solutions/organizations",
             description:
                 "Deliver scalable, AI-powered training programs tailored to your organization's goals with zero friction setup.",
-            icon: <Building2 size={32} className="text-zinc-600" strokeWidth={1.5} />,
+            icon: <Building2 size={28} className="text-zinc-600" strokeWidth={1.5} />,
         },
     ];
 
     return (
-        <section className="relative pt-16 pb-24 md:pt-20 md:pb-32 overflow-hidden bg-[#f8f9fb] snap-start">
+        <section className="relative pt-10 pb-16 md:pt-12 md:pb-20 overflow-hidden bg-transparent snap-start">
             <style>{`
-                /* Arrow shoots right and reappears from left */
                 @keyframes arrow-shoot {
                     0%   { transform: translateX(0);    opacity: 1; }
                     40%  { transform: translateX(8px);  opacity: 0; }
@@ -43,8 +42,6 @@ const ValueProps = () => {
                 .group:hover .lm-arrow {
                     animation: arrow-shoot 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
                 }
-
-                /* Underline slides in from left */
                 .lm-bar {
                     transform-origin: left center;
                     transform: scaleX(0);
@@ -55,29 +52,28 @@ const ValueProps = () => {
                 }
             `}</style>
 
-
-            <div className="max-w-7xl mx-auto px-6 md:px-10 relative">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-4 md:px-6 relative">
                 {/* Section title */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-3xl mx-auto text-center mb-12 md:mb-20"
-                >
-                    <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-900 font-sans mb-6 block">
+                <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
+                    <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-900 font-sans mb-3 md:mb-4 block">
                         Our Vision
                     </span>
                     <h2
-                        className="text-[clamp(32px,5vw,60px)] leading-[1.05] tracking-[-0.04em] text-[#111110] font-medium italic"
-                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                        style={{
+                            fontFamily: "'Poppins', sans-serif",
+                            fontSize: 'clamp(20px, 3.2vw, 38px)',
+                            lineHeight: 1.25,
+                            letterSpacing: '-0.025em',
+                            color: '#111110',
+                            marginBottom: 8
+                        }}
                     >
-                        Trusted Flexible <br /> Built for Education.
+                        Trusted Flexible Built for Education.
                     </h2>
-                </motion.div>
+                </div>
 
                 {/* Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
                     {props.map((prop, index) => (
                         <motion.div
                             key={prop.title}
@@ -85,44 +81,42 @@ const ValueProps = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="group relative p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] border border-[#ebebea] bg-white hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] transition-all duration-500 overflow-hidden cursor-pointer"
+                            className="group relative p-6 sm:p-8 md:p-8 lg:p-10 rounded-[1.5rem] md:rounded-[2rem] lg:rounded-[2rem] border border-[#ebebea] bg-white hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] transition-all duration-500 overflow-hidden cursor-pointer"
                         >
                             <Link href={prop.href} className="absolute inset-0 z-20" aria-label={`Learn more about ${prop.title}`} />
                             <div className="absolute inset-0 bg-gradient-to-br from-zinc-500/5 to-zinc-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative z-10 h-full flex flex-col">
                                 {/* Icon */}
-                                <div className="w-14 h-14 md:w-16 md:h-16 mb-8 md:mb-10 rounded-[1.25rem] bg-zinc-50 flex items-center justify-center group-hover:bg-white group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
+                                <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mb-5 md:mb-6 lg:mb-8 rounded-[1.1rem] bg-zinc-50 flex items-center justify-center group-hover:bg-white group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
                                     {prop.icon}
                                 </div>
 
                                 {/* Title */}
                                 <h3
-                                    className="text-[22px] md:text-[28px] mb-4 md:mb-5 text-[#111110] leading-[1.2] tracking-[-0.02em] font-medium"
+                                    className="text-[20px] md:text-[22px] lg:text-[26px] mb-3 md:mb-4 text-[#111110] leading-[1.2] tracking-[-0.02em] font-medium"
                                     style={{ fontFamily: "'Poppins', sans-serif" }}
                                 >
                                     {prop.title}
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-[#4b5563] text-[15px] md:text-[16px] leading-relaxed mb-8 md:mb-10 font-sans flex-grow">
+                                <p className="text-[#4b5563] text-[14px] md:text-[15px] lg:text-[16px] leading-relaxed mb-6 md:mb-8 font-sans flex-grow">
                                     {prop.description}
                                 </p>
 
-                                {/* ── Learn more — dark, sharp, editorial style ── */}
+                                {/* Learn more */}
                                 <Link
                                     href={prop.href}
                                     className="learn-more-link relative z-30 inline-flex items-center gap-2 self-start transition-transform duration-300 group-hover:translate-x-1"
                                 >
                                     <span className="relative">
-                                        <span className="learn-more-link text-[12px] font-bold tracking-[0.12em] uppercase text-[#111110] group-hover:text-black transition-colors duration-300 font-sans">
+                                        <span className="text-[12px] font-bold tracking-[0.12em] uppercase text-[#111110] group-hover:text-black transition-colors duration-300 font-sans">
                                             Explore
                                         </span>
-                                        {/* Slide-in underline */}
                                         <span className="lm-bar absolute -bottom-px left-0 right-0 h-[1.5px] bg-black block" />
                                     </span>
 
-                                    {/* Arrow — shoots right then snaps back */}
                                     <svg
                                         className="lm-arrow w-3 h-3 text-[#111110] group-hover:text-black transition-colors duration-300 flex-shrink-0"
                                         fill="none"

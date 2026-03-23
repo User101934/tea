@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 /* ─── Inline SVGs ─── */
 
 const MercuryLogo = () => (
-  <svg height="44" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="20" cy="24" r="17" stroke="#111110" strokeWidth="3.5" fill="none" />
     <circle cx="20" cy="24" r="7" fill="#111110" />
     <text x="48" y="33" fontFamily="Georgia, 'DM Serif Display', serif" fontSize="26" fontWeight="700" fill="#111110">mercury</text>
@@ -14,7 +14,7 @@ const MercuryLogo = () => (
 );
 
 const WatershedLogo = () => (
-  <svg height="44" viewBox="0 0 260 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 260 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="22" cy="24" r="18" stroke="#111110" strokeWidth="3" fill="none" />
     <path d="M6 17 Q22 31 38 17" stroke="#111110" strokeWidth="2.8" fill="none" />
     <path d="M6 25 Q22 39 38 25" stroke="#111110" strokeWidth="2.8" fill="none" />
@@ -23,7 +23,7 @@ const WatershedLogo = () => (
 );
 
 const RetoolLogo = () => (
-  <svg height="44" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="2" y="7" width="11" height="34" rx="3" fill="#111110" />
     <rect x="17" y="7" width="11" height="22" rx="3" fill="#111110" />
     <rect x="17" y="33" width="11" height="8" rx="3" fill="#111110" />
@@ -32,7 +32,7 @@ const RetoolLogo = () => (
 );
 
 const DescriptLogo = () => (
-  <svg height="44" viewBox="0 0 210 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 210 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="2" y="9" width="32" height="6" rx="3" fill="#111110" />
     <rect x="2" y="21" width="26" height="6" rx="3" fill="#111110" />
     <rect x="2" y="33" width="32" height="6" rx="3" fill="#111110" />
@@ -41,7 +41,7 @@ const DescriptLogo = () => (
 );
 
 const PerplexityLogo = () => (
-  <svg height="44" viewBox="0 0 260 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 260 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M20 4 L34 18 L20 18 L6 18 Z" stroke="#111110" strokeWidth="2.8" fill="none" strokeLinejoin="round" />
     <path d="M20 18 L34 32 L20 44 L6 32 Z" stroke="#111110" strokeWidth="2.8" fill="none" strokeLinejoin="round" />
     <path d="M20 4 L20 44" stroke="#111110" strokeWidth="2.8" />
@@ -51,34 +51,33 @@ const PerplexityLogo = () => (
 );
 
 const MonzoLogo = () => (
-  <svg height="44" viewBox="0 0 170 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 170 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <text x="2" y="34" fontFamily="Georgia, 'DM Serif Display', serif" fontSize="32" fontWeight="800" fill="#111110" letterSpacing="-1">monzo</text>
   </svg>
 );
 
 const RampLogo = () => (
-  <svg height="44" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 150 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <text x="2" y="34" fontFamily="Georgia, 'DM Serif Display', serif" fontSize="30" fontWeight="700" fill="#111110">ramp</text>
     <path d="M102 34 L118 14 L118 34" stroke="#111110" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const RaycastLogo = () => (
-  <svg height="44" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M4 40 L20 6 L20 24 L36 24 L20 40 Z" fill="#111110" />
     <text x="50" y="33" fontFamily="Georgia, 'DM Serif Display', serif" fontSize="26" fontWeight="600" fill="#111110">Raycast</text>
   </svg>
 );
 
 const ArcLogo = () => (
-  <svg height="44" viewBox="0 0 130 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg height="36" viewBox="0 0 130 48" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M22 42 C9 42 3 34 3 24 C3 14 9 6 22 6 C35 6 41 14 41 24 C41 34 35 42 22 42Z" stroke="#111110" strokeWidth="3" fill="none" />
     <path d="M13 24 L22 10 L31 24" stroke="#111110" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
     <text x="52" y="33" fontFamily="Georgia, 'DM Serif Display', serif" fontSize="26" fontWeight="700" fill="#111110">ARC</text>
   </svg>
 );
 
-/* ── Brand list ── */
 const BRANDS = [
   { name: 'Mercury', Logo: MercuryLogo, color: '#6d3bef' },
   { name: 'Watershed', Logo: WatershedLogo, color: '#0ea5e9' },
@@ -99,23 +98,24 @@ const LogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
     <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex-shrink-0 flex flex-col items-center justify-center cursor-pointer"
-      style={{ marginLeft: 36, marginRight: 36, paddingBottom: 28 }}
+      className="relative flex-shrink-0 flex flex-col items-center justify-center cursor-pointer mx-4 md:mx-6 pb-6"
     >
       <motion.div
         animate={{ opacity: hovered ? 1 : 0.45, scale: hovered ? 1.08 : 1, y: hovered ? -4 : 0 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
-        style={{ display: 'flex', alignItems: 'center', height: 52 }}
+        className="flex items-center h-[36px] md:h-[44px]"
       >
-        <brand.Logo />
+        <div className="scale-[0.8] md:scale-100 flex items-center justify-center origin-center">
+          <brand.Logo />
+        </div>
       </motion.div>
 
       <motion.div
         animate={{ opacity: hovered ? 1 : 0, scaleX: hovered ? 1 : 0 }}
         transition={{ duration: 0.18 }}
         style={{
-          position: 'absolute', bottom: 10, left: '50%', transform: 'translateX(-50%)',
-          width: 48, height: 7, borderRadius: 99, background: brand.color,
+          position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)',
+          width: 40, height: 6, borderRadius: 99, background: brand.color,
           filter: 'blur(5px)', pointerEvents: 'none',
         }}
       />
@@ -126,7 +126,7 @@ const LogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
         style={{
           position: 'absolute', bottom: 0,
           fontFamily: "'DM Sans', system-ui, sans-serif",
-          fontSize: 10, fontWeight: 700, letterSpacing: '0.12em',
+          fontSize: 9, fontWeight: 700, letterSpacing: '0.12em',
           textTransform: 'uppercase', color: brand.color,
           whiteSpace: 'nowrap', pointerEvents: 'none',
         }}
@@ -139,9 +139,7 @@ const LogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
 
 const HomeSocialProof = () => {
   return (
-    <section
-      className="relative overflow-hidden bg-[#f8f9fb] snap-start pt-16 pb-20"
-    >
+    <section className="relative overflow-hidden bg-transparent snap-start pt-12 pb-16 md:pt-16 md:pb-20">
       <style>{`
         @keyframes logo-scroll {
           0%   { transform: translateX(0); }
@@ -172,20 +170,18 @@ const HomeSocialProof = () => {
         }
       `}</style>
 
-      <div className="absolute inset-y-0 left-0 z-10 pointer-events-none"
-        style={{ width: 120, background: 'linear-gradient(to right, #f8f9fb 30%, transparent)' }} />
-      <div className="absolute inset-y-0 right-0 z-10 pointer-events-none"
-        style={{ width: 120, background: 'linear-gradient(to left, #f8f9fb 30%, transparent)' }} />
+      <div className="absolute inset-y-0 left-0 z-10 w-12 sm:w-20 pointer-events-none bg-gradient-to-r from-background to-transparent" />
+      <div className="absolute inset-y-0 right-0 z-10 w-12 sm:w-20 pointer-events-none bg-gradient-to-l from-background to-transparent" />
 
       <motion.div
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 text-center px-6"
-        style={{ marginBottom: '2rem' }}
+        className="relative z-10 text-center px-4 sm:px-6"
+        style={{ marginBottom: '1.5rem' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16 }}>
           <motion.span
             initial={{ width: 0, opacity: 0 }}
             whileInView={{ width: 36, opacity: 1 }}
@@ -198,7 +194,7 @@ const HomeSocialProof = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#a78bfa', margin: 0 }}
+            style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.26em', textTransform: 'uppercase', color: '#a78bfa', margin: 0 }}
           >
             World-class partners
           </motion.p>
@@ -211,11 +207,11 @@ const HomeSocialProof = () => {
           />
         </div>
 
-        <h2 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(26px, 3.5vw, 42px)', lineHeight: 1.2, letterSpacing: '-0.025em', color: '#111110', marginBottom: 10 }}>
+        <h2 style={{ fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(22px, 3.5vw, 42px)', lineHeight: 1.25, letterSpacing: '-0.025em', color: '#111110', marginBottom: 8 }}>
           Trusted by <span className="shimmer-word">leading</span> educational institutions.
         </h2>
 
-        <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(16px, 1.8vw, 22px)', fontStyle: 'italic', color: '#94a3b8', letterSpacing: '-0.01em', margin: 0 }}>
+        <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 'clamp(14px, 1.8vw, 22px)', fontStyle: 'italic', color: '#94a3b8', letterSpacing: '-0.01em', margin: 0 }}>
           From global enterprises to premier universities.
         </p>
 
@@ -224,7 +220,7 @@ const HomeSocialProof = () => {
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          style={{ margin: '20px auto 0', height: 1, width: 110, transformOrigin: 'center', background: 'linear-gradient(90deg, transparent, #a78bfa 40%, #f472b6 60%, transparent)' }}
+          style={{ margin: '16px auto 0', height: 1, width: 110, transformOrigin: 'center', background: 'linear-gradient(90deg, transparent, #a78bfa 40%, #f472b6 60%, transparent)' }}
         />
       </motion.div>
 
