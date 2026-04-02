@@ -81,13 +81,13 @@ const featureGroups = [
 
 export default function PlatformFeaturesPage() {
     return (
-        <div className="flex flex-col min-h-screen bg-white selection:bg-indigo-100 selection:text-indigo-900">
+        <div className="flex flex-col min-h-screen bg-transparent selection:bg-indigo-100 selection:text-indigo-900">
             <Navbar />
 
             <main className="flex-grow pt-[68px]">
 
                 {/* Hero */}
-                <section className="relative pt-32 pb-24 bg-[#0a0a09] text-white overflow-hidden">
+                <section className="relative pt-32 pb-24 bg-transparent text-slate-900 overflow-hidden">
                     {/* Grain overlay */}
                     <div
                         className="absolute inset-0 opacity-[0.25] pointer-events-none"
@@ -102,16 +102,16 @@ export default function PlatformFeaturesPage() {
                     />
                     
                     <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-                        <p className="text-[11px] font-sans font-bold tracking-[0.35em] uppercase text-white/40 mb-8">Platform Capabilities</p>
-                        <h1 className="text-6xl md:text-[80px] lg:text-[104px] font-serif font-bold leading-[0.93] tracking-tight mb-8">
+                        <p className="text-[11px] font-sans font-bold tracking-[0.35em] uppercase text-slate-400 mb-8">Platform Capabilities</p>
+                        <h1 className="text-6xl md:text-[80px] lg:text-[104px] font-sans font-bold leading-[0.93] tracking-tight mb-8">
                             Everything you need to<br /> educate at scale.
                         </h1>
-                        <p className="text-[18px] md:text-[21px] text-white/55 max-w-2xl mx-auto leading-[1.75] mb-14 font-sans font-light">
+                        <p className="text-[18px] md:text-[21px] text-slate-900/55 max-w-2xl mx-auto leading-[1.75] mb-14 font-sans font-light">
                             A cohesive ecosystem of tools designed to work seamlessly together — from intelligent delivery to AI-powered assessments.
                         </p>
                         <a 
                             href="#all-features"
-                            className="inline-block bg-white/10 hover:bg-white/20 text-white px-10 py-[14px] rounded-full text-[15px] tracking-wide font-sans font-semibold transition-all backdrop-blur-sm border border-white/15"
+                            className="inline-block bg-slate-900/10 hover:bg-white/20 text-slate-900 px-10 py-[14px] rounded-full text-[15px] tracking-wide font-sans font-semibold transition-all backdrop-blur-sm border border-white/15"
                         >
                             Explore all features
                         </a>
@@ -126,7 +126,7 @@ export default function PlatformFeaturesPage() {
                                 {/* Section heading */}
                                 <div className="flex items-center gap-4 mb-10">
                                     <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: group.color }} />
-                                    <h2 className="text-[26px] font-serif font-bold tracking-tight text-[#0f0e0d]">{group.heading}</h2>
+                                    <h2 className="text-[26px] font-sans font-bold tracking-tight text-[#0f0e0d]">{group.heading}</h2>
                                     <div className="flex-1 h-px bg-slate-200 ml-2" />
                                 </div>
 
@@ -144,7 +144,7 @@ export default function PlatformFeaturesPage() {
                                             </div>
                                             {/* Text */}
                                             <div className="flex-1">
-                                                <h3 className="text-[18px] font-serif font-bold text-[#111110] mb-3 group-hover:text-[#0a0a09] transition-colors leading-snug">{f.title}</h3>
+                                                <h3 className="text-[18px] font-sans font-bold text-[#111110] mb-3 group-hover:text-[#0a0a09] transition-colors leading-snug">{f.title}</h3>
                                                 <p className="text-[14.5px] font-sans text-slate-500 leading-[1.7] font-normal">{f.desc}</p>
                                             </div>
                                             {/* Learn more */}
@@ -161,7 +161,7 @@ export default function PlatformFeaturesPage() {
 
 
                 {/* CTA */}
-                <section className="py-32 bg-[#0a0a09] text-white relative overflow-hidden">
+                <section className="py-32 bg-transparent text-slate-900 relative overflow-hidden">
                      {/* Grain overlay */}
                      <div
                         className="absolute inset-0 opacity-[0.15] pointer-events-none"
@@ -171,8 +171,8 @@ export default function PlatformFeaturesPage() {
                         }}
                     />
                     <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-                        <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">Build your learning <br /> infrastructure today.</h2>
-                        <p className="text-white/50 text-lg mb-12 max-w-xl mx-auto font-sans">
+                        <h2 className="text-4xl md:text-5xl font-sans mb-8 leading-tight">Build your learning <br /> infrastructure today.</h2>
+                        <p className="text-slate-500 text-lg mb-12 max-w-xl mx-auto font-sans">
                             Every tool you need, integrated by design. Get started with the full TeachGrid ecosystem.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
@@ -184,7 +184,7 @@ export default function PlatformFeaturesPage() {
                             </Link>
                             <Link
                                 href="/pricing"
-                                className="px-10 py-4 border border-white/20 text-white rounded-full font-bold hover:bg-white/5 active:scale-[0.98] transition-all"
+                                className="px-10 py-4 border border-slate-200/50 text-slate-900 rounded-full font-bold hover:bg-slate-900/5 active:scale-[0.98] transition-all"
                             >
                                 View Pricing
                             </Link>

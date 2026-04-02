@@ -18,13 +18,13 @@ export default function ResourcePage({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-white">
+        <div className="flex flex-col min-h-screen bg-transparent">
             <Navbar />
 
             <main className="flex-grow pt-[68px]">
 
                 {/* Resource Hero */}
-                <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-slate-50 border-b border-slate-200">
+                <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-transparent border-b border-slate-200">
                     <div className="absolute inset-0 pointer-events-none">
                         {/* Grain overlay */}
                         <div
@@ -53,7 +53,7 @@ export default function ResourcePage({ params }: { params: { slug: string } }) {
                                 </span>
                             </div>
 
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-slate-900 mb-8 leading-[1.1]">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans text-slate-900 mb-8 leading-[1.1]">
                                 {resource.title}
                             </h1>
 
@@ -75,7 +75,7 @@ export default function ResourcePage({ params }: { params: { slug: string } }) {
                 </section>
 
                 {/* Topics Section */}
-                <section className="py-24 bg-white">
+                <section className="py-24 bg-transparent">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="grid md:grid-cols-3 gap-8">
                             {resource.topics.map((topic, i) => (
@@ -83,7 +83,7 @@ export default function ResourcePage({ params }: { params: { slug: string } }) {
                                     <div className="w-14 h-14 rounded-2xl bg-slate-50 group-hover:bg-indigo-50 flex items-center justify-center mb-8 transition-colors duration-300">
                                         {topic.icon}
                                     </div>
-                                    <h3 className="text-xl font-serif text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors">
+                                    <h3 className="text-xl font-sans text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors">
                                         {topic.title}
                                     </h3>
                                     <p className="text-slate-500 leading-relaxed text-[15px] mb-8">
@@ -99,23 +99,23 @@ export default function ResourcePage({ params }: { params: { slug: string } }) {
                 </section>
 
                 {/* Contact Support CTA */}
-                <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+                <section className="py-24 bg-transparent text-slate-900 overflow-hidden relative">
                     <div className="absolute inset-0 opacity-[0.4]" style={{ background: resource.heroGradient }} />
                     <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-3xl" />
 
                     <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-white/10 backdrop-blur-xl mb-8 border border-white/10">
-                            <MessageCircle className="text-white" size={28} />
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-slate-900/10 backdrop-blur-xl mb-8 border border-slate-200/30">
+                            <MessageCircle className="text-slate-900" size={28} />
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-serif mb-6">Can&apos;t find what you&apos;re looking for?</h2>
-                        <p className="text-white/60 mb-10 text-lg max-w-xl mx-auto font-light">
+                        <h2 className="text-3xl md:text-4xl font-sans mb-6">Can&apos;t find what you&apos;re looking for?</h2>
+                        <p className="text-slate-500 mb-10 text-lg max-w-xl mx-auto font-light">
                             Our support team is standing by 24/7 to help you with any technical or platform-related questions.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button className="px-8 py-4 bg-white text-slate-900 rounded-full font-semibold transition hover:scale-105 w-full sm:w-auto">
                                 Submit a Ticket
                             </button>
-                            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/10 text-white rounded-full font-semibold transition w-full sm:w-auto">
+                            <button className="px-8 py-4 bg-slate-900/10 hover:bg-white/20 border border-slate-200/30 text-slate-900 rounded-full font-semibold transition w-full sm:w-auto">
                                 Live Chat
                             </button>
                         </div>

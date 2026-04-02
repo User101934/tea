@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
@@ -14,10 +14,19 @@ const CYCLING_WORDS = [
 ];
 
 const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
+
+  useEffect(() => {
+    if (videoRef.current) {
+        videoRef.current.play().catch(error => {
+            console.error("Hero video autoplay was prevented:", error);
+        });
+    }
+  }, []);
 
   useEffect(() => {
     const i = loopNum % CYCLING_WORDS.length;
@@ -50,6 +59,7 @@ const Hero = () => {
     <section className="relative pt-24 pb-16 md:pt-40 md:pb-20 bg-transparent overflow-hidden snap-start">
       <style>{`
         .hero-headline {
+          font-family: CohereText, Space Grotesk, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
           font-weight: 400;
           font-size: clamp(30px, 6.5vw, 86px);
           line-height: 1.08;
@@ -87,29 +97,22 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
-            className="hero-headline mb-8 px-2 sm:px-4 min-h-[130px] sm:min-h-0 flex flex-col items-center justify-center"
+            className="hero-headline mb-8 px-2 sm:px-4 min-h-[130px] sm:min-h-0 flex flex-col items-center justify-center gap-2"
           >
-            <span className="flex flex-wrap justify-center items-center gap-x-[0.3em] gap-y-2 max-w-[100vw]">
-              <motion.span
-                layout="size"
-                transition={{ duration: 0.1, ease: "linear" }}
-                className="relative flex items-center justify-center px-3 py-1 sm:px-6 sm:py-2.5 bg-white/80 border border-black/[0.04] rounded-xl sm:rounded-2xl shadow-[inset_0_1px_2px_rgba(0,0,0,0.05),0_10px_20px_-5px_rgba(0,0,0,0.03)] backdrop-blur-md mr-1"
-              >
-                <motion.span
-                  layout="position"
-                  className="text-[#111111] font-semibold tracking-tight whitespace-nowrap"
-                >
+            <div className="flex flex-wrap justify-center items-center">
+              <span className="relative inline-flex items-center">
+                <span className="text-[#111111] tracking-tight whitespace-nowrap">
                   {displayText}
                   <span
                     className="inline-block w-[2px] h-[0.85em] bg-indigo-600/80 ml-1.5"
                     style={{ animation: 'cursor-blink 1.2s step-end infinite' }}
                   />
-                </motion.span>
-              </motion.span>
-              <span>learning &</span>
-            </span>
+                </span>
+              </span>
+              <span>&nbsp;learning &</span>
+            </div>
 
-            <span className="block mt-1 sm:mt-2">
+            <span className="block">
               teaching infrastructure
             </span>
           </motion.h1>
@@ -118,9 +121,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[15px] md:text-[19px] text-[#4b5563] mb-10 md:mb-12 max-w-[620px] mx-auto leading-relaxed font-sans px-4 sm:px-6"
+            className="text-[15px] md:text-[19px] text-[#4b5563] mb-10 md:mb-12 max-w-[720px] mx-auto leading-relaxed font-sans px-4 sm:px-6"
           >
-            TeachGrid is where powerful AI meets practical infrastructure solutions -
+            TeachGrid is where powerful AI meets practical infrastructure solutions <br className="hidden md:block" /> 
             so you can deliver impactful learning & teaching with intelligence.
           </motion.p>
 
@@ -157,12 +160,23 @@ const Hero = () => {
           >
             <img src="/earth_night.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ opacity: 1, filter: "brightness(0.85) saturate(1.1)" }} />
             <div className="absolute inset-0" style={{ background: "rgba(5,5,15,0.18)" }} />
-            <div className="absolute top-0 bottom-0 left-0 w-[15%] pointer-events-none z-10" style={{ background: "linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
-            <div className="absolute top-0 bottom-0 right-0 w-[15%] pointer-events-none z-10" style={{ background: "linear-gradient(to left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
+            <div className="absolute top-0 bottom-0 left-0 w-[15%] pointer-events-none z-[35]" style={{ background: "linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
+            <div className="absolute top-0 bottom-0 right-0 w-[15%] pointer-events-none z-[35]" style={{ background: "linear-gradient(to left, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
+            <div className="absolute top-0 left-0 right-0 h-[15%] pointer-events-none z-[35]" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
+            <div className="absolute bottom-0 left-0 right-0 h-[15%] pointer-events-none z-[35]" style={{ background: "linear-gradient(to top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)" }} />
 
             <div className="absolute inset-0 flex items-center justify-center z-20 p-4 md:p-0" style={{ paddingTop: "6%", paddingBottom: "6%" }}>
               <div className="w-full rounded-xl overflow-hidden shadow-[0_32px_80px_-12px_rgba(0,0,0,0.9)] ring-1 ring-white/10" style={{ transform: "perspective(1200px) rotateX(3deg) rotateY(-1.5deg)", transformOrigin: "center center", maxWidth: "612px", aspectRatio: "612/400" }}>
-                <video src="https://assets.jitter.video/product-import-hero-hd-20.mp4" autoPlay loop muted playsInline preload="metadata" className="block w-full h-full object-cover object-center" />
+                <video 
+                   ref={videoRef}
+                   src="https://assets.jitter.video/product-import-hero-hd-20.mp4" 
+                   autoPlay 
+                   loop 
+                   muted 
+                   playsInline 
+                   preload="auto" 
+                   className="block w-full h-full object-cover object-center" 
+                />
               </div>
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-30" style={{ background: "linear-gradient(to top, #0a0a0f 0%, transparent 100%)" }} />

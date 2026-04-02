@@ -20,13 +20,13 @@ export default function PlatformFeaturePage({ params }: { params: { slug: string
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-white">
+        <div className="flex flex-col min-h-screen bg-transparent">
             <Navbar />
 
             <main className="flex-grow pt-[68px]"> {/* Offset for fixed Navbar */}
 
                 {/* Dynamic Hero */}
-                <section className="relative pt-24 pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-[#0f0e0d] text-white">
+                <section className="relative pt-24 pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-transparent text-slate-900">
                     <div className="absolute inset-0 pointer-events-none">
                         {/* Grain overlay */}
                         <div
@@ -48,22 +48,22 @@ export default function PlatformFeaturePage({ params }: { params: { slug: string
 
                     <div className="max-w-7xl mx-auto px-6 relative z-10">
                         {/* Back link */}
-                        <a href="/" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm font-medium mb-12">
+                        <a href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium mb-12">
                             <ArrowLeft size={16} /> Back to Platform Overview
                         </a>
 
                         <div className="max-w-4xl">
                             <div className="flex items-center gap-3 mb-6">
-                                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/60 px-3 py-1 border border-white/20 rounded-full backdrop-blur-md">
+                                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-slate-500 px-3 py-1 border border-slate-200/50 rounded-full backdrop-blur-md">
                                     {feature.category}
                                 </span>
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl lg:text-[80px] font-serif leading-[1.05] tracking-tight mb-8">
+                            <h1 className="text-5xl md:text-7xl lg:text-[80px] font-sans leading-[1.05] tracking-tight mb-8">
                                 {feature.title}
                             </h1>
 
-                            <p className="text-lg md:text-2xl font-light text-white/80 max-w-3xl leading-relaxed mb-12">
+                            <p className="text-lg md:text-2xl font-light text-slate-700 max-w-3xl leading-relaxed mb-12">
                                 {feature.heroDescription}
                             </p>
 
@@ -77,10 +77,10 @@ export default function PlatformFeaturePage({ params }: { params: { slug: string
                 </section>
 
                 {/* Feature Grid */}
-                <section className="py-24 bg-white">
+                <section className="py-24 bg-transparent">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="mb-20">
-                            <h2 className="text-3xl md:text-4xl font-serif text-[#111110] mb-4">Core Capabilities</h2>
+                            <h2 className="text-3xl md:text-4xl font-sans text-[#111110] mb-4">Core Capabilities</h2>
                             <div className="w-12 h-1 bg-indigo-600 rounded-full" />
                         </div>
 
@@ -91,7 +91,7 @@ export default function PlatformFeaturePage({ params }: { params: { slug: string
                                         {/* Render the icon component directly */}
                                         {cap.icon}
                                     </div>
-                                    <h3 className="text-xl font-serif text-[#111110] mb-3">{cap.title}</h3>
+                                    <h3 className="text-xl font-sans text-[#111110] mb-3">{cap.title}</h3>
                                     <p className="text-slate-500 leading-relaxed text-[15px]">{cap.description}</p>
                                 </div>
                             ))}
@@ -100,9 +100,9 @@ export default function PlatformFeaturePage({ params }: { params: { slug: string
                 </section>
 
                 {/* Final CTA */}
-                <section className="py-24 bg-slate-50 border-t border-slate-200">
+                <section className="py-24 bg-transparent border-t border-slate-200">
                     <div className="max-w-4xl mx-auto px-6 text-center">
-                        <h2 className="text-3xl font-serif text-[#111110] mb-6">Explore the rest of TeachGrid</h2>
+                        <h2 className="text-3xl font-sans text-[#111110] mb-6">Explore the rest of TeachGrid</h2>
                         <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
                             Our platform is built as a cohesive ecosystem. Every feature is designed to work seamlessly together out of the box.
                         </p>

@@ -2,45 +2,56 @@
 import React from 'react';
 
 const SocialProof = () => {
+    // Phrases exactly as they appear in the original design
     const phrases = [
-        'Together, We Learn Better',
-        'The Future Belongs to the Intelligent',
-        'Smarter Learning Starts Here',
-        'Powered by Intelligence',
-        'Learning Never Stops',
-        'Together, We Learn Better',
-        'The Future Belongs to the Intelligent',
-        'Smarter Learning Starts Here',
-        'Powered by Intelligence',
-        'Learning Never Stops',
+        "Learning Never Stops",
+        "Together, We Learn Better",
+        "The Future Belongs to the Intelligent",
+        "Smarter Learning Starts Here",
+        "Powered by Intelligence",
     ];
 
+    // Triple the phrases to ensure seamless infinite scroll
+    const displayPhrases = [...phrases, ...phrases, ...phrases];
+
     return (
-        <section className="w-full overflow-hidden relative z-0" style={{ background: 'linear-gradient(90deg, #6d3bef 0%, #a855c8 35%, #ef5f3a 75%, #f97316 100%)' }}>
-            <style>{`
-                @keyframes marquee-scroll {
+        <div className="relative w-full overflow-hidden bg-gradient-to-r from-indigo-500 via-purple-500 to-orange-500 pt-[22px] pb-[70px] mt-20 md:mt-32">
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                @keyframes marquee {
                     0%   { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
+                    100% { transform: translateX(-33.3333%); }
                 }
-                .marquee-track {
+                .animate-marquee-exact {
                     display: flex;
                     width: max-content;
-                    animation: marquee-scroll 35s linear infinite;
+                    animation: marquee 50s linear infinite;
+                    /* Reduced to 2.5rem to match the closer spacing in your latest reference */
+                    gap: 2.5rem; 
+                    align-items: center;
                 }
-            `}</style>
+                .marquee-text {
+                    font-family: var(--font-jakarta), var(--font-sans), sans-serif;
+                    font-weight: 500;
+                    letter-spacing: -0.01em;
+                    color: white;
+                    white-space: nowrap;
+                }
+            `}} />
 
-            <div className="marquee-track pt-5 pb-[60px] sm:pt-6 sm:pb-[72px]">
-                {phrases.map((phrase, i) => (
-                    <span
-                        key={i}
-                        className="flex items-center text-white font-bold text-[13px] sm:text-[16px] md:text-[18px] tracking-[0.01em] whitespace-nowrap select-none"
-                    >
-                        {phrase}
-                        <span className="mx-8 sm:mx-12 md:mx-14 text-white text-[12px] sm:text-[14px]">✦</span>
-                    </span>
-                ))}
+            <div className="flex whitespace-nowrap">
+                <div className="animate-marquee-exact">
+                    {displayPhrases.map((phrase, i) => (
+                        <React.Fragment key={i}>
+                            <span className="marquee-text text-[18px] font-medium">
+                                {phrase}
+                            </span>
+                            <span className="marquee-text text-[18px] font-medium opacity-90">✦</span>
+                        </React.Fragment>
+                    ))}
+                </div>
             </div>
-        </section>
+        </div>
     );
 };
 

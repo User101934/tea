@@ -8,10 +8,11 @@ import PlatformSection from '@/components/PlatformSection';
 import IndustryCarousel from '@/components/IndustryCarousel';
 import PlatformShowcase from '@/components/PlatformShowcase';
 import InteractiveShowcase from '@/components/InteractiveShowcase';
+import TransformCTA from '@/components/TransformCTA';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-transparent overflow-x-hidden relative">
       <Navbar />
       <main className="flex-grow">
         <Hero />
@@ -21,15 +22,13 @@ export default function Home() {
         <IndustryCarousel />
 
         {/* Honeycomb / Integration Grid Section */}
-        <section className="relative py-10 md:py-16 overflow-hidden flex flex-col items-center justify-center bg-transparent px-4 snap-start">
+        <section className="relative pt-20 pb-16 md:pt-32 md:pb-20 overflow-hidden flex flex-col items-center justify-center bg-transparent px-4 snap-start">
 
           <h1 
-            className="relative z-10 max-w-3xl text-center text-[clamp(24px,5vw,56px)] font-medium tracking-tighter mb-10 md:mb-16 lg:mb-20 text-slate-900 leading-tight px-4"
+            className="relative z-10 max-w-5xl text-center text-[clamp(24px,5vw,56px)] font-medium tracking-tighter mb-12 md:mb-20 lg:mb-28 text-slate-900 leading-tight px-4"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            The only learning platform you need to{' '}
-            <br className="hidden sm:block" />
-            <span className="italic text-slate-500">Transform Education</span>
+            The only learning platform you need to transform education
           </h1>
 
           {/* Icon Grid — responsive */}
@@ -43,49 +42,49 @@ export default function Home() {
 
             {/* Col 1 */}
             <div className="flex flex-col">
-              <IconCard src="https://cdn.simpleicons.org/googleclassroom" delay={0} />
+              <IconCard src="https://svgl.app/library/discord.svg" delay={0} />
             </div>
 
             {/* Col 2 */}
-            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 -mt-0 md:-mt-4 lg:-mt-10">
-              <IconCard src="https://cdn.simpleicons.org/moodle" delay={0.5} />
-              <IconCard src="https://cdn.simpleicons.org/instructure" delay={1} />
+            <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 -mt-0 md:-mt-4 lg:-mt-10">
+              <IconCard src="https://svgl.app/library/slack.svg" delay={0.5} />
+              <IconCard src="https://svgl.app/library/openai.svg" delay={1} />
             </div>
 
             {/* Col 3 */}
-            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 -mt-0 md:-mt-8 lg:-mt-20">
-              <IconCard src="https://cdn.simpleicons.org/zoom" delay={1.5} />
-              <IconCard src="https://cdn.simpleicons.org/coursera" delay={2} />
-              <IconCard src="https://cdn.simpleicons.org/udemy" delay={2.5} />
+            <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 -mt-0 md:-mt-4 lg:-mt-10">
+              <IconCard src="https://svgl.app/library/gemini.svg" delay={1.5} />
+              <IconCard src="https://svgl.app/library/google-meet.svg" delay={2} />
+              <IconCard src="https://svgl.app/library/microsoft-teams.svg" delay={2.5} />
             </div>
 
             {/* Col 4 */}
-            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 -mt-0 md:-mt-4 lg:-mt-10">
-              <IconCard src="https://cdn.simpleicons.org/khanacademy" delay={3} />
-              <IconCard src="https://cdn.simpleicons.org/edx" delay={3.5} />
+            <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 -mt-0 md:-mt-4 lg:-mt-10">
+              <IconCard src="https://svgl.app/library/zoom.svg" delay={3} />
+              <IconCard src="https://cdn.simpleicons.org/github" delay={3.5} />
             </div>
 
             {/* Col 5 */}
-            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 -mt-0 md:-mt-8 lg:-mt-20">
-              <IconCard src="https://cdn.simpleicons.org/duolingo" delay={4} />
-              <IconCard src="https://cdn.simpleicons.org/quizlet" delay={4.5} />
-              <IconCard src="https://cdn.simpleicons.org/udacity" delay={5} />
+            <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 -mt-0 md:-mt-4 lg:-mt-10">
+              <IconCard src="https://svgl.app/library/linkedin.svg" delay={4} />
+              <IconCard src="https://svgl.app/library/youtube.svg" delay={4.5} />
+              <IconCard src="https://cdn.jsdelivr.net/npm/simple-icons@v14/icons/amazonwebservices.svg" delay={5} />
             </div>
 
             {/* Col 6 */}
-            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 -mt-0 md:-mt-4 lg:-mt-10">
-              <IconCard src="https://cdn.simpleicons.org/grammarly" delay={5.5} />
-              <IconCard src="https://cdn.simpleicons.org/wikipedia" delay={6} />
+            <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 -mt-0 md:-mt-4 lg:-mt-10">
+              <IconCard src="https://svgl.app/library/adobe.svg" delay={5.5} />
+              <IconCard src="https://svgl.app/library/microsoft-excel.svg" delay={6} />
             </div>
 
             {/* Col 7 */}
             <div className="flex flex-col">
-              <IconCard src="https://cdn.simpleicons.org/googlemeet" delay={6.5} />
+              <IconCard src="https://svgl.app/library/google.svg" delay={6.5} />
             </div>
 
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-10 md:mt-16 w-full relative z-10 px-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-6 md:mt-10 w-full relative z-10 px-4">
             <button className="w-full sm:w-auto px-8 md:px-10 py-3.5 md:py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-colors text-[15px]">
               Get Started Free
             </button>
@@ -98,6 +97,7 @@ export default function Home() {
 
         <InteractiveShowcase />
         <PlatformShowcase />
+        <TransformCTA />
       </main>
     </div>
   );

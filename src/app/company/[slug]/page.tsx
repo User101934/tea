@@ -24,13 +24,13 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-white">
+        <div className="flex flex-col min-h-screen bg-transparent">
             <Navbar />
 
             <main className="flex-grow pt-[68px]">
 
                 {/* Company Hero */}
-                <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-[#0a0a09] text-white">
+                <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-transparent text-slate-900">
                     <div className="absolute inset-0 pointer-events-none">
                         {/* Grain overlay */}
                         <div
@@ -49,23 +49,23 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
 
                     <div className="max-w-7xl mx-auto px-6 relative z-10">
                         <div className="max-w-4xl">
-                            <a href="/" className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm font-medium mb-12">
+                            <a href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-900 transition-colors text-sm font-medium mb-12">
                                 <ArrowLeft size={16} /> Home
                             </a>
 
-                            <div className="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-6 backdrop-blur-md">
-                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/60">
+                            <div className="inline-block px-3 py-1 bg-slate-900/5 border border-slate-200/30 rounded-full mb-6 backdrop-blur-md">
+                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">
                                     {item.category}
                                 </span>
                             </div>
 
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif mb-8 leading-[1.1]">
+                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-sans mb-8 leading-[1.1]">
                                 {item.title === 'About Us' ? (
                                     <>TeachGrid is the <span className="text-transparent bg-clip-text" style={{ backgroundImage: item.heroGradient }}>intelligent learning infrastructure</span> from HashInkludes</>
                                 ) : item.title}
                             </h1>
 
-                            <p className="text-xl md:text-2xl font-light text-white/70 leading-relaxed mb-10 max-w-3xl">
+                            <p className="text-xl md:text-2xl font-light text-slate-600 leading-relaxed mb-10 max-w-3xl">
                                 {item.heroDescription}
                             </p>
 
@@ -74,7 +74,7 @@ export default function CompanyPage({ params }: { params: { slug: string } }) {
                                     <button className="px-8 py-4 bg-white text-black rounded-full font-semibold transition hover:scale-105">
                                         Book a Demo
                                     </button>
-                                    <button className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-semibold transition hover:bg-white/10">
+                                    <button className="px-8 py-4 bg-slate-900/5 border border-slate-200/30 text-slate-900 rounded-full font-semibold transition hover:bg-white/10">
                                         Explore Platform
                                     </button>
                                 </div>
@@ -103,7 +103,7 @@ function AboutLayout({ item }: { item: any }) {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid md:grid-cols-2 gap-20 items-center mb-32">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-6">About HashInkludes</h2>
+                        <h2 className="text-3xl md:text-4xl font-sans text-slate-900 mb-6">About HashInkludes</h2>
                         <p className="text-lg text-slate-600 leading-relaxed mb-8">
                             HashInkludes is a company driven by innovation and purpose - creating ventures that empower people, redefine industries, and shape the future.
                         </p>
@@ -134,7 +134,7 @@ function AboutLayout({ item }: { item: any }) {
                             <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center mb-6">
                                 {p.icon}
                             </div>
-                            <h3 className="text-xl font-serif text-slate-900 mb-4">{p.title}</h3>
+                            <h3 className="text-xl font-sans text-slate-900 mb-4">{p.title}</h3>
                             <p className="text-slate-500 leading-relaxed text-[15px]">{p.description}</p>
                         </div>
                     ))}
@@ -156,7 +156,7 @@ function ContactLayout({ item }: { item: any }) {
                 <div className="grid lg:grid-cols-2 gap-20">
                     {/* Contact Details */}
                     <div>
-                        <h2 className="text-4xl font-serif text-slate-900 mb-8 whitespace-pre-line">
+                        <h2 className="text-4xl font-sans text-slate-900 mb-8 whitespace-pre-line">
                             We&apos;d love to hear from you!
                         </h2>
                         <p className="text-xl text-slate-500 font-light mb-12">
@@ -256,7 +256,7 @@ function DefaultLayout({ item }: { item: any }) {
                             <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-8">
                                 {p.icon}
                             </div>
-                            <h3 className="text-xl font-serif text-slate-900 mb-4">{p.title}</h3>
+                            <h3 className="text-xl font-sans text-slate-900 mb-4">{p.title}</h3>
                             <p className="text-slate-500 leading-relaxed text-[15px]">{p.description}</p>
                         </div>
                     ))}
@@ -264,17 +264,17 @@ function DefaultLayout({ item }: { item: any }) {
 
                 {/* Placeholder Content for secondary pages */}
                 <div className="mt-32 p-12 rounded-[2.5rem] bg-indigo-600 text-white relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-slate-900/10 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2" />
                     <div className="relative z-10 max-w-2xl text-center mx-auto">
-                        <h2 className="text-3xl font-serif mb-6">Ready to transform your education?</h2>
-                        <p className="text-white/80 mb-10 text-lg">
+                        <h2 className="text-3xl font-sans mb-6">Ready to transform your education?</h2>
+                        <p className="text-slate-700 mb-10 text-lg">
                             TeachGrid provides the tools you need to build a world-class online academy.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <button className="px-10 py-4 bg-white text-indigo-600 rounded-full font-bold hover:scale-105 transition-all">
                                 Get Started
                             </button>
-                            <button className="px-10 py-4 border border-white/20 hover:bg-white/10 rounded-full font-bold transition-all">
+                            <button className="px-10 py-4 border border-slate-200/50 hover:bg-slate-900/10 rounded-full font-bold transition-all">
                                 Documentation
                             </button>
                         </div>

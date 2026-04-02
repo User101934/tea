@@ -305,8 +305,8 @@ const Navbar = () => {
               const trigger = (
                 <button
                   className={cn(
-                    'relative px-5 py-2 text-[15px] transition-all duration-300 ease-out select-none',
-                    isActive ? 'text-[#111110]' : 'text-[#4b5563] hover:text-[#111110]'
+                    'relative px-5 py-2 text-[15px] md:text-[17px] transition-all duration-300 ease-out select-none font-sans',
+                    isActive ? 'text-[#111110] font-medium' : 'text-[#4b5563] hover:text-[#111110] font-normal'
                   )}
                 >
                   {item.label}
@@ -581,7 +581,7 @@ const Navbar = () => {
                         {item.hasDropdown ? (
                           <div>
                             <button
-                              className="w-full flex items-center justify-between text-[28px] text-[#111110] py-4 border-b border-neutral-80 font-medium leading-tight tracking-[-0.03em] font-sans"
+                              className="w-full flex items-center justify-between text-[20px] text-[#4b5563] py-4 border-b border-neutral-80 font-normal leading-tight tracking-[-0.01em] font-sans"
                               onClick={() => toggleMobileSection(item.label)}
                             >
                               {item.label}
@@ -737,7 +737,7 @@ const Navbar = () => {
                         ) : (
                           <Link
                             href={item.href || '#'}
-                            className="block text-[28px] text-[#111110] py-4 border-b border-slate-100 last:border-0 font-medium leading-tight tracking-[-0.03em] font-sans"
+                            className="block text-[20px] text-[#4b5563] py-4 border-b border-slate-100 last:border-0 font-normal leading-tight tracking-[-0.01em] font-sans"
                             onClick={() => setMobileOpen(false)}
                           >
                             {item.label}

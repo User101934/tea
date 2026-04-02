@@ -5,7 +5,7 @@ import {
     Code2, Landmark, HeartPulse, BookOpen,
     Briefcase, MonitorSmartphone, Factory, Laptop,
     LineChart, ShieldAlert, Sparkles, Users, Lock, Calendar, MessageCircle,
-    Layers, Rocket, ShieldCheck, Link
+    Layers, Rocket, ShieldCheck, Link, Award
 } from 'lucide-react';
 
 export type SolutionBenefit = {
@@ -169,6 +169,21 @@ export const solutionsData: SolutionData[] = [
                 icon: <LayoutTemplate className="text-fuchsia-500" />,
                 title: 'White-Label Branding',
                 description: 'Your domain, your logos, your color scheme. Students experience a premium, custom-branded environment that looks exclusively yours.'
+            },
+            {
+                icon: <Calendar className="text-fuchsia-500" />,
+                title: 'Global Cohort Scheduling',
+                description: 'Effortlessly organize live training sessions that adapt to differing time zones.'
+            },
+            {
+                icon: <MessageCircle className="text-fuchsia-500" />,
+                title: 'Peer Collaboration',
+                description: 'Enable structured interaction and community building among your learners.'
+            },
+            {
+                icon: <Award className="text-fuchsia-500" />,
+                title: 'Auto-Grading & Certification',
+                description: 'Instantly evaluate assessments and issue verifiable digital certificates to graduates.'
             }
         ]
     },

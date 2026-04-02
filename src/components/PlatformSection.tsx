@@ -104,34 +104,7 @@ const PlatformSection = () => {
         {/* Steps Grid */}
         <div className="relative">
 
-          {/* Connecting Line — desktop only */}
-          <div className="absolute top-1/2 left-0 w-full h-32 -translate-y-1/2 hidden lg:block pointer-events-none z-0">
-            <svg
-              className="w-full h-full opacity-80"
-              viewBox="0 0 1200 120"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-            >
-              <motion.path
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
-                d="M0 60C150 130 300 -10 450 60C600 130 750 -10 900 60C1050 130 1200 60 1200 60"
-                stroke="url(#lineGradient)"
-                strokeWidth="3"
-                strokeDasharray="12 12"
-              />
-              <defs>
-                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#111110" stopOpacity="0.4" />
-                  <stop offset="50%" stopColor="#111110" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#111110" stopOpacity="0.4" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+
 
           <motion.div
             variants={containerVariants}
@@ -140,52 +113,82 @@ const PlatformSection = () => {
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 relative z-10"
           >
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.number}
-                variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-white/60 backdrop-blur-xl border border-white p-5 md:p-6 rounded-[1.75rem] md:rounded-[2rem] flex flex-col justify-between transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] hover:border-slate-200 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-transparent to-slate-100/20 group-hover:from-white group-hover:to-slate-100 transition-colors duration-500 rounded-[1.75rem] md:rounded-[2rem] pointer-events-none" />
+            {steps.map((step, i) => {
+              const isFirst = i === 0;
+              return (
+                <motion.div
+                  key={step.number}
+                  variants={itemVariants}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className={`group relative p-6 sm:p-7 md:p-8 rounded-[2.5rem] flex flex-col justify-between transition-all duration-500 overflow-hidden border-2 ${
+                    isFirst 
+                      ? 'bg-white/95 border-indigo-200/80 shadow-[0_32px_64px_-16px_rgba(79,70,229,0.1)]' 
+                      : 'bg-white/60 backdrop-blur-xl border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)]'
+                  } hover:shadow-[0_45px_100px_-20px_rgba(79,70,229,0.15)] hover:border-indigo-300/60`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-transparent to-slate-100/20 group-hover:from-white group-hover:to-slate-100 transition-colors duration-500 rounded-[2rem] pointer-events-none" />
 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-5 md:mb-6">
-                    <span className="text-[11px] font-bold tracking-[0.16em] text-gray-400 group-hover:text-slate-800 transition-colors duration-300 font-sans">
-                      STEP {step.number}
-                    </span>
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 90 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-slate-50 border border-slate-100 group-hover:border-slate-300 flex items-center justify-center text-slate-500 transition-colors duration-300 shadow-sm"
-                    >
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-8 md:mb-10">
+                      {isFirst ? (
+                        <div className="flex items-center gap-2.5 px-3 py-2 rounded-full bg-indigo-50/80 border border-indigo-100/30">
+                          <div className="flex items-center justify-center size-5 rounded-full bg-white shadow-sm border border-indigo-100/30">
+                            <svg className="size-3 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="text-[10px] font-bold tracking-[0.16em] uppercase text-indigo-600 font-sans">
+                            STEP {step.number}
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-[10px] font-bold tracking-[0.16em] text-gray-400 group-hover:text-slate-800 transition-colors duration-300 font-sans">
+                          STEP {step.number}
+                        </span>
+                      )}
+
                       <motion.div
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", delay: i * 0.2 }}
-                        className="w-2 h-2 rounded-full bg-slate-400 group-hover:bg-slate-700 transition-colors duration-300 group-hover:shadow-[0_0_8px_rgba(51,65,85,0.4)]"
-                      />
-                    </motion.div>
+                        className={`w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center transition-all duration-300 ${
+                          isFirst ? 'bg-indigo-50/80 shadow-inner' : 'bg-slate-50 border border-slate-100 group-hover:border-slate-300'
+                        }`}
+                      >
+                        <motion.div
+                          animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+                          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", delay: i * 0.2 }}
+                          className={`w-2.5 h-2.5 rounded-full ${
+                            isFirst ? 'bg-indigo-600 shadow-[0_0_12px_rgba(79,70,229,0.5)]' : 'bg-slate-300 group-hover:bg-slate-600'
+                          }`}
+                        />
+                      </motion.div>
+                    </div>
+
+                    <h3
+                      className="text-[#111110] text-[18px] md:text-[20px] lg:text-[22px] leading-[1.2] tracking-[-0.03em] font-medium mb-4 transition-all duration-300 min-h-[3rem] flex items-start"
+                      style={{ fontFamily: "var(--font-sans)" }}
+                    >
+                      {step.headline}
+                    </h3>
+
+                    <p className="text-[13px] md:text-[14px] leading-relaxed text-gray-600 group-hover:text-gray-900 transition-colors font-sans text-justify">
+                      {step.body}
+                    </p>
                   </div>
 
-                  <h3
-                    className="text-[#111110] text-[22px] md:text-[24px] leading-[1.2] tracking-[-0.01em] font-medium mb-3 md:mb-4 transition-colors duration-300"
-                    style={{ fontFamily: "var(--font-sans)" }}
-                  >
-                    {step.headline}
-                  </h3>
-
-                  <p className="text-[14px] md:text-[14px] leading-relaxed text-gray-600 group-hover:text-gray-900 transition-colors font-sans">
-                    {step.body}
-                  </p>
-                </div>
-
-                <div className="relative mt-6 md:mt-8 pt-4 md:pt-5 border-t border-dashed border-slate-200 group-hover:border-slate-300 transition-colors duration-300">
-                  <span className="inline-block text-[11px] font-semibold tracking-[0.1em] uppercase text-gray-500 group-hover:text-slate-800 bg-slate-100 group-hover:bg-slate-200 px-3 py-1.5 rounded-full font-sans transition-all duration-300 transform group-hover:-translate-y-0.5 shadow-sm group-hover:shadow-md">
-                    {step.title}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="relative mt-8 md:mt-10">
+                    <div className="absolute top-0 left-0 right-0 h-px border-t border-dashed border-slate-200 group-hover:border-slate-400/30 transition-colors duration-300" />
+                    <div className="pt-6">
+                      <span className={`inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-2 rounded-full font-sans transition-all duration-300 ${
+                        isFirst 
+                          ? 'bg-slate-100 text-slate-800 shadow-sm group-hover:shadow-md group-hover:-translate-y-0.5' 
+                          : 'text-gray-500 bg-slate-50 opacity-60 group-hover:opacity-100'
+                      }`}>
+                        {step.title}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
 

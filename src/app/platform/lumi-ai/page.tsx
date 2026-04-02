@@ -5,13 +5,13 @@ import { ArrowRight, Sparkles, MessageCircle, FileText } from 'lucide-react';
 
 export default function LumiAIPage() {
     return (
-        <div className="flex flex-col min-h-screen bg-white">
+        <div className="flex flex-col min-h-screen bg-transparent">
             <Navbar />
 
             <main className="flex-grow pt-[68px]"> {/* Offset for fixed Navbar */}
 
                 {/* Lumi AI Hero */}
-                <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-[#0f0e0d] text-white">
+                <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-transparent text-slate-900">
                     <div className="absolute inset-0 pointer-events-none">
                         {/* Grain overlay */}
                         <div
@@ -28,10 +28,10 @@ export default function LumiAIPage() {
 
                     <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
                         <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-orange-400 mb-6">LUMI AI ✦</span>
-                        <h1 className="text-5xl md:text-7xl lg:text-[80px] font-serif leading-[1.05] tracking-tight mb-8 max-w-4xl">
+                        <h1 className="text-5xl md:text-7xl lg:text-[80px] font-sans leading-[1.05] tracking-tight mb-8 max-w-4xl">
                             Your intelligent learning assistant.
                         </h1>
-                        <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed mb-12">
+                        <p className="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed mb-12">
                             Enterprise-grade AI agents designed to automate grading, answer student questions 24/7, and generate intelligent coursework in seconds.
                         </p>
 
@@ -39,7 +39,7 @@ export default function LumiAIPage() {
                             <button className="px-8 py-4 bg-white text-[#111110] rounded-full font-semibold transition hover:scale-105 flex items-center gap-2">
                                 <Sparkles size={18} /> Meet Lumi
                             </button>
-                            <button className="px-8 py-4 border border-white/20 rounded-full font-medium transition hover:bg-white/10">
+                            <button className="px-8 py-4 border border-slate-200/50 rounded-full font-medium transition hover:bg-white/10">
                                 Explore AI Features
                             </button>
                         </div>
@@ -47,10 +47,10 @@ export default function LumiAIPage() {
                 </section>
 
                 {/* Feature Grid */}
-                <section className="py-24 bg-white">
+                <section className="py-24 bg-transparent">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="text-center mb-20">
-                            <h2 className="text-4xl md:text-5xl font-serif text-[#111110] mb-6">AI that works for educators</h2>
+                            <h2 className="text-4xl md:text-5xl font-sans text-[#111110] mb-6">AI that works for educators</h2>
                             <p className="text-slate-500 max-w-2xl mx-auto text-lg hover:text-slate-600 transition">
                                 Lumi isn't a general chatbot. It's a specialized AI trained specifically on educational paradigms to assist both learners and instructors.
                             </p>
@@ -78,7 +78,7 @@ export default function LumiAIPage() {
                                     <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                         {feat.icon}
                                     </div>
-                                    <h3 className="text-xl font-serif text-[#111110] mb-3">{feat.title}</h3>
+                                    <h3 className="text-xl font-sans text-[#111110] mb-3">{feat.title}</h3>
                                     <p className="text-slate-500 leading-relaxed text-sm">{feat.desc}</p>
                                 </div>
                             ))}
@@ -87,9 +87,9 @@ export default function LumiAIPage() {
                 </section>
 
                 {/* Call to action connecting to main platform */}
-                <section className="py-24 bg-slate-50 border-t border-slate-200">
+                <section className="py-24 bg-transparent border-t border-slate-200">
                     <div className="max-w-4xl mx-auto px-6 text-center">
-                        <h2 className="text-3xl font-serif text-[#111110] mb-6">Experience intelligent learning</h2>
+                        <h2 className="text-3xl font-sans text-[#111110] mb-6">Experience intelligent learning</h2>
                         <p className="text-slate-600 mb-8">
                             Lumi AI is fully integrated into all TeachGrid platforms, enhancing every step of the educational journey.
                         </p>

@@ -18,13 +18,13 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-white">
+        <div className="flex flex-col min-h-screen bg-transparent">
             <Navbar />
 
             <main className="flex-grow pt-[68px]">
 
                 {/* Solutions Hero */}
-                <section className="relative pt-24 pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-[#0a0a09] text-white">
+                <section className="relative pt-24 pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-transparent text-slate-900">
                     <div className="absolute inset-0 pointer-events-none">
                         {/* Grain overlay */}
                         <div
@@ -49,24 +49,24 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
 
                         {/* Left side text */}
                         <div className="flex-1">
-                            <a href="/" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm font-medium mb-10">
+                            <a href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium mb-10">
                                 <ArrowLeft size={16} /> Back to Home
                             </a>
 
-                            <div className="inline-block px-4 py-1.5 border border-white/10 bg-white/5 rounded-full backdrop-blur-md mb-6">
-                                <span className="text-xs font-bold tracking-[0.15em] uppercase text-white/70">
+                            <div className="inline-block px-4 py-1.5 border border-slate-200/30 bg-slate-900/5 rounded-full backdrop-blur-md mb-6">
+                                <span className="text-xs font-bold tracking-[0.15em] uppercase text-slate-600">
                                     {solution.category}
                                 </span>
                             </div>
 
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.05] tracking-tight mb-8">
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-sans leading-[1.05] tracking-tight mb-8">
                                 TeachGrid for <br />
                                 <span className="text-transparent bg-clip-text" style={{ backgroundImage: solution.heroGradient }}>
                                     {solution.title}
                                 </span>
                             </h1>
 
-                            <p className="text-lg md:text-xl font-light text-white/80 max-w-2xl leading-relaxed mb-10">
+                            <p className="text-lg md:text-xl font-light text-slate-700 max-w-2xl leading-relaxed mb-10">
                                 {solution.heroDescription}
                             </p>
 
@@ -74,7 +74,7 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
                                 <button className="px-8 py-4 bg-white text-[#0a0a09] rounded-full font-semibold transition hover:scale-105">
                                     Talk to an Expert
                                 </button>
-                                <button className="px-8 py-4 text-white hover:bg-white/5 rounded-full font-medium transition flex items-center gap-2 group">
+                                <button className="px-8 py-4 text-slate-900 hover:bg-slate-900/5 rounded-full font-medium transition flex items-center gap-2 group">
                                     View Case Studies
                                     <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                 </button>
@@ -83,14 +83,14 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
 
                         {/* Right side abstract graphic (mockup area) */}
                         <div className="flex-1 hidden md:flex justify-end">
-                            <div className="relative w-full max-w-[500px] aspect-square rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-2xl">
+                            <div className="relative w-full max-w-[500px] aspect-square rounded-full border border-slate-200/30 bg-slate-900/5 flex items-center justify-center backdrop-blur-2xl">
                                 <div
                                     className="absolute inset-[10%] rounded-full opacity-60 blur-3xl animate-pulse"
                                     style={{ background: solution.heroGradient }}
                                 />
                                 {/* Placeholder for actual dashboard mockup */}
-                                <div className="w-[70%] h-[70%] bg-[#1a1a1a] rounded-2xl shadow-2xl border border-white/10 relative z-10 overflow-hidden flex flex-col">
-                                    <div className="h-6 border-b border-white/10 bg-black/40 flex items-center px-3 gap-1.5">
+                                <div className="w-[70%] h-[70%] bg-[#1a1a1a] rounded-2xl shadow-2xl border border-slate-200/30 relative z-10 overflow-hidden flex flex-col">
+                                    <div className="h-6 border-b border-slate-200/30 bg-black/40 flex items-center px-3 gap-1.5">
                                         <div className="w-2 h-2 rounded-full bg-rose-500/50" />
                                         <div className="w-2 h-2 rounded-full bg-amber-500/50" />
                                         <div className="w-2 h-2 rounded-full bg-emerald-500/50" />
@@ -111,11 +111,11 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
                 </section>
 
                 {/* Benefits Section */}
-                <section className="py-32 bg-white relative">
+                <section className="py-32 bg-transparent relative">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
                             <div className="max-w-3xl">
-                                <h2 className="text-4xl md:text-5xl font-serif text-[#111110] mb-6 leading-[1.1]">
+                                <h2 className="text-4xl md:text-5xl font-sans text-[#111110] mb-6 leading-[1.1]">
                                     Why {solution.title} teams choose TeachGrid
                                 </h2>
                                 <p className="text-xl text-slate-500 leading-relaxed font-light">
@@ -130,7 +130,7 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
                                     <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-white group-hover:shadow-xl transition-all duration-300">
                                         {benefit.icon}
                                     </div>
-                                    <h3 className="text-2xl font-serif text-[#111110] mb-4 group-hover:text-indigo-600 transition-colors">
+                                    <h3 className="text-2xl font-sans text-[#111110] mb-4 group-hover:text-indigo-600 transition-colors">
                                         {benefit.title}
                                     </h3>
                                     <p className="text-slate-500 leading-relaxed text-[15.5px]">
@@ -150,7 +150,7 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
                     <section className="py-32 bg-[#fafafa] border-y border-slate-100">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="text-center mb-20">
-                                <h2 className="text-3xl md:text-4xl font-serif text-[#111110] mb-4">
+                                <h2 className="text-3xl md:text-4xl font-sans text-[#111110] mb-4">
                                     {solution.trustedBy.title}
                                 </h2>
                                 <div className="w-24 h-1 bg-indigo-500 mx-auto rounded-full" />
@@ -159,7 +159,7 @@ export default function SolutionsPage({ params }: { params: { slug: string } }) 
                             <div className="grid md:grid-cols-3 gap-8">
                                 {solution.trustedBy.categories.map((cat, i) => (
                                     <div key={i} className="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-shadow duration-500">
-                                        <h3 className="text-xl font-serif text-[#111110] mb-8 pb-4 border-b border-slate-50">
+                                        <h3 className="text-xl font-sans text-[#111110] mb-8 pb-4 border-b border-slate-50">
                                             {cat.name}
                                         </h3>
                                         <ul className="space-y-4">

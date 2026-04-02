@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import { GraduationCap, Library, Building2 } from "lucide-react";
+import { Library, Building2, GraduationCap, Landmark } from "lucide-react";
 
 const ValueProps = () => {
     const props = [
@@ -12,26 +12,26 @@ const ValueProps = () => {
             href: "/solutions/schools-colleges-universities",
             description:
                 "Empower educators and students with AI-driven content creation, delivery, and assessment tools built for academia.",
-            icon: <GraduationCap size={28} className="text-emerald-500" strokeWidth={1.5} />,
+            icon: <GraduationCap size={28} className="text-indigo-600" strokeWidth={1.5} />,
         },
         {
             title: "Training Institutes & Academies",
             href: "/solutions/institutes-academies",
             description:
                 "Manage courses, track learner progress, and automate assessments — all from a single intelligent dashboard.",
-            icon: <Library size={28} className="text-amber-500" strokeWidth={1.5} />,
+            icon: <Landmark size={28} className="text-indigo-600" strokeWidth={1.5} />,
         },
         {
             title: "Organizations",
             href: "/solutions/organizations",
             description:
                 "Deliver scalable, AI-powered training programs tailored to your organization's goals with zero friction setup.",
-            icon: <Building2 size={28} className="text-zinc-600" strokeWidth={1.5} />,
+            icon: <Building2 size={28} className="text-indigo-600" strokeWidth={1.5} />,
         },
     ];
 
     return (
-        <section className="relative pt-10 pb-16 md:pt-12 md:pb-20 overflow-hidden bg-transparent snap-start">
+        <section className="relative pt-32 pb-24 md:pt-48 md:pb-40 lg:pt-64 lg:pb-52 overflow-hidden bg-transparent snap-start">
             <style>{`
                 @keyframes arrow-shoot {
                     0%   { transform: translateX(0);    opacity: 1; }
@@ -52,18 +52,18 @@ const ValueProps = () => {
                 }
             `}</style>
 
-            <div className="max-w-[1440px] mx-auto px-4 sm:px-4 md:px-6 relative">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 relative">
                 {/* Section title */}
-                <div className="max-w-3xl mx-auto text-center mb-8 md:mb-12">
-                    <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-zinc-900 font-sans mb-3 md:mb-4 block">
+                <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+                    <span className="text-[12px] font-bold tracking-[0.25em] uppercase text-zinc-900 font-sans mb-4 md:mb-5 block">
                         Our Vision
                     </span>
                     <h2
                         style={{
                             fontFamily: "'Poppins', sans-serif",
-                            fontSize: 'clamp(20px, 3.2vw, 38px)',
-                            lineHeight: 1.25,
-                            letterSpacing: '-0.025em',
+                            fontSize: 'clamp(26px, 4.5vw, 52px)',
+                            lineHeight: 1.15,
+                            letterSpacing: '-0.03em',
                             color: '#111110',
                             marginBottom: 8
                         }}
@@ -73,7 +73,7 @@ const ValueProps = () => {
                 </div>
 
                 {/* Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 lg:gap-12">
                     {props.map((prop, index) => (
                         <motion.div
                             key={prop.title}
@@ -81,51 +81,50 @@ const ValueProps = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="group relative p-6 sm:p-8 md:p-8 lg:p-10 rounded-[1.5rem] md:rounded-[2rem] lg:rounded-[2rem] border border-[#ebebea] bg-white hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] transition-all duration-500 overflow-hidden cursor-pointer"
+                            className="group relative px-6 sm:px-8 md:px-10 py-8 lg:py-10 rounded-[2.5rem] border-2 border-indigo-200/80 bg-white/95 hover:shadow-[0_45px_100px_-20px_rgba(79,70,229,0.12)] hover:border-indigo-300/60 transition-all duration-500 overflow-hidden cursor-pointer flex flex-col h-full"
                         >
                             <Link href={prop.href} className="absolute inset-0 z-20" aria-label={`Learn more about ${prop.title}`} />
-                            <div className="absolute inset-0 bg-gradient-to-br from-zinc-500/5 to-zinc-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-transparent to-indigo-100/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative z-10 h-full flex flex-col">
+
                                 {/* Icon */}
-                                <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mb-5 md:mb-6 lg:mb-8 rounded-[1.1rem] bg-zinc-50 flex items-center justify-center group-hover:bg-white group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
+                                <div className="w-14 h-14 md:w-16 md:h-16 lg:w-16 lg:h-16 mb-6 md:mb-8 flex-shrink-0 self-start rounded-[1rem] bg-zinc-50 flex items-center justify-center group-hover:bg-white group-hover:scale-105 group-hover:shadow-sm transition-all duration-300">
                                     {prop.icon}
                                 </div>
 
                                 {/* Title */}
                                 <h3
-                                    className="text-[20px] md:text-[22px] lg:text-[26px] mb-3 md:mb-4 text-[#111110] leading-[1.2] tracking-[-0.02em] font-medium"
+                                    className="text-[18px] md:text-[20px] lg:text-[22px] mb-3 md:mb-5 text-[#111110] leading-[1.2] tracking-[-0.03em] font-medium min-h-[3rem] flex items-start"
                                     style={{ fontFamily: "'Poppins', sans-serif" }}
                                 >
                                     {prop.title}
                                 </h3>
 
                                 {/* Description */}
-                                <p className="text-[#4b5563] text-[14px] md:text-[15px] lg:text-[16px] leading-relaxed mb-6 md:mb-8 font-sans flex-grow">
+                                <p className="text-[#4b5563] text-[13px] md:text-[14px] leading-relaxed mb-8 md:mb-10 font-sans flex-grow text-justify">
                                     {prop.description}
                                 </p>
 
-                                {/* Learn more */}
-                                <Link
-                                    href={prop.href}
-                                    className="learn-more-link relative z-30 inline-flex items-center gap-2 self-start transition-transform duration-300 group-hover:translate-x-1"
-                                >
-                                    <span className="relative">
-                                        <span className="text-[12px] font-bold tracking-[0.12em] uppercase text-[#111110] group-hover:text-black transition-colors duration-300 font-sans">
-                                            Explore
-                                        </span>
-                                        <span className="lm-bar absolute -bottom-px left-0 right-0 h-[1.5px] bg-black block" />
-                                    </span>
-
-                                    <svg
-                                        className="lm-arrow w-3 h-3 text-[#111110] group-hover:text-black transition-colors duration-300 flex-shrink-0"
-                                        fill="none"
-                                        viewBox="0 0 14 14"
-                                        stroke="currentColor"
+                                {/* Simple Explore Link */}
+                                <div className="relative mt-2 md:mt-4">
+                                    <Link
+                                        href={prop.href}
+                                        className="inline-flex items-center gap-2 group/link"
                                     >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M2 7h10M8 3l4 4-4 4" />
-                                    </svg>
-                                </Link>
+                                        <span className="text-[11px] font-bold tracking-[0.16em] uppercase text-[#111110] border-b-2 border-black/0 group-hover/link:border-black transition-all duration-300 font-sans">
+                                            EXPLORE
+                                        </span>
+                                        <svg
+                                            className="w-3.5 h-3.5 text-[#111110] transition-transform duration-300 group-hover/link:translate-x-1"
+                                            fill="none"
+                                            viewBox="0 0 14 14"
+                                            stroke="currentColor"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M2 7h10M8 3l4 4-4 4" />
+                                        </svg>
+                                    </Link>
+                                </div>
                             </div>
 
                             {/* Grain texture */}

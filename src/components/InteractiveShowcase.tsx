@@ -1,10 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { ArrowUpRight, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 
 const InteractiveShowcase = () => {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.play().catch(error => {
+                console.error("Autoplay was prevented:", error);
+            });
+        }
+    }, []);
+
     return (
         <section className="relative min-h-screen flex flex-col justify-center items-center py-16 md:py-20 bg-transparent px-4 md:px-8 overflow-hidden z-0 snap-start">
 
@@ -38,10 +48,10 @@ const InteractiveShowcase = () => {
                     className="hidden lg:block relative w-full h-[480px] xl:h-[520px]"
                 >
                     {/* LEFT CARD */}
-                    <div className="absolute top-0 left-0 w-[54%] h-full z-10" style={{ filter: 'drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.06))' }}>
+                    <div className="absolute top-0 left-0 w-[56%] h-full z-10" style={{ filter: 'drop-shadow(0px 24px 48px rgba(0, 0, 0, 0.06))' }}>
                         <div
                             className="w-full h-full bg-white/95 backdrop-blur-3xl border-[2px] border-slate-200/80 rounded-[36px] p-8 xl:p-12 flex flex-col justify-between overflow-hidden"
-                            style={{ clipPath: 'polygon(0 0, 100% 0, 86% 100%, 0 100%)' }}
+                            style={{ clipPath: 'polygon(0 0, 100% 0, 86.5% 100%, 0 100%)' }}
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/40 to-white/10 pointer-events-none rounded-[36px]" />
 
@@ -49,7 +59,7 @@ const InteractiveShowcase = () => {
                                 <div className="relative pt-4">
                                     <Quote className="absolute -top-6 -left-6 w-12 h-12 text-indigo-500/10 rotate-180" />
                                     <p
-                                        className="text-[18px] xl:text-[22px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10"
+                                        className="text-[18px] xl:text-[22px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10 text-justify"
                                         style={{ fontFamily: "'Poppins', sans-serif" }}
                                     >
                                         "Our goal with TeachGrid is simple - give educators the tools they need to deliver meaningful learning experiences at scale while keeping learners engaged and motivated."
@@ -83,8 +93,13 @@ const InteractiveShowcase = () => {
                             style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0 100%)' }}
                         >
                             <video
+                                ref={videoRef}
                                 src="https://assets.jitter.video/design-1-hd-20.mp4"
-                                autoPlay loop muted playsInline
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                preload="auto"
                                 className="absolute inset-0 w-full h-full object-cover"
                             />
                         </div>
@@ -107,7 +122,7 @@ const InteractiveShowcase = () => {
                             <div className="relative pt-6 mb-8">
                                 <Quote className="absolute top-0 -left-6 w-14 h-14 text-indigo-500/10 rotate-180" />
                                 <p
-                                    className="text-[20px] md:text-[24px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10"
+                                    className="text-[20px] md:text-[24px] leading-[1.6] text-[#111110] font-medium tracking-tight relative z-10 text-justify"
                                     style={{ fontFamily: "'Poppins', sans-serif" }}
                                 >
                                     "Our goal with TeachGrid is simple — give educators the tools they need to deliver meaningful learning experiences at scale while keeping learners engaged and motivated."
@@ -141,7 +156,11 @@ const InteractiveShowcase = () => {
                     >
                         <video
                             src="https://assets.jitter.video/design-1-hd-20.mp4"
-                            autoPlay loop muted playsInline
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="auto"
                             className="absolute inset-0 w-full h-full object-cover"
                         />
                     </motion.div>

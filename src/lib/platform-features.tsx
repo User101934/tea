@@ -740,5 +740,107 @@ export const platformFeatures: FeatureData[] = [
                 description: 'Visual motivation through real-time percent-complete metrics.'
             }
         ]
+    },
+    {
+        slug: 'lxp-learner-portal',
+        category: 'Portals',
+        title: 'Learner Experience Portal (LXP)',
+        heroDescription: 'An immersive, unified portal for students to discover, consume, and track their educational journey.',
+        heroGradient: 'linear-gradient(135deg, #1e1b4b 0%, #4338ca 50%, #7c3aed 100%)',
+        capabilities: [
+            {
+                icon: <LayoutTemplate className="text-indigo-500" />,
+                title: 'Personalized Dashboard',
+                description: 'A centralized view of courses, progress, and upcoming tasks.'
+            },
+            {
+                icon: <Target className="text-indigo-500" />,
+                title: 'Goal Tracking',
+                description: 'Set and monitor personal learning objectives over time.'
+            },
+            {
+                icon: <MessageCircle className="text-indigo-500" />,
+                title: 'Peer Collaboration',
+                description: 'Connect and learn alongside peers with integrated social features.'
+            },
+            {
+                icon: <CheckCircle2 className="text-indigo-500" />,
+                title: 'Auto Progress Tracking',
+                description: 'Automated monitoring of your learning journey and milestone completion.'
+            },
+            {
+                icon: <HardDrive className="text-indigo-500" />,
+                title: 'Resource Library',
+                description: 'Access all your necessary study materials and recorded sessions in one place.'
+            }
+        ]
+    },
+    {
+        slug: 'mxp-mentor-portal',
+        category: 'Portals',
+        title: 'Mentor Experience Portal (MXP)',
+        heroDescription: 'A dedicated workspace for mentors and educators to manage cohorts, evaluate performance, and guide students.',
+        heroGradient: 'linear-gradient(135deg, #2e1065 0%, #7e22ce 50%, #c026d3 100%)',
+        capabilities: [
+            {
+                icon: <Users className="text-fuchsia-500" />,
+                title: 'Cohort Overview',
+                description: 'Access detailed performance and engagement metrics for all students.'
+            },
+            {
+                icon: <MessageCircle className="text-fuchsia-500" />,
+                title: 'Direct Feedback',
+                description: 'Streamlined tools to provide meaningful coaching and guidance.'
+            },
+            {
+                icon: <Activity className="text-fuchsia-500" />,
+                title: 'Activity Monitoring',
+                description: 'Real-time tracking of learner participation, attendance, and lab activities.'
+            },
+            {
+                icon: <LineChart className="text-fuchsia-500" />,
+                title: 'Grade Distribution',
+                description: 'Visualize cohort performance against target benchmarks.'
+            },
+            {
+                icon: <Brain className="text-fuchsia-500" />,
+                title: 'Automated Insights',
+                description: 'Predictive analytics to identify at-risk students and drive success.'
+            }
+        ]
+    },
+    {
+        slug: 'crm-portal',
+        category: 'Portals',
+        title: 'Customer Relationship Management',
+        heroDescription: 'Built-in CRM features to manage enrollments, track prospects, and streamline communications.',
+        heroGradient: 'linear-gradient(135deg, #064e3b 0%, #059669 50%, #34d399 100%)',
+        capabilities: [
+            {
+                icon: <Globe className="text-emerald-500" />,
+                title: 'Enrollment Tracking',
+                description: 'Monitor the candidate journey from prospect to enrolled student.'
+            },
+            {
+                icon: <LineChart className="text-emerald-500" />,
+                title: 'Communication Logs',
+                description: 'Keep a secure record of all interactions and updates.'
+            },
+            {
+                icon: <ShieldAlert className="text-emerald-500" />,
+                title: 'Auto Reminders',
+                description: 'Proactive notifications for follow-ups and enrollment milestones.'
+            },
+            {
+                icon: <Layers className="text-emerald-500" />,
+                title: 'Bulk Operations',
+                description: 'Update statuses or send communications to hundreds of prospects at once.'
+            },
+            {
+                icon: <Link className="text-emerald-500" />,
+                title: 'Integration Ready',
+                description: 'Seamlessly connect your CRM data with external marketing tools.'
+            }
+        ]
     }
 ];

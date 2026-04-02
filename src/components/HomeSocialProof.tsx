@@ -139,7 +139,7 @@ const LogoItem = ({ brand }: { brand: typeof BRANDS[0] }) => {
 
 const HomeSocialProof = () => {
   return (
-    <section className="relative overflow-hidden bg-transparent snap-start pt-12 pb-16 md:pt-16 md:pb-20">
+    <section className="relative overflow-hidden bg-[#ffffff] snap-start pt-20 pb-16 md:pt-32 md:pb-20 z-10">
       <style>{`
         @keyframes logo-scroll {
           0%   { transform: translateX(0); }
@@ -170,16 +170,15 @@ const HomeSocialProof = () => {
         }
       `}</style>
 
-      <div className="absolute inset-y-0 left-0 z-10 w-12 sm:w-20 pointer-events-none bg-gradient-to-r from-background to-transparent" />
-      <div className="absolute inset-y-0 right-0 z-10 w-12 sm:w-20 pointer-events-none bg-gradient-to-l from-background to-transparent" />
+      <div className="absolute inset-y-0 left-0 z-10 w-12 sm:w-20 pointer-events-none bg-gradient-to-r from-white to-transparent" />
+      <div className="absolute inset-y-0 right-0 z-10 w-12 sm:w-20 pointer-events-none bg-gradient-to-l from-white to-transparent" />
 
       <motion.div
         initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 text-center px-4 sm:px-6"
-        style={{ marginBottom: '1.5rem' }}
+        className="relative z-10 text-center px-4 sm:px-6 mb-12 md:mb-16"
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16 }}>
           <motion.span
@@ -229,7 +228,7 @@ const HomeSocialProof = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.7 }}
-        style={{ marginTop: '0.5rem' }}
+        className="mt-16 md:mt-24"
       >
         <div className="logo-track">
           {TRACK.map((brand, i) => (
